@@ -1,0 +1,28 @@
+<!--项目首页-->
+<div class="app-cointer">
+    <div class="index-cointer-main">
+        <div class="index-nav">
+            <li ng-class="{'active': data.active}" ng-repeat="data in infoCategory" ng-click="categoryClick(data)">
+                <span ng-bind="data.name"></span>
+            </li>
+        </div>
+        <div class="clear"></div>
+        <hot-reserous></hot-reserous>
+        <ul class="indexres-list-ul">
+            <li ng-repeat="infoList in infoLists track by $index" ng-if="$index>2" class="animated dn-lightspeed">
+                <img ng-src="{{infoList.article.cover}}">
+                <div class="child-list">
+                    <label class="text-overflow" ng-bind="infoList.article.title">
+                        
+                    </label>
+                    <div class="content" ng-bind="infoList.article.contentText">
+                       
+                    </div>
+                    <i ng-bind="infoList.infoCategory.name"></i>
+                    <time ng-bind="infoList.article.publishTimeStr"></time>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <pagination></pagination>
+</div>

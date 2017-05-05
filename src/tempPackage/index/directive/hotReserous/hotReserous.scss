@@ -1,0 +1,69 @@
+@import "../../../../resources/css/global";
+$bannerHeight:365px;
+.hot-reserous-dyn{
+  height:$bannerHeight;
+}
+.binna-dyn{
+  position: relative;
+  width: 510px;
+  height: inherit;
+  float: left;
+  margin-right: -510px;
+  z-index: 12;
+  img{
+    min-height:$bannerHeight;
+    max-height: $bannerHeight;
+    width:100%;
+  }
+  .nivo-controlNav{
+    position: absolute;
+    bottom: -19px;
+    right: 0;
+    z-index: 999;
+  }
+}
+
+.hot-reserous-list{
+  float: left;
+  padding-left:540px;
+  width: 100%;
+  height: inherit;
+  .child-list{
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    cursor: pointer;
+  }
+  .child-list:last-of-type{
+    border-bottom: none;
+  }
+  .child-list{
+    label{
+      font-size: 18px;
+      color: #3B3B3B;
+      padding-bottom: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .content{
+      color: #999;
+      overflow: hidden;
+      line-height: 20px;
+      margin-top: 10px;
+      margin-bottom: 6px;
+      height: 44px;
+    }
+    i{
+      color: #705330;
+      font-style: normal;
+      font-weight: 700;
+    }
+    time{
+      color: $baseColor;
+      float: right;
+    }
+  }
+  .child-list:not(:first-of-type){
+    padding-top:15px;
+  }
+}

@@ -1,0 +1,124 @@
+@import "../../../resources/css/global";
+@import "compass/css3";
+
+$baseBorderColor:#EEEEEE;
+.resources-text{
+  font-size: 15px;
+  line-height: 24px;
+  color: #999999;
+}
+.resources-home{
+  margin-bottom: 40px;
+}
+.resources-menu-btn{
+    width:230px;
+    height:44px;
+    border-radius: 100px;
+    border: 2px solid $baseBorderColor;
+    font-size: 22px;
+    letter-spacing:3px;
+    margin: 0 auto;
+    margin-top: 33px;
+    margin-bottom: 32px;
+    display: block;
+    line-height: 42px;
+}
+.resources-menu-round{
+  padding-top: 80px;
+  width: $baseWidth;
+  margin: 0 auto;
+  .resources-kind-dyn{
+    width: 237px;
+    position: relative;
+    margin:0 auto;
+    text-align: center;
+      margin-bottom: 30px;
+    .line{
+      width: 36px;
+      height: 3px;
+      background-color: $baseBorderColor;
+      position: absolute;
+      top: 21px;
+    }
+    .line-left{
+      left: 0;
+    }
+    .line-right{
+      right: 0;
+    }
+    .kind-dyn{
+      width: 100%;
+      label{
+        font-size: 34px;
+        color: $baseColor;
+        letter-spacing:2px;
+          font-weight: 700;
+        font-family: 'SimHei';
+      }
+    }
+    .english-tag{
+      font-size: 15px;
+      color: #ACACAC;
+      font-family: 'Acrom Regular';
+    }
+  }
+  .menu-list{
+    width: 365px;
+    height: 410px;
+    margin-left: 35px;
+    margin-top: 24px;
+    margin-bottom:24px;
+    padding: 0 34px;
+    text-align: center;
+    position: relative;
+    float: left;
+    border: 2px solid $baseBorderColor;
+    &:last-of-type{
+      margin-left:0;
+      border:2px solid $baseBorderColor;
+    }
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited{
+      margin-top: 0;
+      margin-bottom:0;
+      height: 458px;
+      border: 2px solid $baseColor;
+      cursor: pointer;
+      .resources-menu-btn{
+        background-color: rgba(243, 177, 7, 0.74);
+          color: #fff;
+          @include box-shadow(0px 4px 20px -2px #F3B107);
+          border: none;
+      }
+      .t-more{
+        color: $baseColor;
+      }
+    }
+  }
+  .split-line{
+    width:66px;
+    height: 2px;
+    background: $baseColor;
+    margin: 0 auto;
+  }
+  .t-more{
+    font-size: 16.23px;
+    color:#666666;
+    position: absolute;
+    bottom: 40px;
+    left: 157px;
+    &:after{
+      content: ">";
+        position: absolute;
+        top: 1px;
+    }
+  }
+}
+.resources-title{
+  font-size: 24px;
+  color: $baseColor;
+  margin-top:74px;
+  margin-bottom: 27px;
+}

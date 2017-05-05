@@ -1,0 +1,76 @@
+@import "../../../../resources/css/global";
+
+.footer-main {
+  background-color: #fff;
+}
+
+.footer-main-dyn {
+  height: 175px;
+  border-top: 2px solid $baseColor;
+  .footer-dyn {
+    width: $baseWidth;
+    margin: 0 auto;
+    height: inherit;
+    padding-top: 25px;
+  }
+}
+
+.footer-address {
+  width: 314px;
+  float: left;
+  margin-right: -314px;
+  p{
+    margin-bottom: 3px;
+  }
+  >p{
+    margin-bottom: 20px;
+  }
+  .footer-adress-font{
+    font-size: 14px;
+    color:#999999;
+  }
+}
+.other-dyn-right{
+  >p{
+    margin-bottom: 8px;
+  }
+  .link-img {
+    float: left;
+    padding-top: 5px;
+    padding-right: 10px;
+    z-index: 4;
+    position: relative;
+  }
+}
+.other-dyn-right>p,.footer-address>p{
+  color:#705330;
+  font-size: 16px;
+}
+.footer-dyn-other {
+  float: left;
+  padding-left: 330px;
+  .other-dyn-right {
+    float: right;
+    width: 278px;
+    margin-left: -278px;
+  }
+  .other-dyn-left {
+    float: right;
+    width: 100%;
+    font-size:12px;
+    padding-right: 340px;
+    text-align: center;
+    line-height: 23px;
+    font-weight: 700;
+    color:#705330;
+  }
+}
+
+.footer-bottom {
+  height: 30px;
+  text-align: center;
+  font-size:12px;
+  background-color: $baseColor;
+  line-height: 30px;
+  color: #fff;
+}

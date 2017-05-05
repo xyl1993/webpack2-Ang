@@ -1,0 +1,76 @@
+@import "../../../../resources/css/global";
+
+$headerHeight:80px;
+$headerTopMainHeight:512px;
+.app-header{
+  height:$headerTopMainHeight ;
+}
+.header-top-main{
+  height: $headerTopMainHeight;
+  width:100%;
+  background: url("images/header.png") center center no-repeat;
+  background-size: cover;
+  position: absolute;
+  top:0;
+}
+.app-header header{
+  height:$headerHeight;
+  width: 100%;
+  background: url("images/header-top.png") center center no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 12;
+}
+.nav-contain{
+  width:$baseWidth;
+  height:$headerHeight;
+  margin:0 auto;
+  padding-left: 32px;
+}
+.home-nav{
+  height: inherit;
+  .row{
+    float: left;
+  }
+  .row.logo{
+    padding-top: 13px;
+    margin-right: 20px;
+    img{
+      width: 71px;
+      height: 60px;
+    }
+  }
+  .row.list-row{
+    font-size: 18px;
+    font-weight: 700;
+    padding:0 15px;
+    height: 78px;
+    margin: 0 18px;
+    cursor: pointer;
+  }
+  .list-row{
+    div{
+      color: #fff;
+      line-height: 80px;
+    }
+    &:focus,
+    &:active,
+    &:hover{
+      border-bottom: 2px solid $baseColor;
+      div{
+        color: $baseColor;
+      }
+    }
+    &.active{
+      border-bottom: 2px solid $baseColor;
+      div{
+        color: $baseColor;
+      }
+    }
+  }
+}
+.header-top-main{
+  nav{
+
+  }
+}

@@ -1,0 +1,84 @@
+@import "../../../resources/css/global";
+.app-cointer{
+  width:100%;
+  height: 100%;
+  background-color: #EEEEEE;
+}
+.index-cointer-main{
+  background-color: #fff;
+  width:$baseWidth;
+  padding:$basePadding;
+  margin: 0 auto;
+  height: 100%;
+}
+.index-nav{
+  height: 62px;
+  width: 100%;
+  border-bottom:1px solid $baseColor;
+  line-height: 70px;
+  margin-bottom:25px;
+  li{
+    float: left;
+    width: 14.2857143%;
+    font-size: 18px;
+    font-weight: 700;
+    color: #705330;
+    text-align: center;
+    letter-spacing: 2px;
+    &:hover,
+    &:active,
+    &:focus{
+      cursor: pointer;
+      color:$baseColor;
+    }
+  }
+  li.active{
+    color:$baseColor;
+  }
+}
+.indexres-list-ul{
+  li{
+    padding:20px 0;
+    position:relative;
+    height: 137px;
+    img{
+      position: absolute;
+      width:150px;
+      height: 98px;
+      left: 0;
+      top:20px;
+    }
+  }
+  .child-list {
+    padding-left: 168px;
+    width: 100%;
+    label {
+      font-size: 18px;
+      color: #3B3B3B;
+      padding-bottom: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .content {
+      color: #999;
+      max-height: 40px;
+      overflow: hidden;
+      line-height: 20px;
+      margin-top: 10px;
+      margin-bottom: 6px;
+      height: 40px;
+    }
+    i {
+      color: #705330;
+      font-style: normal;
+      font-weight: 700;
+    }
+    time {
+      color: $baseColor;
+      float: right;
+    }
+  }
+  li:not(:last-of-type){
+    border-bottom:1px solid #ccc;
+  }
+}
