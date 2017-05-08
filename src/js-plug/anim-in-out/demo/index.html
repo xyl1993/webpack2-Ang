@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" ng-app="ExampleApp" ng-controller="MainCtrl as ctrl">
+
+	<head>
+
+	    <!-- <base href="/"></base> -->
+
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	    <meta name="google" content="notranslate" />
+
+		<title>angular-ui-router-anim-in-out</title>
+
+		<link rel="stylesheet" type="text/css" href="bower_components/Bootflat/css/site.min.css">
+		<link rel="stylesheet" type="text/css" href="example/styles.css">
+		<link rel="stylesheet" type="text/css" href="css/anim-in-out.css">
+
+	</head>
+
+	<body>
+
+		<div id="menu">
+			<a href="#/"><button class="btn btn-primary">Page 1</button></a>
+			<a href="#/page2"><button class="btn btn-primary">Page 2</button></a>
+		</div>
+
+		<div id="controls">
+			<label class="control-label">Speed (ms)</label>
+			<input class="form-control input-sm" type="number" ng-model="ctrl.speed">
+			<label class="control-label">Syncronise</label>
+			<label class="toggle">
+				<input type="checkbox" ng-model="ctrl.sync">
+				<span class="handle"></span>
+			</label>
+			<label class="control-label">Main View Style</label>
+			<select class="form-control input-sm" ng-model="ctrl.mainViewStyle">
+				<option value="anim-fade">Fade</option>
+				<option value="anim-slide-left">Slide left</option>
+				<option value="anim-slide-right">Slide right</option>
+				<option value="anim-zoom-in">Zoom in subtle</option>
+				<option value="anim-zoom-out">Zoom out subtle</option>
+				<option value="anim-zoom-in-full">Zoom in full</option>
+				<option value="anim-zoom-out-full">Zoom out full</option>
+				<option value="anim-slide-below">Slide below</option>
+				<option value="anim-slide-below-fade">Slide below + fade</option>
+				<option value="anim-swap">None</option>
+			</select>
+			<label class="control-label">Page 1 Style</label>
+			<select class="form-control input-sm" ng-model="ctrl.page1Style">
+				<option value="anim-fade">Fade</option>
+				<option value="anim-slide-left">Slide left</option>
+				<option value="anim-slide-right">Slide right</option>
+				<option value="anim-zoom-in">Zoom in subtle</option>
+				<option value="anim-zoom-out">Zoom out subtle</option>
+				<option value="anim-zoom-in-full">Zoom in full</option>
+				<option value="anim-zoom-out-full">Zoom out full</option>
+				<option value="anim-slide-below">Slide below</option>
+				<option value="anim-slide-below-fade">Slide below + fade</option>
+				<option value="anim-swap">None</option>
+			</select>
+			<label class="control-label">Page 2 Style</label>
+			<select class="form-control input-sm" ng-model="ctrl.page2Style">
+				<option value="anim-fade">Fade</option>
+				<option value="anim-slide-left">Slide left</option>
+				<option value="anim-slide-right">Slide right</option>
+				<option value="anim-zoom-in">Zoom in subtle</option>
+				<option value="anim-zoom-out">Zoom out subtle</option>
+				<option value="anim-zoom-in-full">Zoom in full</option>
+				<option value="anim-zoom-out-full">Zoom out full</option>
+				<option value="anim-slide-below">Slide below</option>
+				<option value="anim-slide-below-fade">Slide below + fade</option>
+				<option value="anim-swap">None</option>
+			</select>
+		</div>
+
+		<div id="main" ui-view="main" autoscroll="false" class="anim-in-out {{ctrl.mainViewStyle}}"
+			data-anim-sync="{{ctrl.sync}}"
+			data-anim-speed="{{ctrl.speed}}"
+			ng-style="{
+				'-webkit-transition-duration': ctrl.speed + 'ms',
+				'-moz-transition-duration': ctrl.speed + 'ms',
+				'-ms-transition-duration': ctrl.speed + 'ms',
+				'-o-transition-duration': ctrl.speed + 'ms',
+				'transition-duration': ctrl.speed + 'ms'
+			}"></div>
+
+		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script type="text/javascript" src="anim-in-out.js"></script>
+		<script type="text/javascript" src="example/app.js"></script>
+		<script type="text/javascript" src="example/templates.js"></script>
+
+	</body>
+
+</html>

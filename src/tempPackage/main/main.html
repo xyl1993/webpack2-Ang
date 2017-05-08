@@ -1,6 +1,15 @@
 <!--项目主页面-->
 <div class="main-app">
     <navbar></navbar>
-    <div ui-view></div>
+    <div ui-view autoscroll="false" class="anim-in-out {{ctrl.mainViewStyle}}"
+			data-anim-sync="{{ctrl.sync}}"
+			data-anim-speed="{{ctrl.speed}}"
+			ng-style="{
+				'-webkit-transition-duration': ctrl.speed + 'ms',
+				'-moz-transition-duration': ctrl.speed + 'ms',
+				'-ms-transition-duration': ctrl.speed + 'ms',
+				'-o-transition-duration': ctrl.speed + 'ms',
+				'transition-duration': ctrl.speed + 'ms'
+			}"></div>
     <footer></footer>
 </div>

@@ -1,5 +1,11 @@
 <!--资源主页-->
-<div class="resources-home">
+<div class="resources-home {{ctrl.page2Style}}" ng-style="{
+        '-webkit-transition-duration': ctrl.speed + 'ms',
+        '-moz-transition-duration': ctrl.speed + 'ms',
+        '-ms-transition-duration': ctrl.speed + 'ms',
+        '-o-transition-duration': ctrl.speed + 'ms',
+        'transition-duration': ctrl.speed + 'ms'
+    }">
     <div class="resources-menu-round">
         <div class="resources-kind-dyn">
             <div class="kind-dyn">

@@ -1,5 +1,12 @@
 <!--项目首页-->
-<div class="app-cointer">
+<div class="app-cointer wrapper {{ctrl.page1Style}}"
+    ng-style="{
+        '-webkit-transition-duration': ctrl.speed + 'ms',
+        '-moz-transition-duration': ctrl.speed + 'ms',
+        '-ms-transition-duration': ctrl.speed + 'ms',
+        '-o-transition-duration': ctrl.speed + 'ms',
+        'transition-duration': ctrl.speed + 'ms'
+    }">
     <div class="index-cointer-main">
         <div class="index-nav">
             <li ng-class="{'active': data.active}" ng-repeat="data in infoCategory" ng-click="categoryClick(data)">

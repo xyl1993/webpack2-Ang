@@ -1,8 +1,9 @@
 import navJson from '../data/nav.json';
 require('../style/index.scss');
-export default ( $scope,$http,APPBASE,indexServ)=> {
+export default ( $scope,$http,$log,APPBASE,indexServ)=> {
 
     'ngInject';
+  
     // 默认显示页面为3条..当前页为第一页..data查询参数
     var $pager = $('#pagination');
     var pageSize = 10,
