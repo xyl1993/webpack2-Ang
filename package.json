@@ -4,10 +4,10 @@
   "description": "webpack angularjs打包基础配置",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --inline",
-    "clean": "rimraf dist",
-    "build": "rimraf dist && webpack --watch"
+    "start": "webpack-dev-server --inline --config ./webpack.dev.config.js",
+    "watch": "rimraf dist && webpack --watch --config ./webpack.build.config.js",
+    "build": "rimraf dist && webpack --config ./webpack.build.config.js",
+    "profile": "webpack --config ./webpack.build.config.js --json --profile > stats.json"
   },
   "eslintConfig": {
     "extends": "enough",

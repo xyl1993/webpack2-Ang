@@ -1,84 +1,87 @@
-@import "../../../resources/css/global";
-.app-cointer{
-  width:100%;
-  height: 100%;
-  background-color: #EEEEEE;
-}
-.index-cointer-main{
-  background-color: #fff;
-  width:$baseWidth;
-  padding:$basePadding;
-  margin: 0 auto;
-  height: 100%;
-}
-.index-nav{
-  height: 62px;
-  width: 100%;
-  border-bottom:1px solid $baseColor;
-  line-height: 70px;
-  margin-bottom:25px;
-  li{
-    float: left;
-    width: 14.2857143%;
-    font-size: 18px;
-    font-weight: 700;
-    color: #705330;
-    text-align: center;
-    letter-spacing: 2px;
-    &:hover,
-    &:active,
-    &:focus{
-      cursor: pointer;
-      color:$baseColor;
-    }
-  }
-  li.active{
-    color:$baseColor;
-  }
-}
-.indexres-list-ul{
-  li{
-    padding:20px 0;
-    position:relative;
-    height: 137px;
-    img{
-      position: absolute;
-      width:150px;
-      height: 98px;
-      left: 0;
-      top:20px;
-    }
-  }
-  .child-list {
-    padding-left: 168px;
+@import '../../../resources/css/global';
+.app-cointer {
     width: 100%;
-    label {
-      font-size: 18px;
-      color: #3B3B3B;
-      padding-bottom: 10px;
-      font-weight: 700;
-      cursor: pointer;
+    height: 100%;
+    background-color: #eee;
+}
+
+.index-cointer-main {
+    width: $baseWidth;
+    height: 100%;
+    margin: 0 auto;
+    padding: $basePadding;
+    background-color: #fff;
+}
+
+.index-nav {
+    line-height: 70px;
+    width: 100%;
+    height: 62px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid $baseColor;
+    li {
+        font-size: 18px;
+        font-weight: 700;
+        float: left;
+        width: 14.2857143%;
+        text-align: center;
+        letter-spacing: 2px;
+        color: #705330;
+        &:hover,
+        &:active,
+        &:focus {
+            cursor: pointer;
+            color: $baseColor;
+        }
     }
-    .content {
-      color: #999;
-      max-height: 40px;
-      overflow: hidden;
-      line-height: 20px;
-      margin-top: 10px;
-      margin-bottom: 6px;
-      height: 40px;
+    li.active {
+        color: $baseColor;
     }
-    i {
-      color: #705330;
-      font-style: normal;
-      font-weight: 700;
+}
+
+.indexres-list-ul {
+    li {
+        position: relative;
+        height: 137px;
+        padding: 20px 0;
+        img {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 150px;
+            height: 98px;
+        }
     }
-    time {
-      color: $baseColor;
-      float: right;
+    .child-list {
+        width: 100%;
+        padding-left: 168px;
+        label {
+            font-size: 18px;
+            font-weight: 700;
+            padding-bottom: 10px;
+            cursor: pointer;
+            color: #3b3b3b;
+        }
+        .content {
+            line-height: 20px;
+            overflow: hidden;
+            height: 40px;
+            max-height: 40px;
+            margin-top: 10px;
+            margin-bottom: 6px;
+            color: #999;
+        }
+        i {
+            font-weight: 700;
+            font-style: normal;
+            color: #705330;
+        }
+        time {
+            float: right;
+            color: $baseColor;
+        }
     }
-  }
-  li:not(:last-of-type){
-    border-bottom:1px solid #ccc;
-  }
+    li:not(:last-of-type) {
+        border-bottom: 1px solid #ccc;
+    }
 }

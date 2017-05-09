@@ -1,6 +1,21 @@
 @import "../../../resources/css/global";
 @import "compass/css3";
 
+/*
+  常用的css3
+ //圓弧效果
+.box{
+  +border-radius(100%)
+}
+//區塊陰影
+.box{
+  +box-shadow(30px 30px 30px #000)
+}
+//背景漸層
+.box{
+  +background(linear-gradient(white,black))
+} */
+
 $baseBorderColor:#EEEEEE;
 .resources-text{
   font-size: 15px;
@@ -13,7 +28,7 @@ $baseBorderColor:#EEEEEE;
 .resources-menu-btn{
     width:230px;
     height:44px;
-    border-radius: 100px;
+    @include border-radius(100px);
     border: 2px solid $baseBorderColor;
     font-size: 22px;
     letter-spacing:3px;
