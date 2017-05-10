@@ -1,8 +1,8 @@
 /**
  * 认证相关
  */
-export default ($rootScope, $q, $window, $injector,APPBASE)=> {
-    'ngInject';
+export default ['$rootScope','$q','$window','$injector','APPBASE',
+    function($rootScope, $q, $window, $injector,APPBASE){
 
     return {
         request: function (config) {
@@ -29,4 +29,4 @@ export default ($rootScope, $q, $window, $injector,APPBASE)=> {
             return rejection || $q.when(rejection);
         }
     };
-}
+}]

@@ -1,11 +1,11 @@
 require('./navbar.scss');
 import template from './navbar.html'
 
-export default ($state)=> {
+export default ['$state',function($state){
     return {
         restrict: 'EA',
         template: template,
-        link:(scope,element,iAttrs)=>{
+        link:function(scope,element,iAttrs){
             var state_name = $state.current.name.split('.')[1];
             $('#'+state_name).siblings('.active').removeClass('active');
             $('#'+state_name).addClass('active');
@@ -24,4 +24,4 @@ export default ($state)=> {
         	})
         }
     };
-}
+}]

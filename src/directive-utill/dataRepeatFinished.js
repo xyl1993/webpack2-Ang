@@ -1,7 +1,7 @@
 /*
 * 数据遍历完成指令
 */
-export default ($timeout)=> {
+export default ['$timeout',function($timeout){
     return {
         restrict: 'AE',
         link: (scope, element, attr)=> {
@@ -12,4 +12,4 @@ export default ($timeout)=> {
             }
         }
     };
-}
+}]

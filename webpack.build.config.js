@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 var ROOT_PATH = path.resolve(__dirname);
 
-var publicPath = 'http://localhost:3000/';
+var publicPath = 'http://localhost:3030/platform/dist/';
 module.exports = {
     entry: {
         vendor: [
@@ -18,7 +18,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(ROOT_PATH, './dist'),
-        // publicPath:publicPath,                        //用于单独打包放到第三方平台时用
+        publicPath:publicPath,                        //用于单独打包放到第三方平台时用
         filename: '[name]_[chunkhash].js'
     },
     module: {
@@ -60,8 +60,8 @@ module.exports = {
             }
         ]
     },
-    // 开启source-map，webpack有多种source-map，在官网文档可以查到//cheap-module-eval-source-map
-    devtool: 'eval',      
+    // 开启source-map，webpack有多种source-map，在官网文档可以查到//cheap-module-source-map
+    devtool: 'cheap-module-source-map',      
     resolve: {
         // require时省略的扩展名，如：require('module') 不需要module.js
         extensions: ['.js', '.css'],
@@ -80,9 +80,26 @@ module.exports = {
             disable:false,
             allChunks:true
         }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {
+        //         warnings: false  //默认false
+        //     }
+        // }),
         new webpack.optimize.UglifyJsPlugin({
+            // 最紧凑的输出
+            beautify: false,
+            // 删除所有的注释
+            comments: false,
             compress: {
-                warnings: false  //默认false
+              // 在UglifyJs删除没有用到的代码时不输出警告  
+              warnings: false,
+              // 删除所有的 `console` 语句
+              // 还可以兼容ie浏览器
+              drop_console: true,
+              // 内嵌定义了但是只用到一次的变量
+              collapse_vars: true,
+              // 提取出出现多次但是没有定义成变量去引用的静态值
+              reduce_vars: true,
             }
         }),
         new HtmlWebpackPlugin({

@@ -2,9 +2,9 @@ import mainTemplate from '../tempPackage/main/main.html';
 import indexTemplate from '../tempPackage/index/index.html';
 import resourcesHomeTemplate from '../tempPackage/resourcesHome/resourcesHome.html';
 
-export default ( $stateProvider, $urlRouterProvider, $locationProvider,$compileProvider)=> {
-    'ngInject';
-
+export default ['$stateProvider','$urlRouterProvider','$locationProvider','$compileProvider',
+    function( $stateProvider, $urlRouterProvider, $locationProvider,$compileProvider) {
+        
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|sms):/);
     $urlRouterProvider.otherwise( '/main/index' );
 
@@ -26,6 +26,9 @@ export default ( $stateProvider, $urlRouterProvider, $locationProvider,$compileP
             controller: 'resourcesHomeController'
         } )
 
-    //$locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode({
+    //   enabled: true,
+    //   requireBase: false
+    // })
     $locationProvider.hashPrefix('!');
-}
+}]

@@ -19,7 +19,7 @@ module.exports = {
         path: path.resolve(ROOT_PATH, './dist'),
         publicPath: publicPath,
         filename: '[name].js',
-        pathinfo:true        //开发环境
+        pathinfo: true //开发环境
     },
     devServer: {
         historyApiFallback: true, //不跳转
@@ -34,45 +34,47 @@ module.exports = {
         rules: [
             //解析.css文件
             {
-                test: /\.css$/, 
-                use:ExtractTextPlugin.extract({
-                    fallback:"style-loader",
-                    use:"css-loader?sourceMap"         //加入sourceMap  开发模式用
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    //fallback:"style-loader",
+                    use: "css-loader?sourceMap" //加入sourceMap  开发模式用
                 })
-            },
-            {
+            }, {
                 test: /\.scss$/,
-                use:ExtractTextPlugin.extract({
-                    fallback:"style-loader",
-                    use:[
-                    "css-loader?sourceMap",           //开发模式
-                    "sass-loader?includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
-                ]  
-                })
+                loader: ["style-loader", "css-loader?sourceMap", //开发模式
+                    "sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
+                ]
             },
+            // {
+            //     test: /\.scss$/,
+            //     use:ExtractTextPlugin.extract({
+            //         //fallback:"style-loader",
+            //         use:[
+            //             "css-loader?sourceMap",           //开发模式
+            //             "sass-loader?sourceMap&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
+            //         ]  
+            //     })
+            // },
             //babel编译过程很耗时，好在babel-loader提供缓存编译结果选项，在重启webpack时不需要创新编译而是复用缓存结果减少编译流程。babel-loader缓存机制默认是关闭的，打开的配置如下：
             {
                 test: /\.js$/,
-                use:"babel-loader?cacheDirectory",
-                exclude:path.resolve(__dirname, "node_modules"),
+                use: "babel-loader?cacheDirectory",
+                exclude: path.resolve(__dirname, "node_modules"),
                 include: path.resolve(__dirname, 'src')
-            },
-            {
+            }, {
                 test: /\.(png|jpg|gif)$/,
-                use:["url-loader?limit=8192&name=images/[hash:8].[name].[ext]"]
-            },
-            {
+                use: ["url-loader?limit=8192&name=images/[hash:8].[name].[ext]"]
+            }, {
                 test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
-                use:["url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]"]
-            },
-            {
+                use: ["url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]"]
+            }, {
                 test: /\.html$/,
-                use:["html-withimg-loader"]
+                use: ["html-withimg-loader"]
             }
         ]
     },
     // 开启source-map，webpack有多种source-map，在官网文档可以查到//cheap-module-eval-source-map
-    devtool: 'eval',       //开发环境cheap-module-eval-source-map
+    devtool: 'eval', //开发环境cheap-module-eval-source-map
     resolve: {
         // require时省略的扩展名，如：require('module') 不需要module.js
         extensions: ['.js', '.css'],
@@ -82,26 +84,22 @@ module.exports = {
     plugins: [
         new webpack.LoaderOptionsPlugin({
             options: {
-              context:__dirname,
-              postcss: function () {
-                return [autoprefixer, cssnext, precss, cssnano];
-              },
-              noParse: /node_modules\/(jquey|moment|chart\.js)/
+                context: __dirname,
+                postcss: function() {
+                    return [autoprefixer, cssnext, precss, cssnano];
+                },
+                noParse: /node_modules\/(jquey|moment|chart\.js)/
             }
         }),
-        new ExtractTextPlugin({
-            filename:"style.css",
-            disable:false,
-            allChunks:true
-        }),
+        new ExtractTextPlugin('styles.css'),
         // new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"development"'
         }),
-        new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
-        new webpack.optimize.CommonsChunkPlugin({name: 'mainifest', chunks: ['vendor']}),
+        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
+        new webpack.optimize.CommonsChunkPlugin({ name: 'mainifest', chunks: ['vendor'] }),
         // new webpack.optimize.CommonsChunkPlugin({
         //     name:'vendor',
         //     chunks:['vendor.js']
@@ -109,9 +107,9 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             //这意味着如果你在压缩代码时启用了 source map，或者想要让 uglifyjs 的警告能够对应到正确的代码行，你需要将 UglifyJsPlugin 的 sourceMap 设为 true。
             compress: {
-                warnings: false  //默认false
+                warnings: false //默认false
             },
-            sourceMap:true
+            sourceMap: true
         }),
         new HtmlWebpackPlugin({
             template: 'html-withimg-loader!' + path.resolve(ROOT_PATH, 'index.html'),
