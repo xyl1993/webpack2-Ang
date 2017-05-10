@@ -4,6 +4,7 @@ $headerHeight: 80px;
 $headerTopMainHeight: 512px;
 $navLeftTop: 35px;
 $fontColor: #ccc;
+$fontSize:16px;
 .app-header {
     height: $headerTopMainHeight;
 }
@@ -79,7 +80,7 @@ $fontColor: #ccc;
 }
 
 .home-nav-left {
-    font-size: 16px;
+    font-size: $fontSize;
     float: left;
     width: 50%;
     height: inherit;
@@ -131,6 +132,7 @@ $fontColor: #ccc;
     background: url('images/nav-icon.png') 280px -28px no-repeat;
     @include border-radius(100px);
     input {
+        font-size: $fontSize;
         width: inherit;
         height: inherit;
         padding-right: 42px;
