@@ -1,5 +1,6 @@
 @import '../../../../resources/css/global';
 @import 'compass/css3';
+@import 'compass/utilities/general/clearfix';
 $headerHeight: 80px;
 $headerTopMainHeight: 512px;
 $navLeftTop: 35px;
@@ -28,6 +29,7 @@ $fontSize:16px;
 }
 
 .nav-contain {
+    @include pie-clearfix;
     width: $baseWidth;
     height: $headerHeight;
     margin: 0 auto;

@@ -20,7 +20,7 @@ export default angular
         'ngSanitize',
         'ui.router',
         'ngResource',
-        
+
         global,
         controllers,
         directives,
@@ -30,10 +30,19 @@ export default angular
         animInOut
     ])
     .run(['$rootScope', '$state', '$http', '$stateParams', '$location', '$timeout', '$window',
-        function ($rootScope, $state, $http, $stateParams, $location, $timeout, $window) {
+        function($rootScope, $state, $http, $stateParams, $location, $timeout, $window) {
             $rootScope.$on('$stateChangeSuccess',
-                function (event, toState, toParams, fromState) {
-                });
-        }])
+                function(event, toState, toParams, fromState) {});
+        }
+    ])
+    .config(['$sceDelegateProvider','APPBASE',function($sceDelegateProvider,APPBASE) {
+        $sceDelegateProvider.resourceUrlWhitelist([
+            // Allow same origin resource loads.
+            'self',
+            // Allow loading from our assets domain.  Notice the difference between * and **.
+            APPBASE.white_resource_url
+        ]);
+    }])
     .config(routes)
     .config(interceptors)
+    

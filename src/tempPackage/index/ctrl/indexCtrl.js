@@ -38,6 +38,13 @@ export default ['$scope','$http','$log','APPBASE','indexServ',
             getInfoList(1);
         }
     }
+    /*
+      跳转详情
+    */
+    $scope.linkToDetail = function(articleId){
+        window.open(APPBASE.article_detail_url+articleId);
+        console.log(articleId);
+    }
     /*获取目录*/
     function getInfoCategory(){
         indexServ.getInfoCategory($http,APPBASE).then((res)=>{
@@ -80,4 +87,5 @@ export default ['$scope','$http','$log','APPBASE','indexServ',
             }
         });
     }
+
 }]

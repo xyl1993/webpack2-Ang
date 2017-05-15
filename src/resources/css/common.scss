@@ -1,3 +1,4 @@
+@import './global';
 * {
   margin: 0;
   padding: 0
@@ -72,4 +73,19 @@ ul, li {
   float: right;
 }
 
-input{outline:none}
+input,button{outline:none}
+
+/* 内容页面样式 */
+.app-cointer {
+    width: 100%;
+    height: 100%;
+    background-color: $baseContentBackground;
+}
+/* 内容页面cointery样式 */
+.index-cointer-main {
+    width: $baseWidth;
+    height: 100%;
+    margin: 0 auto;
+    padding: $basePadding;
+    background-color: $baseBackground;
+}

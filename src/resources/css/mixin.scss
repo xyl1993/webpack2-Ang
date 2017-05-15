@@ -1,0 +1,186 @@
+$legacy-support-for-ie: false !default;
+$inline-block-alignment: middle !default;
+//只显示指定行数,最后一行超出部分显示省略号.ie不支持
+@mixin text-line-clamp($line:1) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+}
+
+//定义media-queries的最小最大宽度 
+@mixin screen($res-min, $res-max) {
+    @media screen and ( min-width: $res-min) and ( max-width: $res-max) {
+        @content;
+    }
+}
+
+//元素相对于父元素居中,要求父元素position:relative
+@mixin center($width: null, $height: null) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @if not $width and not $height {
+        transform: translate(-50%, -50%);
+    }
+    @else if $width and $height {
+        width: $width;
+        height: $height;
+        margin: -($width / 2) #{0 0} -($height / 2);
+    }
+    @else if not $height {
+        width: $width;
+        margin-left: -($width / 2);
+        transform: translateY(-50%);
+    }
+    @else {
+        height: $height;
+        margin-top: -($height / 2);
+        transform: translateX(-50%);
+    }
+}
+
+//使用 Flexbox 实现子元素的居中效果，只需三行代码：
+@mixin center-children {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+//设置一个默认的对齐方式 // 提供一个跨浏览器的方法来实现`display:inline-block` 
+@mixin inline-block($alignment: $inline-block-alignment) {
+    display: inline-block;
+    @if $alignment and $alignment !=none {
+        vertical-align: $alignment;
+    }
+    @if $legacy-support-for-ie {
+        *vertical-align: auto;
+        zoom: 1;
+        *display: inline;
+    }
+}
+
+//水平居中,要求元素设置宽度
+@mixin horizontal-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+//清除浮动
+// @mixin clearfix {
+//     @if $legacy-support-for-ie {
+//         *zoom: 1;
+//     }
+//     &:before,
+//     &:after {
+//         content: "";
+//         display: table;
+//     }
+//     &:after {
+//         clear: both;
+//         overflow: hidden;
+//     }
+// }
+
+// %clearfix {
+//     @include clearfix;
+// }
+
+//这是来自于H5bp中的一种图片替换文本方法
+@mixin ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    @if $legacy-support-for-ie {
+        *text-indent: -150%;
+    }
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 150%;
+    }
+}
+
+%ir {
+    @include ir;
+}
+
+///隐藏元素
+//1.浏览器和屏幕阅读器都隐藏元素
+@mixin hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+%hidden {
+    @include hidden;
+}
+
+//2.仅浏览器隐藏，屏幕阅读器不被隐藏 
+@mixin visuallyhidden {
+    @if $legacy-support-for-ie {
+        clip: rect(0, 0, 0, 0);
+    }
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px; ////扩展了`.visuallyhidden`，充许`.focusable`元素通过键盘获取 
+    &.focusable:active,
+    &.focusable:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+    }
+}
+
+%visuallyhidden {
+    @include visuallyhidden;
+}
+
+//3.隐藏元素，但布局中占有空间
+@mixin invisible {
+    visibility: hidden;
+}
+
+%invisible {
+    @include invisible;
+}
+
+//截取文本text-overflow
+//主要区别在于，@mixin singleline-ellipsis可以给其传一个参数$substract，从而改变元素的width值，而%singleline-ellipsis是无法给其传值，元素的宽度永远为100%:
+@mixin singleline-ellipsis($substract:0) {
+    //`$substract`单位为% 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100% - $substract;
+}
+
+%singleline-ellipsis {
+    @include singleline-ellipsis;
+}
+
+//透明度opacity
+@mixin opacity($opacity:50) {
+    opacity: $opacity / 100;
+    @if $legacy-support-for-ie {
+        filter: alpha(opacity=$opacity);
+    }
+}
+
+//禁用样式disabled
+//input[disabled]{ @include disabled(#efefef,#ccc); }
+@mixin disabled($bgColor: #e6e6e6, $textColor:#ababab) {
+    background-color: $bgColor !important;
+    color: $textColor !important;
+    cursor: not-allowed !important;
+}

@@ -1,6 +1,7 @@
 import mainTemplate from '../tempPackage/main/main.html';
 import indexTemplate from '../tempPackage/index/index.html';
 import resourcesHomeTemplate from '../tempPackage/resourcesHome/resourcesHome.html';
+import articleDetailTemplate from '../tempPackage/articleDetail/index.html';
 
 export default ['$stateProvider','$urlRouterProvider','$locationProvider','$compileProvider',
     function( $stateProvider, $urlRouterProvider, $locationProvider,$compileProvider) {
@@ -24,6 +25,12 @@ export default ['$stateProvider','$urlRouterProvider','$locationProvider','$comp
             //abstract: true,  //表明此状态不能被显性激活，只能被子状态隐性激活
             template: resourcesHomeTemplate,
             controller: 'resourcesHomeController'
+        } )
+        .state( 'main.articleDetail', {
+            url: '/articleDetail/:id',
+            //abstract: true,  //表明此状态不能被显性激活，只能被子状态隐性激活
+            template: articleDetailTemplate,
+            controller: 'articleDetailCtrl'
         } )
 
     // $locationProvider.html5Mode({

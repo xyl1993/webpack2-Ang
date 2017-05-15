@@ -2,15 +2,15 @@
 <div class="hot-reserous-dyn">
     <div class="slider-wrapper theme-default binna-dyn">
         <div id="slider" class="nivoSlider">
-            <a ng-repeat="hotList in hotLists" finished = "renderFinish()">
+            <a ng-repeat="hotList in hotLists" ng-click="linkToDetail(hotList.id)" finished = "renderFinish()">
                 <img ng-src="{{hotList.article.cover}}" data-thumb="{{hotList.article.cover}}" alt="" title="{{hotList.article.title}}" />
             </a>
         </div>
     </div>
     <div class="hot-reserous-list">
-        <div class="child-list animated dn-lightspeed" ng-repeat="list in infoLists track by $index" ng-if="$index<3">
-            <label class="text-overflow" ng-bind="list.article.title">
-            </label>
+        <div class="child-list animated dn-lightspeed" ng-repeat="list in infoLists track by $index" ng-if="$index<3" ng-click="linkToDetail(list.id)">
+            <h3 class="text-overflow" ng-bind="list.article.title">
+            </h3>
             <div class="content" ng-bind="list.article.contentText">
                 
             </div>

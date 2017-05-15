@@ -11,6 +11,8 @@ export default angular
             9003 : '不可删除的数据'
         },
         //base_api_host : 'http://192.168.60.136:8080/platform'   //http://192.168.60.136:8080/platform
-        base_api_host : 'http://www.yunzhujia.cn'   //http://192.168.60.136:8080/platform
+        base_api_host : 'http://www.yunzhujia.cn',   //http://192.168.60.136:8080/platform
+        white_resource_url:'http://www.yunzhujia.cn/**',  //白名单,添加ng信任
+        article_detail_url : 'http://localhost:3000/#!/main/articleDetail/'
     } )
     .name;

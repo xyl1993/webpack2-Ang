@@ -4,6 +4,7 @@ import finished from '../directive-utill/dataRepeatFinished.js';
 import hotReserous from '../tempPackage/index/directive/hotReserous/hotReserous.js';
 import pagination from '../directive-utill/pagination/pagination.js';
 
+
 export default angular
     .module( 'app.directives', [] )
     .directive( 'footer', footer )

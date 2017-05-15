@@ -27,6 +27,13 @@ export default [function(){
 			$scope.$on('infoListsChange',(event,data)=>{
 				$scope.infoLists = data;
 			})
+            /*
+              跳转详情
+            */
+            $scope.linkToDetail = function(articleId){
+                window.open(APPBASE.article_detail_url+articleId);
+                console.log(articleId);
+            }
         }]
     };
 }]

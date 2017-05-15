@@ -16,12 +16,12 @@
         <div class="clear"></div>
         <hot-reserous></hot-reserous>
         <ul class="indexres-list-ul">
-            <li ng-repeat="infoList in infoLists track by $index" ng-if="$index>2" class="animated dn-lightspeed">
+            <li ng-repeat="infoList in infoLists track by $index" ng-if="$index>2" class="animated dn-lightspeed" ng-click="linkToDetail(infoList.id)">
                 <img ng-src="{{infoList.article.cover}}">
                 <div class="child-list">
-                    <label class="text-overflow" ng-bind="infoList.article.title">
+                    <h3 class="text-overflow" ng-bind="infoList.article.title">
                         
-                    </label>
+                    </h3>
                     <div class="content" ng-bind="infoList.article.contentText">
                        
                     </div>

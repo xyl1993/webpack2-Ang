@@ -1,4 +1,5 @@
 @import "../../../../resources/css/global";
+@import "../../../../resources/css/mixin";
 $bannerHeight:365px;
 .hot-reserous-dyn{
   height:$bannerHeight;
@@ -38,12 +39,10 @@ $bannerHeight:365px;
     border-bottom: none;
   }
   .child-list{
-    label{
-      font-size: 18px;
-      color: #3B3B3B;
-      padding-bottom: 10px;
-      font-weight: 700;
-      cursor: pointer;
+    h3 {
+        font-size: 18px;
+        cursor: pointer;
+        color: #3b3b3b;
     }
     .content{
       color: #999;
@@ -52,6 +51,7 @@ $bannerHeight:365px;
       margin-top: 10px;
       margin-bottom: 6px;
       height: 44px;
+      @include text-line-clamp(2);
     }
     i{
       color: #705330;
