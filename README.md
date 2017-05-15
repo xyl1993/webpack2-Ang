@@ -20,3 +20,26 @@ animate.css加入些许动画
 #访问地址:localhost:3000
 
 #备注:js代码支持es6风格(装逼你懂得= =)
+
+# 项目结构
+
+src为项目源码,dist为打包后生成的目录
+
+#src-->
+
+    app.js:项目入口
+
+    #directive-util:项目中的公共指令
+    
+    #factory:自定义工厂总配置
+    
+    global:全局配置,包括全局变量,路由等
+    
+    js-plug:第三方插件
+    
+    resources:全局静态资源配置
+    
+    tempPackage:项目各个模块源码
+    
+    .>
+    
