@@ -13,7 +13,9 @@ import factory from './factory/appFactory.js';
 import animInOut from './js-plug/anim-in-out/anim-in-out.js';
 /*repeat动画模块*/
 import repeatAnimate from './factory/animate.js';
-
+/*jquery tooltip模块*/
+import './js-plug/tooltip/tooltip.js';
+require('./js-plug/tooltip/tooltip.css')
 //模块化
 export default angular
     .module('app', [

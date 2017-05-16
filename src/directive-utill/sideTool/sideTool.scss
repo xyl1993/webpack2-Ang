@@ -1,0 +1,26 @@
+@import "compass/css3";
+
+.side-tool {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 9;
+    >ul{
+	    >li{
+    	    border: 1px solid #dcdcdc;
+		    background-color: #fff;
+		    @include transition(.1s ease-in);
+	    }
+	    .function-button{
+    	    width: 50px;
+		    height: 50px;
+		    text-align: center;
+		    display: block;
+		    i{
+	    	    padding-top: 12px;
+			    font-size: 20px;
+			    display: block;
+		    }
+	    }
+    }
+}

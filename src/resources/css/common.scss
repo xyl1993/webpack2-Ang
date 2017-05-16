@@ -49,7 +49,9 @@ html, body, .cointer {
 ul, li {
   list-style: none;
 }
-
+a{
+  text-decoration: none;
+}
 .clear{
   clear:both;
   content:'';
