@@ -1,4 +1,5 @@
-# webpack2 angularjs1.5 构建云筑加
+# webpack2 angularjs1.5 构建web项目
+
 
 #angularjs各插件版本v1.5 , jquery 版本v3.1.1
 
