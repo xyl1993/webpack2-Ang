@@ -1,0 +1,18 @@
+<div class="list_menu">
+	<ul>
+		<li ng-class="{true: 'select', false: ''}[list.select]" ng-repeat="list in approvalData.typeData" ng-click="changeWorkFlow($index,list,1)"
+		 ng-bind="list.name"></li>
+	</ul>
+</div>
+<div class="list_main">
+	<div class="list_data">
+		<div class="tool_menu">
+			<ul>
+				<li ng-class="{true: 'select', false: ''}[list.select]" ng-repeat="list in approvalData.flagData" ng-bind="list.name" ng-click="changeWorkFlow($index,list,2)"></li>
+			</ul>
+		
+				
+		</div>
+		<div ui-view class="workFlow_list"></div>
+	</div>
+</div>

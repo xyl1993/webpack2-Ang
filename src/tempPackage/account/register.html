@@ -1,0 +1,27 @@
+ <div class="middle-box register">
+     <div class="lg-page-name"><strong>注册</strong>网页端</div>
+	 <form class="form-horizontal w5c-form" fole="form" name="regForm" novalidate w5c-form-validate="vm.validateOptions">
+		<label class="f-item">
+			<input class="f-text" type="text" name="tel" placeholder="请输入手机号码" ng-model="telphone" 
+			required  ng-pattern="/1[0-9]{10}/"/>
+			<span class="iconfont icon-shouji"></span>
+		</label>
+		
+		<label class="f-item">
+			<input class="f-text" type="number" name="validCode" placeholder="请输入验证码" ng-model="validCode" required/>
+			<div class="identify-btn " id="btn-send" ng-click="setValid()">{{text}}</div>
+		</label>
+		<label class="f-item"> 
+			<input class="f-text" type="password" placeholder="请输入密码" name="password" ng-model="password" 
+			required ng-pattern="/^[a-zA-Z\d]{6,16}$/"/> 
+			<span class="iconfont icon-mima"></span>
+		</label>
+		<div class="register-rule"></div>
+		<a class="sub-btn btn" w5c-form-submit="confirm();">完成</a>
+		<a class="go-back" ui-sref="account.login">
+			<div><span class="iconfont icon-fanhui"></span>返回登录</div>
+		</a>
+	</form>
+ </div>
+
+      

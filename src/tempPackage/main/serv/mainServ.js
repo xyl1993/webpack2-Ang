@@ -6,5 +6,5 @@ export default class {
 			url : './src/controllers/gallery/data.json'
 		})
     }
-
+    
 }

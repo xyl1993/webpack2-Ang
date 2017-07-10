@@ -1,0 +1,17 @@
+<div class="modal sp-success-dialog" id="spSuccess" role="dialog" ng-show="spSuccessData.spSuccessStatus">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close" ng-click="closeDialog()"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header" ng-bind="spSuccessData.type">
+            </div>
+            <div class="modal-body">
+                <textarea placeholder="请输入您的审批意见" ng-model="spSuccessData.opinion"></textarea>
+                <div class="success-btn-dyn">
+                    <div class="btn success-btn" ng-click="spSuccessSureClick()">
+                        确&nbsp;&nbsp;定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

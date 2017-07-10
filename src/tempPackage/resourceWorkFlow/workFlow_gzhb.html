@@ -1,0 +1,101 @@
+<!-- 工作汇报 -->
+<div class="flow-base-form">
+    <div class="form-header">
+        <div class="form-title">
+            <label class="title-name">工作汇报</label>
+            <div class="title-edit-dyn">
+                <i class="iconfont icon-bianji" ng-click="cancel()">取消</i> 
+            </div>
+        </div>
+    </div>
+    <div class="form-cointer">
+        <form class="form-horizontal w5c-form" fole="form" name="gzhbForm" w5c-form-validate="vm.validateOptions" id="gzhbForm">
+            <div class="form-group">
+                <label class="control-label">开始时间</label>
+                <div class="control-input-dyn">
+                    <span class="input-icon input-icon-right">
+	    				<input type="text" name="startTime" id="gzhbStartTime" ng-model="gzhbFormData.startTime" required>
+	    				<label class="iconfont icon-rili" id="startTime-icon" for="gzhbStartTime"></label>
+    				</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">结束时间</label>
+                <div class="control-input-dyn">
+                    <span class="input-icon input-icon-right">
+	    				<input type="text" name="endTime" id="gzhbEndTime" ng-model="gzhbFormData.endTime" required>
+	    				<label class="iconfont icon-rili" id="endTime-icon" for="gzhbEndTime"></label>
+    				</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">已完成工作</label>
+                <div class="control-input-dyn">
+    				<textarea name="workComplete" ng-model="gzhbFormData.workComplete" placeholder="请填写已完成工作（必填）" max="255" required></textarea>
+                </div>
+            </div>
+			<div class="form-group">
+                <label class="control-label">未完成工作</label>
+                <div class="control-input-dyn">
+    				<textarea name="workUncomplete" ng-model="gzhbFormData.workUncomplete" placeholder="请填写未完成工作" max="255" required></textarea>
+                </div>
+            </div>
+			<div class="form-group">
+                <label class="control-label">工作计划</label>
+                <div class="control-input-dyn">
+    				<textarea name="workPlane" ng-model="gzhbFormData.workPlane" placeholder="请填写工作计划（必填）" max="255" required></textarea>
+                </div>
+            </div>
+			<div class="form-group">
+                <label class="control-label">备注</label>
+                <div class="control-input-dyn">
+    				<textarea name="remark" ng-model="gzhbFormData.remark" placeholder="请填写备注（必填）" max="255" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">附件</label>
+                <div class="control-input-dyn">
+                    <ul>
+                        <li ng-repeat="list in fileObj.fileList">
+                            <div class="file-list-dyn">
+                                <label for="" class="text-overflow file-list" ng-bind="list"></label>
+                                <i class="iconfont icon-guanbi" ng-click="removeFile($index)"></i>
+                            </div>
+                        </li>
+                    </ul>
+                	<span class="input-icon input-icon-right" ng-show="fileObj.btnStatus">
+                		<div class="file-dyn">
+                            <div class="btn upload-btn">
+                                <input type="file" custom-on-change="uploadFile" id="gzhbUploadFileInput" name="file">
+                                <i class="iconfont icon-shangchuan"></i>上传
+                            </div>
+                            <label class="info-dyn">附件格式不限，每个附件大小不超过20M（限3个）</label>
+	                	</div>
+                	</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label">汇报对象
+                    <span class="remark">（必选）</span>
+                </div>
+                <ul class="control-list">
+                    <li class="person" ng-repeat="list in ccData.ccList" ng-if="list.selStatus">
+                        <div class="person-content person-content-cc">
+                            <img ng-src="{{list.portrait}}" image-404 alt="" class="person-portrait"/>
+                            <img src="./img/delete.png" alt="删除人员" class="delete-person" ng-click="delcc($index,list)"/>
+                            <div class="person-name text-overflow" ng-bind="list.realName"></div>
+                        </div>
+                    </li>
+                    <li class="last-person" ng-click="addCC()">
+                        <img src="./img/add-person.png" alt="增加抄送人" class="add-person"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group text-center">
+            	<div class="btn submit-btn" w5c-form-submit="submit()">提交申请</div>
+            </div>
+        </form>
+    </div>
+    <cc-directive cc-data="ccData" cc-sure-click="ccSureClick()"></cc-directive>
+    <success-dialog info-text="successDialog.infoText" btn-text="successDialog.btnText" ng-show="successDialog.status" dialog-sure-click="dialogSureClick()"></success-dialog>
+</div>

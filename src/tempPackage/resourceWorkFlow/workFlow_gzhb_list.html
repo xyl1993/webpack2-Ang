@@ -1,0 +1,28 @@
+<div class="gzhb-main-dyn">
+	<div class="list_menu">
+		<ul>
+			<li ng-class="{true: 'select', false: ''}[list.select]" ng-repeat="list in normalData.typeData" ng-click="changeWorkFlow($index,list)"
+			 ng-bind="list.name"></li>
+			<li class="report" ui-sref="main.workFlow.gzhb">写汇报</li>
+		</ul>
+	</div>
+	<div class="list_main">
+		<div class="list_data">
+			<table class="list_data_table" cellpadding="0" cellspacing="0">
+				<tr ng-repeat="list in infoData.list">
+					<td class="align_center">{{list.typeName}}</td>
+					<td class="align_center">{{list.createTime}}</td>
+					<td class="align_center searchDetails" ui-sref="main.workFlow.gzhbDetail({id:list.id})">查看详情</td>
+				</tr>
+			</table>
+			<div class="data_page">
+				<div ng-show="infoData.pageCount>0">
+					<span ng-bind-template="共{{infoData.pageCount}}页"></span>
+					<span ng-click="tabPage('prev',infoData.currentPage,infoData.pageCount)" class="latest-page">上一页</span>
+					<span ng-bind-template="{{infoData.currentPage}}/{{infoData.pageCount}}"></span>
+					<span ng-click="tabPage('next',infoData.currentPage,infoData.pageCount)" class="next-page">下一页</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+{
+    "typeData": [
+        {
+            "id": 1,
+            "name": "我发出的",
+            "select": true
+        },
+        {
+            "id": 2,
+            "name": "我收到的",
+            "select": false
+        }
+    ]
+}

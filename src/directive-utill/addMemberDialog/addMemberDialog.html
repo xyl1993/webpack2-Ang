@@ -1,0 +1,39 @@
+<div class="modal add-teammember-dialog" id="add-teammember-dialog" role="dialog" ng-show="formData.teamMemberStatus">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close" ng-click="closeDialog()"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">
+                添加团队成员
+            </div>
+            <div class="modal-body">
+                <form class="dialog-form w5c-form" w5c-form-validate="vm.validateOptions" name="addMemberForm" novalidate>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <i class="iconfont icon-jinlingyingcaiwangtubiao12"></i>
+                        </label>
+                        <div class="control-input-dyn">
+                            <input type="text" placeholder="请输入姓名" name="realName"  required ng-model="formData.addMember.realName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <i class="iconfont icon-ordinarymobile"></i>
+                        </label>
+                        <div class="control-input-dyn">
+                            <input type="text" placeholder="请输入手机号码" ng-pattern="/^1(3|4|5|7|8)\d{9}$/" name="tel" required ng-model="formData.addMember.tel">
+                        </div>
+                    </div>
+                    <div class="success-btn-dyn">
+                        <div class="btn save-btn" w5c-form-submit="formClick({flag:false})">
+                            保&nbsp;&nbsp;存
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="btn success-add-btn" w5c-form-submit="formClick({flag:true})">
+                            保存并继续添加
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,9 +3,12 @@
   margin: 0;
   padding: 0
 }
-
+@font-face{
+    font-family: 'Hiragino Sans GB W3';
+    src : url('./Hiragino Sans GB W3.ttf');
+}
 [lang^="zh"] body {
-  font-family: "Hiragino Sans GB W3", "华文细黑", "STHeiti", "微软雅黑", "Microsoft YaHei", SimHei, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-family: $baseFontFimaly;
 }
 
 :after, :before {
@@ -16,6 +19,7 @@
 
 html {
   font-family: sans-serif;
+
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -28,15 +32,17 @@ html {
 
 html {
   font-size: 10px;
+
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
-  font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.43;
-  color: #484848;
   background-color: #fff;
+  color: #484848;
+  font-size: 14px;
+  font-family: $baseFontFimaly;
+  line-height: 1.43;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -74,8 +80,63 @@ a{
 .float-right{
   float: right;
 }
+.middle {
+    vertical-align: middle;
+}
+input,button,select,textarea,a{outline:none}
+textarea{resize:none}
 
-input,button{outline:none}
+input[type=checkbox].ace, input[type=radio].ace{
+    position: absolute;
+    z-index: 12;
+    width: 18px;
+    height: 18px;
+    opacity: 0;
+    cursor: pointer;
+}
+input[type=checkbox].ace+.lbl, input[type=radio].ace+.lbl{
+    position: relative;
+    z-index: 11;
+    display: inline-block;
+    margin: 0;
+    min-width: 18px;
+    min-height: 18px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+input[type=checkbox].ace+.lbl::before, input[type=radio].ace+.lbl::before{
+    display: inline-block;
+    margin-right: 1px;
+    min-width: 16px;
+    height: 16px;
+    border: 1px solid #ffcc00;
+    background-color: #fafafa;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    color: $baseColor;
+    content: "\a0";
+    vertical-align: middle;
+    text-align: center;
+    font-weight: normal;
+    font-size: 12px;
+    font-family: iconfont;
+    line-height: 16px;
+}
+input[type=checkbox].ace+.lbl::before{
+    border-radius: 0;
+}
+input[type=radio].ace+.lbl::before{
+    border-radius: 50%;
+}
+input[type=checkbox].ace:checked+.lbl::before, input[type=radio].ace:checked+.lbl::before{
+    display: inline-block;
+    border-color: $baseColor;
+    background-color: #f5f8fc;
+    content: '\e6b8';
+}
+input[type=checkbox].ace:disabled+.lbl::before, input[type=radio].ace:disabled+.lbl::before{
+    border: 1px solid #ccc;
+}
 
 /* 内容页面样式 */
 .app-cointer {
@@ -85,9 +146,35 @@ input,button{outline:none}
 }
 /* 内容页面cointery样式 */
 .index-cointer-main {
-    width: $baseWidth;
-    height: 100%;
     margin: 0 auto;
     padding: $basePadding;
+    width: $baseWidth;
+    height: 100%;
     background-color: $baseBackground;
 }
+
+/***************带图标的input框 图标设置***************/
+.input-icon{
+  position: relative;
+}
+span.input-icon{
+    display: inline-block;
+}
+.input-icon>[class*="icon-"] {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 3px;
+    z-index: 2;
+    display: inline-block;
+    padding: 0 3px;
+    color: #909090;
+    font-size: 16px;
+    line-height: 28px;
+  }
+.input-icon.input-icon-right>[class*="icon-"] {
+    right: 3px;
+    left: auto;
+}
+/***************带图标的input框 图标设置***************/
+

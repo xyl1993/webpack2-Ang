@@ -1,0 +1,12 @@
+<div ng-class="{true:'chosen-container chosen-container-single chosen-with-drop', false: 'chosen-container chosen-container-single'}[activeStatus]">
+    <a href="javascript:void(0)" class="chosen-single" tabindex="-1">
+        <span ng-bind="selName"></span>
+        <div><b></b></div>
+    </a>
+    <div class="chosen-drop">
+        <ul class="chosen-results">
+            <li class="active-result" ng-click="typeSureClick({type:'leave',data:emptyObj})">--请选择--</li>
+            <li class="active-result" ng-repeat="list in typeList" ng-bind="list.name" ng-click="typeSureClick({type:'leave',data:list})"></li>
+        </ul>
+    </div>
+</div>

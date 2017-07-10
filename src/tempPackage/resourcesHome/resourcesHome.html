@@ -17,36 +17,14 @@
                 ARCHITECTURE
             </div>
         </div>
-        <div class="menu-list">
-            <p class="resources-title">Labour demand</p>
+        <div class="menu-list" ng-repeat="data in menu.jzq" ng-click="menuClick(data.id)">
+            <p class="resources-title" ng-bind="data.englishName"></p>
             <div class="split-line"></div>
-            <a class="btn resources-menu-btn">
-                劳务供需
+            <a class="btn resources-menu-btn" ng-bind="data.name">
+                
             </a>
-            <p class="resources-text">
-                德国知名运动品牌阿迪达斯１８日在发给美国消费者的邮件广告中“失言
-            </p>
-            <p class="t-more">more&nbsp;&nbsp;</p>
-        </div>
-        <div class="menu-list">
-            <p class="resources-title">Material supplying</p>
-            <div class="split-line"></div>
-            <a class="btn resources-menu-btn">
-                材料供需
-            </a>
-            <p class="resources-text">
-                德国知名运动品牌阿迪达斯１８日在发给美国消费者的邮件广告中“失言
-            </p>
-            <p class="t-more">more&nbsp;&nbsp;</p>
-        </div>
-        <div class="menu-list">
-            <p class="resources-title">Mechanical requirement</p>
-            <div class="split-line"></div>
-            <a class="btn resources-menu-btn">
-                机械供需
-            </a>
-            <p class="resources-text">
-                德国知名运动品牌阿迪达斯１８日在发给美国消费者的邮件广告中“失言
+            <p class="resources-text" ng-bind="data.description">
+                
             </p>
             <p class="t-more">more&nbsp;&nbsp;</p>
         </div>
@@ -57,42 +35,20 @@
             <div class="kind-dyn">
                 <div class="line line-left"></div>
                 <div class="line line-right"></div>
-                <label>建筑圈</label>
+                <label>微办公</label>
             </div>
             <div class="english-tag">
                 ARCHITECTURE
             </div>
         </div>
-        <div class="menu-list">
-            <p class="resources-title">Labour demand</p>
+        <div class="menu-list" ng-repeat="data in menu.wbg" ng-click="menuClick(data.id)">
+            <p class="resources-title" ng-bind="data.englishName"></p>
             <div class="split-line"></div>
-            <a class="btn resources-menu-btn">
-                劳务供需
+            <a class="btn resources-menu-btn" ng-bind="data.name">
+                
             </a>
-            <p class="resources-text">
-                德国知名运动品牌阿迪达斯１８日在发给美国消费者的邮件广告中“失言
-            </p>
-            <p class="t-more">more&nbsp;&nbsp;</p>
-        </div>
-        <div class="menu-list">
-            <p class="resources-title">Material supplying</p>
-            <div class="split-line"></div>
-            <a class="btn resources-menu-btn">
-                材料供需
-            </a>
-            <p class="resources-text">
-                德国知名运动品牌阿迪达斯１８日在发给美国消费者的邮件广告中“失言
-            </p>
-            <p class="t-more">more&nbsp;&nbsp;</p>
-        </div>
-        <div class="menu-list">
-            <p class="resources-title">Mechanical requirement</p>
-            <div class="split-line"></div>
-            <a class="btn resources-menu-btn">
-                机械供需
-            </a>
-            <p class="resources-text">
-                德国知名运动品牌阿迪达斯１８日在发给美国消费者的邮件广告中“失言
+            <p class="resources-text" ng-bind="data.description">
+                
             </p>
             <p class="t-more">more&nbsp;&nbsp;</p>
         </div>

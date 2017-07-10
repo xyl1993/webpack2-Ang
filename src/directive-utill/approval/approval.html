@@ -1,0 +1,35 @@
+<div class="modal" role="dialog" ng-show="approvalData.approvalStatus">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close" ng-click="closeDialog()"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">
+                添加审核人
+            </div>
+            <div class="modal-body approval-body">
+                <ul class="tjsp-ul">
+                    <li class="base-li " ng-repeat="list in approvalData.approvalList">
+                        <div class="user-topic">
+                            <img ng-src="{{list.portrait}}" image-404 alt="">
+                        </div>
+                        <div class="user-detail">
+                            <p class="name">
+                                {{list.realName}}
+                                <span class="no-regist" ng-if="list.userId==''">(未注册)</span>
+                            </p>
+                            <label for="" class="phone" ng-bind="list.memberTelphone"></label>
+                            <label class="middle checkbox-lab">
+                                <input class="ace" type="radio" value="{{$index}}" name="approvalRadio" ng-model="approvalData.selIndex" ng-disabled="list.userId==''">
+                                <span class="lbl"></span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+                <div class="success-btn-dyn">
+                    <div class="btn success-btn" ng-click="approvalSureClick()">
+                        确&nbsp;&nbsp;定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

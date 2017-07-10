@@ -4,6 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 var ROOT_PATH = path.resolve(__dirname);
 var publicPath = 'http://localhost:3000/';
+const proxyPath = 'http://192.168.60.200:8080/';
 module.exports = {
     entry: {
         vendor: [
@@ -11,7 +12,11 @@ module.exports = {
             './bower_components/angular-sanitize/angular-sanitize.min.js',
             './bower_components/angular-resource/angular-resource.min.js',
             './bower_components/angular-animate/angular-animate.min.js',
-            './bower_components/angular-ui-router/angular-ui-router.min.js'
+            './bower_components/angular-ui-router/angular-ui-router.min.js',
+            './bower_components/w5c-validator/w5cValidator.js',
+            './bower_components/angular-image-404/dist/angular-image-404.min.js',
+            './bower_components/angular-md5/angular-md5.js',
+            './bower_components/angular-cookies/angular-cookies.js'
         ],
         build: ['./src/app.js'],
     },
@@ -28,10 +33,46 @@ module.exports = {
         stats: {
             // colors: true,
             chunks: false
-        }
+        },
+        proxy: {
+            '/platform/*': {
+              target: proxyPath
+            },
+            // '/flow/*': {
+            //   target: proxyPath
+            // },
+            // '/userInfo/*': {
+            //   target: proxyPath
+            // },
+            // '/labor/*': {
+            //   target: proxyPath
+            // },
+            // '/login/userWebLogin': {
+            //   target: proxyPath
+            // },
+            // '/login/findUserByTokenResource': {
+            //   target: proxyPath
+            // },
+            // '/login/loginOut': {
+            //   target: proxyPath
+            // },
+            // '/common/*': {
+            //   target: proxyPath
+            // }
+         }
     },
     module: {
         rules: [
+            {
+                test: require.resolve('jquery'),
+                use: [{
+                    loader: 'expose-loader',
+                    options: 'jQuery'
+                },{
+                    loader: 'expose-loader',
+                    options: '$'
+                }]
+            },
             //解析.css文件
             {
                 test: /\.css$/,
@@ -79,7 +120,9 @@ module.exports = {
         // require时省略的扩展名，如：require('module') 不需要module.js
         extensions: ['.js', '.css'],
         // 别名，可以直接使用别名来代表设定的路径以及其他
-        alias: {}
+        alias: {
+            jquery: 'jquery/jquery.min.js',
+        }
     },
     plugins: [
         new webpack.LoaderOptionsPlugin({
@@ -94,7 +137,7 @@ module.exports = {
         new ExtractTextPlugin('styles.css'),
         // new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"development"'
         }),

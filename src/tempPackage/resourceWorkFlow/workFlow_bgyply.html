@@ -1,0 +1,93 @@
+<!-- 办公用品领用 -->
+<div class="flow-base-form">
+    <div class="form-header">
+        <div class="form-title">
+            <label class="title-name">办公用品领用</label>
+            <div class="title-edit-dyn">
+                <i class="iconfont icon-bianji" ng-click="cancel()">取消</i> 
+            </div>
+        </div>
+    </div>
+    <div class="form-cointer">
+        <form class="form-horizontal w5c-form" fole="form" name="bgyplyForm" w5c-form-validate="vm.validateOptions">
+            <div class="form-group">
+                <label class="control-label">物品名称</label>
+                <div class="control-input-dyn">
+                    <input type="text" placeholder="A4打印纸（必填）" name="name" ng-model="bgyplyFormData.name" max="100" required>
+                </div>
+            </div>
+           <div class="form-group">
+                <label class="control-label">数量</label>
+                <div class="control-input-dyn">
+                    <input type="text" placeholder="请填写数量（必填）" name="num" ng-model="bgyplyFormData.num" max="20" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">领用事由</label>
+                <div class="control-input-dyn">
+    				<textarea placeholder="请填写领用事由（必填）" name="remark" ng-model="bgyplyFormData.remark" max="255" required></textarea>
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="control-label">附件</label>
+                <div class="control-input-dyn">
+                    <ul>
+                        <li ng-repeat="list in fileObj.fileList">
+                            <div class="file-list-dyn">
+                                <label for="" class="text-overflow file-list" ng-bind="list"></label>
+                                <i class="iconfont icon-guanbi" ng-click="removeFile($index)"></i>
+                            </div>
+                        </li>
+                    </ul>
+                	<span class="input-icon input-icon-right" ng-show="fileObj.btnStatus">
+                		<div class="file-dyn">
+                            <div class="btn upload-btn">
+                                <input type="file" custom-on-change="uploadFile" id="bgyplyUploadFileInput" name="file">
+                                <i class="iconfont icon-shangchuan"></i>上传
+                            </div>
+                            <label class="info-dyn">附件格式不限，每个附件大小不超过20M（限3个）</label>
+	                	</div>
+                	</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">审批人<span class="remark">（必选）</span></label>
+                <ul class="control-list">
+                    <li class="person" ng-repeat="list in approvalList">
+                        <div class="person-content">
+                            <img ng-src="{{list.portrait}}" image-404 alt="" class="person-portrait"/>
+                            <img src="./img/delete.png" alt="删除人员" class="delete-person" ng-click="delApproval($index,list)"/>
+                            <div class="person-name text-overflow" ng-bind="list.realName"></div>
+                        </div>  
+                    </li>
+                    <li class="last-person" ng-click="addApproval()">
+                        <img src="./img/add-person.png" alt="增加审核人" class="add-person"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <div class="control-label">抄送人
+                    <span class="remark">（审批人全部同意后，将抄送给以下人员）</span>
+                </div>
+                <ul class="control-list">
+                    <li class="person" ng-repeat="list in ccData.ccList" ng-if="list.selStatus">
+                        <div class="person-content person-content-cc">
+                            <img ng-src="{{list.portrait}}" image-404 alt="" class="person-portrait"/>
+                            <img src="./img/delete.png" alt="删除人员" class="delete-person" ng-click="delcc($index,list)"/>
+                            <div class="person-name text-overflow" ng-bind="list.realName"></div>
+                        </div>
+                    </li>
+                    <li class="last-person" ng-click="addCC()">
+                        <img src="./img/add-person.png" alt="增加抄送人" class="add-person"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group text-center">
+            	<div class="btn submit-btn" w5c-form-submit="submit()">提交申请</div>
+            </div>
+        </form>
+    </div>
+    <approval approval-data="approvalData" approval-sure-click="approvalSureClick()"></approval>
+    <cc-directive cc-data="ccData" cc-sure-click="ccSureClick()"></cc-directive>
+    <success-dialog info-text="successDialog.infoText" btn-text="successDialog.btnText" ng-show="successDialog.status" dialog-sure-click="dialogSureClick()"></success-dialog>
+</div>

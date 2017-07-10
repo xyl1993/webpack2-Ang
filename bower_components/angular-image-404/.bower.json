@@ -1,0 +1,35 @@
+{
+  "name": "angular-image-404",
+  "description": "AngualrJS directive that shows a fallback image when img element can not show picture correct",
+  "main": "dist/angular-iamge-404.js",
+  "authors": [
+    "stiekel"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "image-404",
+    "fallback"
+  ],
+  "homepage": "https://github.com/stiekel/angular-image-404",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "0.1.6",
+  "_release": "0.1.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.6",
+    "commit": "57d928b235d3789b59e4847a65d2983fc5b3a2fd"
+  },
+  "_source": "https://github.com/stiekel/angular-image-404.git",
+  "_target": "^0.1.6",
+  "_originalSource": "angular-image-404",
+  "_direct": true
+}

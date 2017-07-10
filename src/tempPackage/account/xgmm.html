@@ -1,0 +1,36 @@
+<!-- 
+@Description 修改密码页面
+@author by chengy 
+@date 2015年8月4日
+-->
+<div class="middle-box register">
+    <div class="lg-page-name">
+        <strong>修改</strong>密码
+    </div>
+    <form id="form-signin" class="form-signin" name="xgmmForm">
+         <label class="f-item">
+	         <span class="glyph-in">原密码</span>
+	         <input class="f-text end-glyph" type="password" ng-model="oldPassword" name="oldPassword" required  class="password" ng-pattern="/^[a-zA-Z\d]{6,16}$/" placeholder="请输入原密码">
+	         <span class="glyphicon glyphicon-lock"></span>
+         </label>
+         
+         <label class="f-item">
+	         <span class="glyph-in">新密码</span>
+	         <input class="f-text end-glyph" type="password" ng-model="newPassword" name="newPassword"  id="newPassword" required 
+					                    class="password" ng-pattern="/^[a-zA-Z\d]{6,16}$/" placeholder="请输入新密码">
+	        <span class="glyphicon glyphicon-lock"></span>
+         </label>
+         
+         <label class="f-item">
+	         <span class="glyph-in">新密码</span>
+	         <input class="f-text end-glyph" type="password" ng-model="confirmPassword" name="confirmPassword"  pw-check="newPassword"
+					            class="password" placeholder="请再次输入新密码">
+	        <span class="glyphicon glyphicon-lock"></span>
+         </label>
+       
+         <a class="sub-btn btn" ng-click="saveData()">提交</a>
+     </form>
+ </div>
+
+
+      

@@ -1,0 +1,81 @@
+<div class="return_list" ui-sref="main.workFlow.list.data">
+	返回列表
+</div>
+<hr color="#ffe39c" height="1px">
+<div class="workFlow_cointer">
+	<div class="">
+		<div class="list_main">
+			<div class="detail_data">
+				<div class="detail_form">
+					<table>
+						<tr ng-repeat="list in detailType">
+							<td ng-bind="list.name"></td>
+							<td ng-bind="list.value"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="detail_form work_flow_shenpi">
+					<table>
+						<tr>
+							<td>审批人</td>
+							<td></td>
+						</tr>
+						<tr ng-repeat="list1 in flowData">
+							<td></td>
+							<td class="work_flow_shenpi_td">
+								<div class="shenpi_info_list">
+									<div class="shenpi_info">
+										<div class="name"><span ng-bind="list1.memberName"></span>
+											<div ng-class="{true:'shenpi_status_shap shenpi_status_shap_dai',false:'shenpi_status_shap shenpi_status_shap_has'}[list1.approvePersonId==currentId]">
+												<div class=""></div>
+											</div>
+										</div>
+										<div class="content" ng-bind="list1.approveRemark"></div>
+										<div class="time" ng-bind="list1.approveTime"></div>
+										<div class="shenpi_status shenpi_status_dai" ng-if="list1.approveStatus==0">待审批</div>
+										<div class="shenpi_status shenpi_status_has" ng-if="list1.approveStatus==1">申请通过</div>
+									</div>
+
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="detail_form work_flow_chaosong">
+					<table>
+						<tr>
+							<td>抄送人</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<div class="work_flow_chaosong_div" ng-repeat="list in ccDate"><img class="chaosong_img" ng-src="{{list.portrait}}" /><span class="name" ng-bind="list.realName"></span></div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="caozuo" ng-if="ifType=='1'||flowInfo.currentApprovalId!=371||ifType=='3'">
+					<!--测试数据-->
+					<div class="daishenpi " ng-if="flowInfo.flowStatus==0">
+						<i class="iconfont icon-pen"></i>&nbsp;待审批</div>
+					<div class="shenpitongguo" ng-if="flowInfo.flowStatus==1">
+						<i class="iconfont icon-hook_selected"></i> &nbsp;审批通过
+					</div>
+					<div class="shenpibohui" ng-if="flowInfo.flowStatus==2">
+						<i class="iconfont icon-Shape"></i>&nbsp;审批驳回</div>
+				</div>
+				<div class="approval-btn-dyn" ng-if="ifType=='2'&&flowInfo.currentApprovalId==371">
+					<!--测试数据-->
+					<div class="btn agree-btn" ng-click="flowApproval(1)">批准申请</div>
+					<div class="btn reject-btn" ng-click="flowApproval(2)">驳&nbsp;&nbsp;回</div>
+				</div>
+				<sp-success sp-success-data="spSuccessData" sp-success-sure-click="spSuccessSureClick()"></sp-success>
+			</div>
+		</div>
+	</div>
+</div>

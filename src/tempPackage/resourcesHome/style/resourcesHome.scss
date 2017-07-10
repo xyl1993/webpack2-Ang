@@ -29,7 +29,7 @@ $baseBorderColor:#EEEEEE;
     width:230px;
     height:44px;
     @include border-radius(100px);
-    border: 2px solid $baseBorderColor;
+    border: 2px solid $goldColor;
     font-size: 22px;
     letter-spacing:3px;
     margin: 0 auto;
@@ -37,6 +37,7 @@ $baseBorderColor:#EEEEEE;
     margin-bottom: 32px;
     display: block;
     line-height: 42px;
+    color:$goldColor;
 }
 .resources-menu-round{
   padding-top: 80px;
@@ -106,10 +107,12 @@ $baseBorderColor:#EEEEEE;
           color: #fff;
           @include box-shadow(0px 4px 20px -2px #F3B107);
           border: none;
+
       }
       .t-more{
         color: $baseColor;
       }
+      box-shadow:0px 4px 20px -2px #F3B107;
     }
   }
   .split-line{
@@ -133,7 +136,7 @@ $baseBorderColor:#EEEEEE;
 }
 .resources-title{
   font-size: 24px;
-  color: $baseColor;
+  color: #ACACAC;
   margin-top:74px;
   margin-bottom: 27px;
 }

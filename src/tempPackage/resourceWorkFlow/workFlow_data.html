@@ -1,0 +1,24 @@
+<div class="list_table">
+<table class="list_data_table" cellpadding="0" cellspacing="0">
+    <tr>
+        <th>序号</th>
+        <th>申请项目</th>
+        <th>申请时间</th>
+        <th>操作</th>
+    </tr>
+    <tr ng-repeat="list in infoData.list">
+        <td class="align_center">{{list.formNumber}}</td>
+        <td class="align_center">{{list.typeName}}申请</td>
+        <td class="align_center">{{list.createTime}}</td>
+        <td class="align_center searchDetails" ui-sref="main.workFlow.list.detail({id:list.id,type:type,workId:list.formType})">查看详情</td>
+    </tr>
+</table>
+</div>
+<div class="data_page">
+    <div ng-show="infoData.pageCount>0">
+        <span ng-bind-template="共{{infoData.pageCount}}页"></span>
+        <span class="page_style" ng-click="tabPage('prev',infoData.currentPage,infoData.pageCount)">上一页</span>
+        <span ng-bind-template="{{infoData.currentPage}}/{{infoData.pageCount}}"></span>
+        <span class="page_style" ng-click="tabPage('next',infoData.currentPage,infoData.pageCount)">下一页</span>
+    </div>
+</div>

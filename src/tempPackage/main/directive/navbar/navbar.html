@@ -1,4 +1,4 @@
-<div class="app-header">
+<div class="app-header" ng-style="headerStyle">
     <header>
         <div class="nav-contain">
             <nav class="home-nav">
@@ -20,15 +20,17 @@
 
             </nav>
             <div class="home-nav-left">
-                <div class="login-out-dyn">
+                <div class="login-in-dyn" ng-if="!token" ui-sref="account.login">
+                    登录
+                </div>
+                <div class="login-out-dyn" ng-if="token" ng-click="loginOut()">
                     退出
                 </div>
-                <div class="header-user-info">
+                <div class="header-user-info" ng-if="token">
                     <div class="user-img">
-                        <img src="./images/test.png">
+                        <img image-404 ng-src="{{userData.portrait}}">
                     </div>
-                    <div class="user-name text-overflow">
-                        小猫咪
+                    <div class="user-name text-overflow" ng-bind="userData.account.nickName">
                     </div>
                 </div>
                 <div class="nav-search-dyn">
@@ -38,7 +40,7 @@
             <!-- <div class="clear"></div> -->
         </div>
     </header>
-    <div class="header-top-main">
+    <div class="header-top-main" ng-style="headerStyle">
 
     </div>
 </div>

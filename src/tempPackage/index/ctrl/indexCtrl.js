@@ -1,8 +1,8 @@
 import navJson from '../data/nav.json';
 require('../style/index.scss');
-export default ['$scope','$http','$log','APPBASE','indexServ',
-    function( $scope,$http,$log,APPBASE,indexServ){
-  
+export default ['$scope','$http','$log','APPBASE','$stateParams','indexServ',
+    function( $scope,$http,$log,APPBASE,$stateParams,indexServ){
+    
     // 默认显示页面为3条..当前页为第一页..data查询参数
     var $pager = $('#pagination');
     var pageSize = 10,
@@ -20,6 +20,11 @@ export default ['$scope','$http','$log','APPBASE','indexServ',
     };
     $scope.navData = navJson.data;
     getInfoCategory();
+    var infoCategoryId =  $stateParams.id;
+    if(infoCategoryId){
+        categoryData.infoCategoryId = infoCategoryId;
+        
+    }
     getInfoList(1);
 
     /*切换目录*/
@@ -42,8 +47,8 @@ export default ['$scope','$http','$log','APPBASE','indexServ',
       跳转详情
     */
     $scope.linkToDetail = function(articleId){
-        window.open(APPBASE.article_detail_url+articleId);
-        console.log(articleId);
+        location.href = APPBASE.article_detail_url+articleId;
+        //console.log(articleId);
     }
     /*获取目录*/
     function getInfoCategory(){

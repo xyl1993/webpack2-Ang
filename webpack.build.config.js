@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 var ROOT_PATH = path.resolve(__dirname);
 
-var publicPath = 'http://localhost:3030/platform/dist/';
+var publicPath = './';
 module.exports = {
     entry: {
         vendor: [
@@ -12,7 +12,11 @@ module.exports = {
             './bower_components/angular-sanitize/angular-sanitize.min.js',
             './bower_components/angular-resource/angular-resource.min.js',
             './bower_components/angular-animate/angular-animate.min.js',
-            './bower_components/angular-ui-router/angular-ui-router.min.js'
+            './bower_components/angular-ui-router/angular-ui-router.min.js',
+            './bower_components/w5c-validator/w5cValidator.js',
+            './bower_components/angular-image-404/dist/angular-image-404.min.js',
+            './bower_components/angular-md5/angular-md5.js',
+            './bower_components/angular-cookies/angular-cookies.js'
         ],
         build: ['./src/app.js'],
     },
@@ -46,7 +50,7 @@ module.exports = {
                 use:["babel-loader"],
                 exclude:path.resolve(__dirname, "node_modules")
             },
-            {
+            {   
                 test: /\.(png|jpg|gif)$/,
                 use:["url-loader?limit=8192&name=images/[hash:8].[name].[ext]"]
             },
@@ -72,7 +76,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
         new webpack.optimize.CommonsChunkPlugin({name: 'mainifest', chunks: ['vendor']}),
         new ExtractTextPlugin({

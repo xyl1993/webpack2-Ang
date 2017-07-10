@@ -1,0 +1,116 @@
+//自定义下拉框
+.chosen-container, [class*="chosen-container"] {
+    vertical-align: middle;
+}
+.chosen-container {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+    zoom: 1;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    .chosen-drop{
+        position: absolute;
+        top: 100%;
+        left: -9999px;
+        z-index: 1010;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid #aaa;
+        border-top: 0;
+        background: #fff;
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+    }
+    .chosen-single div b:before {
+        position: relative;
+        top: -1px;
+        left: 1px;
+        display: inline-block;
+        color: #888;
+        content: "\e629";
+        font-size: 12px;
+        font-family: iconfont;
+    }
+    &.chosen-with-drop{
+      .chosen-drop{
+        left:0;
+      }
+      .chosen-single div b:before {
+          content: "\e62a";
+      }
+    }
+    .chosen-results{
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+        margin: 0 4px 4px 0;
+        padding: 0 0 0 4px;
+        max-height: 240px;
+        li{
+            margin: 0;
+            padding: 5px 6px;
+            list-style: none;
+            line-height: 15px;
+            &:focus,&:hover{
+              background: #ccc;
+            }
+            &.active-result{
+                display: list-item;
+                cursor: pointer;
+            }
+        }
+    }
+}
+.chosen-container-single .chosen-single {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 0 0 0 8px;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    color: #444;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 24px;
+}
+.chosen-container>.chosen-single, [class*="chosen-container"]>.chosen-single {
+    height: 30px;
+    background: #fafafa;
+    box-shadow: none;
+    line-height: 28px;
+}
+.chosen-container-single{
+    .chosen-single {
+        border-radius: 0;
+        span {
+            display: block;
+            overflow: hidden;
+            margin-right: 26px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        div {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            width: 18px;
+            height: 100%;
+            b {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .chosen-drop {
+        margin-top: 1px;
+        border-radius: 0;
+        background-clip: padding-box;
+    }
+} 

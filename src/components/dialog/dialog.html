@@ -1,0 +1,237 @@
+<button class="showsp" onclick="showSpDialog()">
+    显示添加审批弹窗
+</button>
+<button class="showsp" onclick="showSpTgDialog()">
+    显示审批通过弹窗
+</button>
+<button class="showsp" onclick="showAddTeamDialog()">
+    显示添加团队成员弹窗
+</button>
+<button class="showsp" onclick="showdelTeamDialog()">
+    显示删除团队成员弹窗
+</button>
+<button class="showsp" onclick="showJsDialog()">
+    显示解散团队弹窗
+</button>
+<button class="showsp" onclick="showTipDialog()">
+    显示操作成功弹窗
+</button>
+<!-- 添加审批人弹窗 start  -->
+<div class="modal" id="spDialog" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">
+                添加审批人
+            </div>
+            <div class="modal-body approval-body">
+                <ul class="tjsp-ul">
+                    <li class="base-li ">
+                        <div class="user-topic">
+                            <img src="http://oq4pg1mfz.bkt.clouddn.com/429a607d-727b-455e-9be7-f306b132a2d1217.jpg" alt="">
+                        </div>
+                        <div class="user-detail">
+                            <p class="name">
+                                琳小区
+                            </p>
+                            <label for="" class="phone">
+                                18292812919
+                            </label>
+                            <label class="middle checkbox-lab">
+                                <input class="ace" type="checkbox">
+                                <span class="lbl"></span>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="base-li ">
+                        <div class="user-topic">
+                            <img src="http://oq4pg1mfz.bkt.clouddn.com/429a607d-727b-455e-9be7-f306b132a2d1217.jpg" alt="">
+                        </div>
+                        <div class="user-detail">
+                            <p class="name">
+                                琳小区
+                                <span class="no-regist">(未注册)</span>
+                            </p>
+                            <label for="" class="phone">
+                                18292812919
+                            </label>
+                            <label class="middle checkbox-lab">
+                                <input class="ace" type="checkbox" disabled>
+                                <span class="lbl"></span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+                <div class="success-btn-dyn">
+                    <div class="btn success-btn">
+                        确&nbsp;&nbsp;定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 添加审批人弹窗 end  -->
+<!-- 审批通过弹窗 start  -->
+<div class="modal sp-success-dialog" id="spSuccess" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">
+                审批通过
+            </div>
+            <div class="modal-body">
+                <textarea placeholder="请输入您的审批意见"></textarea>
+                <div class="success-btn-dyn">
+                    <div class="btn success-btn">
+                        确&nbsp;&nbsp;定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 审批通过弹窗 end  -->
+<!-- 添加团队成员弹窗 start  -->
+<div class="modal add-teammember-dialog" id="add-teammember-dialog" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">
+                添加团队成员
+            </div>
+            <div class="modal-body">
+                <form class="dialog-form">
+                    <div class="form-group">
+                        <label class="control-label">
+                            <i class="iconfont icon-jinlingyingcaiwangtubiao12"></i>
+                        </label>
+                        <div class="control-input-dyn">
+                            <input type="text" placeholder="请输入姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            <i class="iconfont icon-ordinarymobile"></i>
+                        </label>
+                        <div class="control-input-dyn">
+                            <input type="text" placeholder="请输入手机号码">
+                        </div>
+                    </div>
+                </form>
+                <div class="success-btn-dyn">
+                    <div class="btn save-btn">
+                        保&nbsp;&nbsp;存
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="btn success-add-btn">
+                        保存并继续添加
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 添加团队成员弹窗 end  -->
+<!-- 删除成员提示弹窗 start  -->
+<div class="modal del-teammember-dialog" id="del-teammember-dialog" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">
+                提&nbsp;&nbsp;示
+            </div>
+            <div class="modal-body">
+                <div class="toolip-dyn">
+                    <div class="user-img-dyn">
+                        <img src="http://oq4pg1mfz.bkt.clouddn.com/429a607d-727b-455e-9be7-f306b132a2d1217.jpg" alt="">
+                    </div>
+                    <p class="user-name">王沫</p>
+                    <p class="toolip-text">是否确定将该成员删除</p>
+                </div>
+                <div class="success-btn-dyn">
+                    <div class="btn save-btn">
+                        保&nbsp;&nbsp;存
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="btn success-btn">
+                        取&nbsp;&nbsp;消
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 删除成员提示弹窗 end  -->
+
+<!-- 解散团队弹窗 start  -->
+<div class="modal dissolved-dialog" id="dissolved-dialog" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">
+                提&nbsp;&nbsp;示
+            </div>
+            <div class="modal-body">
+                <div class="toolip-dyn">
+                    <p class="toolip-text">是否确定将该成员删除</p>
+                </div>
+                <div class="success-btn-dyn">
+                    <div class="btn save-btn">
+                        保&nbsp;&nbsp;存
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="btn success-btn">
+                        取&nbsp;&nbsp;消
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 解散团队提示弹窗 end  -->
+
+<!-- 操作成功弹窗 start  -->
+<div class="modal show-tip-dialog" id="show-tip-dialog" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="success-logo-dyn">
+                    <i class="iconfont icon-dagou"></i>
+                </div>
+                <div class="toolip-dyn">
+                    <p class="toolip-text">提交成功</p>
+                </div>
+                <div class="success-btn-dyn">
+                    <div class="btn save-btn">
+                        返&nbsp;&nbsp;回
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 操作成功弹窗 end  -->
+<script>
+    $('.close').click(function(){
+        $(this).closest('.modal').hide();
+    })
+    function showSpDialog(){
+        $('#spDialog').show();
+    }
+    function showSpTgDialog(){
+        $('#spSuccess').show();
+    }
+    function showAddTeamDialog(){
+        $('.add-teammember-dialog').show();
+    }
+    function showdelTeamDialog(){
+        $('.del-teammember-dialog').show();
+    }
+    function showJsDialog(){
+        $('.dissolved-dialog').show();
+    }
+    function showTipDialog(){
+        $('.show-tip-dialog').show();
+    }
+</script>

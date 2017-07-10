@@ -1,0 +1,197 @@
+@import '../../../resources/css/global';
+@import 'compass/css3';
+.create-team-form{
+    margin: 0 auto;
+    width: 452px;
+    .form-group{
+        margin-bottom: 41px;
+        textarea,input{
+            padding-left: 17px;
+            width: 452px;
+            border: 1px solid #e5e5e5;
+            color: black;
+
+            @include border-radius(5px);
+            &:hover,
+            &:focus{
+                border: 1px solid $baseColor;
+
+                @include box-shadow(0 0 4px 4px #fff5dc);
+            }
+        }
+        input{
+            padding-right: 34px;
+            height: 34px;
+        }
+    }
+    ul{
+        li{
+            float: left;
+            &:nth-child(5n){
+                .create-list{
+                    margin-right: 0;
+                }
+            }
+        }
+        &:after{
+            clear: both;
+            content: '';
+        }
+        .create-list{
+            position: relative;
+            margin-right: 40px;
+            margin-bottom: 15px;
+            width: 56px;
+            height: 95px;
+            >.close{
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                padding-left: 1px;
+                width: 16px;
+                height: 16px;
+                background: #f60000;
+                color: #fff;
+                text-align: center;
+                font-size: 12px;
+
+                @include border-radius(50%);
+            }
+            p.name{
+                margin-top: 5px;
+                color: #333;
+                text-align: center;
+                font-size: 12px;
+            }
+            p.info-text{
+                color:#ff0000;
+                text-align: center;
+                font-weight: 700;
+                font-size: 12px;
+            }
+        }
+        .create-member-dyn{
+            overflow: hidden;
+            width: inherit;
+            height: 56px;
+
+            @include border-radius(5px);
+            >img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .add-dyn-btn{
+            width: inherit;
+            height: 56px;
+            border:3px dashed #e5e5e5;
+            text-align: center;
+            line-height: 50px;
+            .icon-plus{
+                color: #e5e5e5;
+                font-size: 22px;
+            }
+        }
+    }
+}
+blockquote {
+    margin: 0 0 31px;
+    padding-left: 9px;
+    border-left: 4px solid #feb907;
+    color: #666633;
+    font-size: 12.5px;
+}
+.team-set-main{
+    margin: 0 auto;
+    min-height: 553px;
+    width: 815px;
+    ul{
+        li{
+            float: left;
+            &:nth-child(8n){
+                .member-list{
+                    margin-right: 0;
+                }
+            }
+        }
+        &:after{
+            clear: both;
+            content: '';
+        }
+    } 
+    .member-list{
+        position: relative;
+        margin-top: 61px;
+        margin-right: 36px;
+        width: 70px;
+        height: 117px;
+        >.icon-guanbi{
+            position: absolute;
+            top: -4px;
+            right: -2px;
+            padding-left: 1px;
+            width: 24px;
+            height: 24px;
+            background: #f60000;
+            color: #fff;
+            text-align: center;
+            font-size: 18px;
+            line-height: 24px;
+
+            @include border-radius(50%);
+        }
+        .list-round-dyn{
+            overflow: hidden;
+            margin-bottom: 8px;
+            width: inherit;
+            height: 70px;
+
+            @include border-radius(50%);
+            >img{
+                width: 100%;
+                height: 100%;
+            }
+            &.add-list-round{
+                background: #eee;
+                color: #fff;
+                text-align: center;
+                line-height: 70px;
+                .icon-plus{
+                    font-size: 30px;
+                }
+            }
+        }
+        .name{
+            margin-bottom: 2px;
+            color: #333;
+            text-align: center;
+        }
+        .remark{
+            color: #ff0000;
+            text-align: center;
+            font-weight: 700;
+            font-size: 10px;
+        }
+        .add-text{
+            color:#999;
+            text-align: center;
+        }
+    }
+}
+.teamset-btn-group {
+    padding-top:22px;
+    padding-bottom: 44px;
+    .submit-btn{
+        display: inline-block;
+        margin-top: 53px;
+        padding: 9px 27px;
+        background: #f6b700;
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+
+        @include border-radius(5px);
+        @include box-shadow(2px 2px 6px 3px #fdefc6);
+    }
+}

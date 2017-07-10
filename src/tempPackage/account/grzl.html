@@ -1,0 +1,112 @@
+<!-- 
+@Description 个人资料页面
+@author by chengy 
+@date 2015年8月4日
+-->
+<style type="text/css">
+.grzlCtr .f-tip-box{border:1px solid #e2e2e2;}
+.edit-user-img img{background-color:#dddddd;}
+.edit .btn-pink,.edit .input-group-btn{background-color: transparent;}
+.grzlCtr .yhtx-waiting img{width: 26px !important;height: 26px !important;background-color: transparent;}
+</style>
+<div class="middle-box register grzlCtr">
+    <div class="lg-page-name">
+        <strong>个人</strong>资料
+    </div>
+    <form id="grzl-form" class="form-signin" name="grzlForm" w5c-form-validate="vm.validateOptions" novalidate>
+    	<div class="edit-user-img">
+			<img id="wszlImg"  ng-src="{{userInfo.portrait}}">
+			<div class="edit">
+				<input id="grzytx" name="filepic" class="file" type="file" multiple data-upload-url="../login/uploadHeadPic" title=" ">
+			</div>
+			 <div class="yhtx-waiting">
+                 <img src="../ccic/images/loading.gif">
+             </div>
+		</div>
+        
+        <label class="f-item">
+	        <span class="glyph-in">昵称</span>
+	        <input class="f-text end-glyph" type="text" name="nickName" ng-model="userInfo.account.nickName" required ng-maxlength="20">
+        </label>
+        <div class="error-tip" id="msg-check-div">
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>该昵称已存在
+		</div>
+        
+        <label class="f-item">
+	        <span class="glyph-in">真实姓名</span>
+	        <input class="f-text end-glyph" type="text" name="realName"  ng-model="userInfo.realName" required ng-maxlength="12">
+        </label>
+        
+        <label class="f-item new-item">
+            <div class="box-item-right">
+                <label class="sim-select sel-xb inp-ele">
+                    <div class="select-val">{{userInfo.sex | sw:"性别"}}</div> 
+                    <select class="t-select" name="sex" id="sex" sel="" ng-model="userInfo.sex">
+                        <option value="">请选择</option>
+                        <option  ng-repeat="gender in genders" value="{{$index}}">{{gender}}</option>
+                    </select>
+                </label>
+            </div>
+        </label>
+        
+        <label class="f-item">
+            <span class="glyph-in">出生日期</span>
+	        <input size="16" type="text" class="form_date f-text end-glyph" readonly ng-model="userInfo.birthStr" name="birth">
+        </label>
+        
+        <label class="f-item new-item">
+            <div class="box-item-right">
+                <label class="sim-select sel-xl inp-ele">
+                    <div class="select-val">{{userInfo.education | sw:"学历"}}</div> 
+                    <select class="t-select" name="education" id="education" sel="" ng-model="userInfo.education">
+                        <option value="">请选择</option>
+                        <option  ng-repeat="educationDegree in educationDegrees" value="{{$index}}">{{educationDegree}}</option>
+                    </select>
+                </label>
+            </div>
+        </label>
+        
+        <label class="f-item">
+            <span class="glyph-in">公司</span>
+			<input type="text" class="f-text end-glyph" ng-model="userInfo.enterprise" name="enterprise" ng-pattern="/^[\u4e00-\u9fa5_a-zA-Z0-9]{0,50}$/" autocomplete>
+			<ul class="f-tip-box auto-box" style="display:none;">
+                  <li class="tip-item" ng-repeat="data in list"  name="{{data.name}}" autoselect>
+                		<span>{{data.name}}</span>
+           	   	 </li>
+               </ul>
+        </label>
+        
+        <label class="f-item new-item">
+          <div class="box-item-right">
+            <label class="sim-select sel-hy inp-ele">
+                <div class="select-val">{{userInfo.industry}}</div> 
+                <select class="t-select" name="industry" id="industry" sel="" ng-model="userInfo.industry">
+                     <option value="">请选择</option>
+	                 <option value="房屋工程建筑">房屋工程建筑</option>
+	                 <option value="土木工程建筑">土木工程建筑</option>
+	                 <option value="建筑安装业">建筑安装业</option>
+	                 <option value="其他建筑业">其他建筑业</option>
+                </select>
+            </label>
+          </div>
+         </label>
+        <label class="f-item">
+            <span class="glyph-in">地址</span>
+            <input class="f-text end-glyph" type="text" ng-model="userInfo.contactAddress"  name="contactAddress" ng-maxlength="100" />
+        </label>
+        <label class="f-item">
+            <span class="glyph-in">手机</span>
+            <input class="f-text end-glyph" type="text" disabled="disabled" ng-model="userInfo.handPhone"  name="handPhone"/>
+        </label>
+       
+        <a class="sub-btn btn" w5c-form-submit="vm.sub();">提交</a>
+    </form>
+</div>
+
+
+
+
+
+
+
+      

@@ -1,0 +1,24 @@
+<div class="modal dissolved-dialog" id="dissolved-dialog" role="dialog" ng-show="infoData.status">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close" ng-click="closeDialog()"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">
+                提&nbsp;&nbsp;示
+            </div>
+            <div class="modal-body">
+                <div class="toolip-dyn">
+                    <p class="toolip-text" ng-bind="infoData.infoText"></p>
+                </div>
+                <div class="success-btn-dyn">
+                    <div class="btn save-btn" ng-click="infoSureClick()" ng-bind-html="infoData.sureText">
+                        
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="btn success-btn" ng-click="closeDialog()">
+                        取&nbsp;&nbsp;消
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

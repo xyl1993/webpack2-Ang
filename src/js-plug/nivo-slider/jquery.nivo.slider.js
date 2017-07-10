@@ -6,7 +6,6 @@
  * Free to use and abuse under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
  */
-
 (function($) {
     var NivoSlider = function(element, options){
         // Defaults are below

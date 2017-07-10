@@ -1,0 +1,20 @@
+<div class="flow-base-form">
+    <div class="form-header">
+        <div class="form-title">
+            <label class="title-name">工作汇报</label>
+            <div class="title-edit-dyn">
+                <i ng-click="toList()">返回列表</i> 
+            </div>
+        </div>
+    </div>
+	<div class="detail_data">
+		<div class="detail_form">
+		<table>
+			<tr ng-repeat="list in detailType">
+			    <td ng-bind="list.name"></td>
+			    <td ng-bind="list.value"></td>
+		    </tr>
+		</table>
+	    </div>
+	</div>
+</div>

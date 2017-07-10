@@ -1,0 +1,43 @@
+{
+"code":0,
+  "data":{"jzq":[
+    {
+      "name":"劳务供需",
+      "englishName":"Labor Demand",
+      "description":"加快企业内部工作的速度，从而减轻了企业的负担，提高了工作效率",
+      "id":"0",
+      "active":true
+    },
+    {
+      "name":"材料供需",
+      "englishName":"Material Supplying",
+      "description":"加快企业内部工作的速度，从而减轻了企业的负担，提高了工作效率",
+      "id":"1",
+      "active":false
+    },{
+      "name":"机械供需",
+      "englishName":"Mechanical Requirement",
+      "description":"加快企业内部工作的速度，从而减轻了企业的负担，提高了工作效率",
+      "id":"2",
+      "active":false
+    }],"wbg":[{
+      "name":"日常办公",
+      "englishName":"Job Approval",
+      "description":"加快企业内部工作的速度，从而减轻了企业的负担，提高了工作效率",
+      "id":"3",
+      "active":false
+    },{
+      "name":"项目管理",
+      "englishName":"Project Management",
+      "description":"加快企业内部工作的速度，从而减轻了企业的负担，提高了工作效率",
+      "id":"4",
+      "active":false
+    },{
+      "name":"云盘",
+      "englishName":"Cloud Disk",
+      "description":"加快企业内部工作的速度，从而减轻了企业的负担，提高了工作效率",
+      "id":"5",
+      "active":false
+    }
+  ]}
+}
