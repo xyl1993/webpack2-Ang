@@ -1,0 +1,90 @@
+@import 'compass/css3';
+.labor-info-dyn{
+    width: 100%;
+    background: #fff;
+
+    @include border-radius(4px);
+    .labor-info-header{
+        padding-right: 24px;
+        padding-left: 24px;
+        width: 100%;
+        height: 40px;
+        background: #fffbf2;
+        color: #fece52;
+        font-size: 16px;
+        line-height: 40px;
+    }
+    >ul{
+        padding: 0 24px;
+        min-height: 680px !important;
+        li{
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e5e5;
+            &:last-of-type{
+                border-bottom: none;
+            }
+        }
+    }
+    .info-list-dyn{
+        position: relative;
+        width: 100%;
+
+        .info-logo{
+            position: absolute;
+            width: 38px;
+            height: 38px;
+            background: #feb907;
+            color: #fff;
+            text-align: center;
+            text-indent: 2px;
+            font-size: 20px;
+            line-height: 38px;
+
+            @include border-radius(50%);
+            .iconfont{
+                font-size: 20px;
+            }
+        }
+    }
+    .info-content{
+        padding-right: 150px;
+        padding-left: 54px;
+        width: 100%;
+        height: 100%;
+        .title,.content{
+            display: block;
+        }
+        .title{
+            color: #705330;
+        }
+        .content{
+            background: rgba(255, 235, 59, 0.12);
+            color: #999;
+        }
+        time{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #999;
+        }
+    }
+    .labor-info-footer{
+        padding-right: 25px;
+        width: 100%;
+        height: 40px;
+        background: #feb907;
+        .pagin-dyn{
+            float: right;
+            width: 276px;
+            height: 40px;
+            color: #fff;
+            text-align: right;
+            line-height: 40px;
+        }
+        &:after{
+            display: table;
+            clear: both;
+            content: '';
+        }
+    }
+}

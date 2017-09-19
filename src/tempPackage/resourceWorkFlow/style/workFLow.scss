@@ -5,16 +5,18 @@
 }
 
 .title_font_color1 {
-    padding-left: 15px;
     color: $coffeColor;
     cursor: pointer;
+    &:first-of-type{
+        padding-left: 15px;
+    }
     &:hover{
         text-decoration: underline;
     }
 }
 
 .title_font_color2 {
-    padding: 0 20px 0 23px;
+    padding: 0 11px;
     color: #ccc;
     font-size: 18px;
 }
@@ -27,6 +29,9 @@
     color: $goldColor;
 }
 
+.fj-a{
+    color:#feb907;
+}
 
 .workFlow_cointer {
     width: 100%;
@@ -37,6 +42,9 @@
 .main_div {
     margin: 0 auto;
     width: 1200px;
+    .view_div{
+        padding-bottom: 50px;
+    }
 }
 
 .title_div {
@@ -151,7 +159,12 @@
 
     @include border-radius(50%);
 }
-
+.team_menu_tishi{
+    position: absolute;
+    top: 0;
+    right: 7px;
+    color:red;
+}
 .bg_green {
     background: url('../img/email.png') 50% 50% no-repeat;
     background-color: #87d37c;
@@ -221,12 +234,20 @@
 }
 
 .team_list_choose ul li {
+    overflow: hidden;
     width: 100%;
-    height: 100%;
     height: 35px;
     color: #999;
     font-size: 14px;
     line-height: 35px;
+    span{
+        display: block;
+        float: left;
+        overflow: hidden;
+        max-width: 144px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 .team_list_choose ul li:hover {
@@ -240,7 +261,6 @@
 .user_team_main_info {
     position: relative;
     margin-top: 22px;
-    margin-bottom: 25px;
     min-height: 850px;
 }
 
@@ -343,6 +363,7 @@
 
     @include border-radius(5px);
     .team_set{
+        display: none;
         float: right;
         padding-right: 24px;
         cursor: pointer;
@@ -368,6 +389,7 @@
     position: absolute;
     top: 50%;
     left: 0;
+    z-index: 50;
     margin-top: -35px;
     width: 30px;
     height: 70px;
@@ -384,6 +406,7 @@
     position: absolute;
     top: 50%;
     right: 0;
+    z-index: 50;
     margin-top: -35px;
     width: 30px;
     height: 70px;
@@ -445,24 +468,29 @@
 .team_bottom {
     position: relative;
     width: 100%;
-    height: 600px;
+    &:after{
+        display: table;
+        clear: both;
+        content: '';
+    }
 }
 
 .team_bottom .team_message {
-    position: absolute;
-    top: 22px;
-    left: 0;
+    float: right;
+    margin-top: 22px;
+    margin-right: 18px;
     width: 710px;
-    height: 578px;
     border: 1px solid #e5e5e5;
     background-color: #fff;
 
     @include border-radius(5px);
+    
 }
 
 .team_bottom .team_message .team_message_content {
+    min-height: 680px !important;
+
     width: 100%;
-    height: 538px;
 }
 
 .team_bottom .team_message .team_message_content.no_message {
@@ -529,14 +557,16 @@
 }
 
 .team_bottom .team_list {
-    position: absolute;
-    top: 22px;
-    right: 0;
+    float: right;
+    margin-top: 22px;
     width: 271px;
     height: 578px;
     border: 0;
 }
 
+.team_list_content > li{
+   cursor: pointer;
+}
 .team_list_title {
     padding-left: 23px;
     height: 40px;
@@ -551,8 +581,10 @@
 }
 
 .team_list ul {
+    overflow-x: auto;
     margin-top: 17px;
     width: 100%;
+    height:500px;
 }
 
 .team_list ul li {
@@ -611,11 +643,6 @@
     @include border-radius(5px);
 }
 
-.list_main {
-    width: 100%;
-    height: 100%;
-}
-
 .list_menu {
     width: 100%;
     height: 44px;
@@ -630,9 +657,15 @@
     :last-child {
         @include border-top-right-radius(8px);
     }
+    &:after{
+        display: table;
+        clear: both;
+        content: '';
+    }
 }
 
 .list_menu ul li {
+    position: relative;
     float: left;
     width: 135px;
     height: 44px;
@@ -651,9 +684,9 @@
 }
 
 .list_main{
-	padding-bottom: 44px;
+	min-height:800px;
 	width:100%;
-	height:100%;
+    background: #fff;
 }
 
 
@@ -665,51 +698,39 @@
     border-right: 1px solid #eee;
 }
 
-.list_menu ul li{
-	float:left;
-	width:135px;
-	height:44px;
-	background-color:#ffc42d;
-	color:#fff;
-	text-align:center;
-	font-size:16px;
-	line-height:44px;
-	cursor:pointer;
-}
-
 .list_menu ul li.select{
-	border-top:1px solid #eeeeee;
+	border-top:1px solid #eee;
 	background-color:#fff;
 	color:#ffc42d;
 }
 
 .list_menu ul .select:first-child{
-	border-left:1px solid #eeeeee;
+	border-left:1px solid #eee;
 }
 
 .list_menu ul .select:last-child{
-	border-right:1px solid #eeeeee;
+	border-right:1px solid #eee;
 }
 
 .list_menu ul li.report{
     float:right;
     width:135px;
-	height:44px;
+	height:30px;
 	background-color:#ffc42d;
 	color:#fff;
 	text-align:center;
 	font-size:16px;
-	line-height:44px;
+	line-height:30px;
 	cursor:pointer;
 
     @include border-radius(20px);
-    @include box-shadow(10px,10px,10px,10px,#ffc42d);
+    @include box-shadow(0px 4px 17px 0px #ffc42d);
 }
 
 .list_data {
 	position:relative;
+	min-height: 800px;
 	width:100%;
-	height:100%;
 	border-right:1px solid #eeeeee;
 	background-color:#fff;
 
@@ -725,7 +746,7 @@
 .list_data_2{
 	position:relative;
 	width:100%;
-	border-right:1px solid #eeeeee;
+	border-right:1px solid #eee;
 	background-color:#fff;
 
 	@include border-radius(5px);
@@ -748,7 +769,6 @@
 	position:relative;
 	padding-left:50%;
 	width:100%;
-	background:#fff;
 }
 
 .detail_data .detail_form{
@@ -766,7 +786,7 @@
 
 .detail_form table tr td:first-child{
 	padding-right:8px;
-	width:100px;
+	width:120px;
 	height:55px;
 	color:#705330;
 	text-align:right;
@@ -784,7 +804,7 @@
 }
 
 .detail_form table tr:last-child td{
-	border-bottom:1px #cccccc dashed;
+	border-bottom:1px #ccc dashed;
 }
 .flow-base-form .detail_data{
     padding-left:60%;
@@ -806,7 +826,7 @@
 	line-height:26px;
 }
 .work_flow_shenpi td .content{
-	color:#999999;
+	color:#999;
 	font-size:15px;
 	line-height:26px;
 }
@@ -824,7 +844,7 @@
 	position:relative;
 	padding-top:10px;
 	padding-bottom:10px;
-	border-bottom:1px solid #cccccc;
+	border-bottom:1px solid #ccc;
 }
 
 .shenpi_info_list{
@@ -844,6 +864,9 @@
 
 .shenpi_status_has{
 	color:#f6b700;
+}
+.shenpi_status_no{
+	color:red;
 }
 
 .shenpi_status_shap{
@@ -878,7 +901,7 @@
 	z-index:2;
 	width:12px;
 	height:12px;
-	background-color:#cccccc;
+	background-color:#ccc;
 
 	@include border-radius(50%);
 }
@@ -959,7 +982,7 @@
 			float:left;
 			margin-left:40px;
 			height:55px;
-			color:#cccccc;
+			color:#ccc;
 			font-size:15px;
 			line-height:55px;
 			cursor:pointer;
@@ -976,7 +999,7 @@
 }
 .list_table{
    width:100%;
-   height: 700px; 
+   height: 745px; 
 }
 .list_data_table tr{
 	width:100%;

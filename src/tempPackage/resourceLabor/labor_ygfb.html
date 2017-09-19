@@ -1,0 +1,126 @@
+<!-- 用工发布 -->
+<div class="labor-base-form">
+    <div class="form-header">
+        <div class="form-title labor-form-title">
+            <label class="title-name">发布用工</label>
+            <div class="title-edit-dyn">
+                <i class="iconfont icon-bianji" ng-click="cancel()">取消</i> 
+            </div>
+        </div>
+    </div>
+    <div class="form-cointer">
+        <form class="labor-form-horizontal w5c-form" fole="form" name="ygfbForm" w5c-form-validate="vm.validateOptions" id="ygfbForm">
+            <div class="form-group">
+                <label class="control-label">用工主题</label>
+                <div class="control-input-dyn">
+                    <input type="text" placeholder="请填写用工主题（必填）" name="title" ng-model="ygfbFormData.title" maxlength="15" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">用工要求</label>
+                <div class="control-input-dyn">
+    				<textarea name="content" id="content" ng-model="ygfbFormData.content" placeholder="请填写企业用工要求、薪资待遇、岗位详情等（必填）" maxlength="250" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">企业所在城市</label>
+                <div class="control-input-dyn">
+                    <div class="address-checked-dyn">
+                        <div id="ygProviceChoosen" ng-class="{true:'chosen-container chosen-container-single chosen-with-drop', 
+                            false: 'chosen-container chosen-container-single'}[provinceObj.status]">
+                            <a href="javascript:void(0)" class="chosen-single" tabindex="-1">
+                                <span ng-bind="provinceObj.selName"></span>
+                                <div><b></b></div>
+                            </a>
+                            <div class="chosen-drop">
+                                <ul class="chosen-results">
+                                    <li class="active-result" ng-repeat="list in provinceObj.typeList" ng-bind="list.province" ng-click="proviceSureClick(list)"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <select class="custom-select" name="proviceType" ng-model="ygfbFormData.provinceId" required
+                            ng-options="value.provinceId as value.province for value in provinceObj.typeList">
+                            <option value="">--请选择--</option>
+                        </select>
+                    </div>
+                    <div class="address-checked-dyn">
+                        <div id="ygCityChoosen" ng-class="{true:'chosen-container chosen-container-single chosen-with-drop', 
+                            false: 'chosen-container chosen-container-single'}[cityObj.status]">
+                            <a href="javascript:void(0)" class="chosen-single" tabindex="-1">
+                                <span ng-bind="cityObj.selName"></span>
+                                <div><b></b></div>
+                            </a>
+                            <div class="chosen-drop">
+                                <ul class="chosen-results">
+                                    <li class="active-result" ng-repeat="list in cityObj.typeList" ng-bind="list.city" ng-click="citySureClick(list)"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <select class="custom-select" name="cityType" ng-model="ygfbFormData.cityId" required
+                            ng-options="value.cityId as value.city for value in cityObj.typeList">
+                            <option value="">--请选择--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">供方规模（人数）</label>
+                <div class="control-input-dyn">
+                    <input type="text" placeholder="请填写人数（必须填数字）" ng-keyup="peopleNumChange()" name="peopleNum" ng-model="ygfbFormData.peopleNum" maxlength="15" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">工种类型</label>
+                <div class="control-input-dyn">
+                    <chosen class="position-type" type-list="positionTypeObj.typeList" empty-obj="positionTypeObj.EmptyObj" sel-name="positionTypeObj.selName" type-sure-click = "typeSureClick('positionType',data)"></chosen>
+                    <select class="custom-select" name="positionType" ng-model="ygfbFormData.positionType" required
+                        ng-options="value.id as value.name for value in positionTypeObj.typeList">
+                        <option value="">工种类型</option>
+                    </select>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label class="control-label">信息有效期</label>
+                <div class="control-input-dyn">
+                    <chosen class="validity-date" type-list="validityDateObj.typeList" empty-obj="validityDateObj.EmptyObj" sel-name="validityDateObj.selName" type-sure-click = "typeSureClick('validityDate',data)"></chosen>
+                    <select class="custom-select" name="validityDate" ng-model="ygfbFormData.validityDate" required
+                        ng-options="value.id as value.name for value in validityDateObj.typeList">
+                        <option value="">信息有效期</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-label">员工福利</div>
+                <div class="fl">
+                    <div class="fl-label" ng-repeat="list in tjflData.tagList" ng-if="list.selStatus">
+                        <div class="fl-name">
+                            <span ng-bind="list.name"></span>
+                        </div>
+                        <img src="img/delete-fl.png" class="delete-fl" alt="删除福利" ng-click="delFl($index,list)"/>
+                    </div>
+                    <div class="fl-label" ng-repeat="list1 in tjflData.selectedSrbqList">
+                        <div class="fl-name">
+                            <span ng-bind="list1.text"></span>
+                        </div>
+                        <img src="img/delete-fl.png" class="delete-fl" alt="删除福利" ng-click="delSrbq($index)"/>
+                    </div>
+                    <div class="fl-label" ng-repeat="list in tjflData.zdyList">
+                        <div class="fl-name">
+                            <span ng-bind="list"></span>
+                        </div>
+                        <img src="img/delete-fl.png" class="delete-fl" alt="删除福利" ng-click="delZdyFl($index)"/>
+                    </div>
+                    <div class="tjfl-label" ng-click="tjflDialog()">
+                        <span class="tjfl-name">添&nbsp;加</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-center">
+            	<div class="btn submit-btn" w5c-form-submit="submit()">提交</div>
+            </div>
+        </form>
+    </div>
+    <tjfl tjfl-data="tjflData" tjfl-sure-click="tjflSureClick()" tjfl-cancel-click="tjflCancelClick()" select-srbq="selectSrbq(index)"></tjfl> 
+    <success-dialog info-text="successDialog.infoText" btn-text="successDialog.btnText" ng-show="successDialog.status" dialog-sure-click="dialogSureClick()"></success-dialog>
+    <error-dialog err-info-data="errorDialog"></error-dialog>
+</div>

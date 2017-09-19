@@ -1,0 +1,40 @@
+<div class="maybeLike">
+    <ul><li class="pointer" ui-sref="main.labor.index.userInfo.myFabu">我发布的</li><li class="select pointer" >我收藏的</li></ul>
+</div>
+<div class="labor_type">
+    <div class="labor_type_element">
+        
+    <div class="div_radio_father">
+    <input type="radio" name="type" value="1" ng-click="radioBox($event)"/>找人
+    <div class="div_radio_outer select"><div class="div_radio_inner"></div></div>
+   </div>
+    <div class="div_radio_father">
+    <input type="radio" name="type" value="2" ng-click="radioBox($event)"/>找活
+    <div class="div_radio_outer"><div class="div_radio_inner"></div></div>
+    </div> 
+    </div>
+</div>
+<div id="canMaybeLike" class="canMaybeLike">
+<div class="div_info" ng-repeat="x in myList">
+    <div class="div_info_title"><div class="qiye">{{x.title}}<div class="zuobiao">{{x.province}} {{x.city}}</div></div></div>
+    <div class="div_info_content" ui-sref="main.labor.laborfbxq({id:x.id})" ng-bind-html="x.content|textSplitFilter">
+    </div>
+    <div class="div_info_bottom">
+        <ul class="create_user_info">
+            <li class="pointer" ui-sref="main.labor.laborFbzxq({id:x.createUserId})">
+                <img image-404 class="user_img_like" ui-sref="main.labor.laborFbzxq({userId:x.createUserId})" src="{{x.userInfo.portrait==null||x.userInfo.portrait==''?'':x.userInfo.portrait}}"/>{{x.userInfo.realNameString}}
+            <div class="renzheng" ng-if="x.userInfo.laborIsAuthenic==1">&nbsp;</div>
+            </li>
+            <li>信誉：<font class="fenshu">{{x.userInfo.laborScore|mathCeil}}</font></li>
+        </ul>
+        <ul class="user_operation">
+            
+            <li class="hasshoucang pointer" ng-click="collectionState(x.id,$index)">取消收藏</li>
+        </ul>
+    </div>
+
+</div>
+
+
+</div>
+<pagination></pagination>

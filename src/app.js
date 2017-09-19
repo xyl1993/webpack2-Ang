@@ -3,7 +3,9 @@ require('./resources/css/common.scss');
 require('./components/dialog/dialog.scss');
 require('../bower_components/datetimepicker/datetimepicker.css');
 require('../bower_components/w5c-validator/style.scss');
+require('../bower_components/summernote/dist/summernote.css');
 require('./js-plug/tooltip/tooltip.css')
+require('../bower_components/scrollbar/jquery.mCustomScrollbar.css');
 
 import global from './global/global.js';
 import routes from './global/router.js';
@@ -45,8 +47,10 @@ export default angular
     ])
     .run(['$rootScope', '$state', '$http', '$stateParams', '$location', '$timeout', '$window',
         function($rootScope, $state, $http, $stateParams, $location, $timeout, $window) {
-            $rootScope.$on('$stateChangeSuccess',
-                function(event, toState, toParams, fromState) {});
+            $rootScope.$on('$stateChangeStart',
+                function(event, toState, toParams, fromState) {
+                    
+                });
         }
     ])
     .config(['$sceDelegateProvider','APPBASE',function($sceDelegateProvider,APPBASE) {

@@ -1,63 +1,63 @@
 <!--项目首页-->
-<div class="app-cointer wrapper {{ctrl.page1Style}}"
-    ng-style="{
-        '-webkit-transition-duration': ctrl.speed + 'ms',
-        '-moz-transition-duration': ctrl.speed + 'ms',
-        '-ms-transition-duration': ctrl.speed + 'ms',
-        '-o-transition-duration': ctrl.speed + 'ms',
-        'transition-duration': ctrl.speed + 'ms'
-    }">
+<div class="app-cointer wrapper fixed_top_margin ">
     <div class="workFlow_cointer">
         <div class="main_div">
-            <div class="title_div title_font_size">
-                <span class="title_font_color1" ui-sref="main.resources">资&nbsp;&nbsp;源</span>
-                <span class="title_font_color2 iconfont icon-jiantou"></span>
-                <span class="title_font_color3">微办公</span>
-            </div>
-            <div class="flow-base-form ng-scope">
-                <div class="form-header">
-                    <div class="form-title">
-                        <label class="title-name">创建团队</label>
-                    </div>
+            <div class="view_div">
+                <div class="title_div title_font_size">
+                    <span class="title_font_color1" ui-sref="main.resources">资&nbsp;&nbsp;源</span>
+                    <span class="title_font_color2 iconfont icon-jiantou"></span>
+                    <span class="title_font_color1" ui-sref="main.workFlow.default">微办公</span>
+                    <span class="title_font_color2 iconfont icon-jiantou"></span>
+                    <span class="title_font_color3">创建团队</span>
                 </div>
-                <div class="form-cointer">
-                    <form class="form-horizontal create-team-form w5c-form" fole="form"
-                     w5c-form-validate="vm.validateOptions" novalidate name="validateForm">
-                        <div class="form-group">
-                            <input type="text" name="teamName"  required="" placeholder="请填写团队名称" ng-model="teamModel.name">
+                <div class="flow-base-form ng-scope">
+                    <div class="form-header">
+                        <div class="form-title">
+                            <label class="title-name">创建团队</label>
                         </div>
-                        <blockquote>添加团队成员</blockquote>
-                        <div class="form-group">
-                            <ul>
-                                <li ng-repeat="list in teamModel.flowTeamMemberList" id="tel{{list.memberTelphone}}">
-                                    <div class="create-list">
-                                        <span class="close iconfont icon-guanbi" ng-click="removeMember($index)">
+                    </div>
+                    <div class="form-cointer">
+                        <form class="form-horizontal create-team-form w5c-form" fole="form"
+                        w5c-form-validate="vm.validateOptions" novalidate name="validateForm">
+                            <div class="form-group">
+                                <input type="text" name="teamName"  required="" placeholder="请填写团队名称" ng-model="teamModel.name">
+                            </div>
+                            <blockquote>添加团队成员</blockquote>
+                            <div class="form-group">
+                                <ul>
+                                    <li ng-repeat="list in teamModel.flowTeamMemberList" id="tel{{list.memberTelphone}}">
+                                        <div class="create-list">
+                                            <span class="close iconfont icon-guanbi" ng-click="removeMember($index)" ng-if="!list.isController">
 
-                                        </span>
-                                        <div class="create-member-dyn create-dyn">
-                                            <img ng-src="{{list.portrait}}" alt="">
+                                            </span>
+                                            <div class="create-member-dyn create-dyn">
+                                                <img ng-src="{{list.portrait}}" alt="">
+                                            </div>
+                                            <p class="name text-overflow" ng-bind="list.memberName">
+                                                
+                                            </p>
+                                            <p class="info-text" ng-if="!list.isRegist">
+                                                (未注册)
+                                            </p>
+                                            <p class="info-text" ng-if="list.isController">
+                                                (管理员)
+                                            </p>
                                         </div>
-                                        <p class="name text-overflow" ng-bind="list.memberName">
-                                            
-                                        </p>
-                                        <p class="info-text" ng-if="!list.isRegist">
-                                            (未注册)
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="create-list">
-                                        <div class="add-dyn-btn" ng-click="addTeamMember()">
-                                            <span class="iconfont icon-plus"></span>
+                                    </li>
+                                    <li>
+                                        <div class="create-list">
+                                            <div class="add-dyn-btn" ng-click="addTeamMember()">
+                                                <span class="iconfont icon-plus"></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="form-group text-center">
-                            <div class="btn submit-btn"  w5c-form-submit="createTeam()">立即创建</div>
-                        </div>
-                    </form>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="form-group text-center">
+                                <div class="btn submit-btn"  w5c-form-submit="createTeam()">立即创建</div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

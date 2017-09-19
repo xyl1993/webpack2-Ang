@@ -1,0 +1,159 @@
+<div class="labor-base-form">
+    <div class="form-header">
+        <div class="form-title labor-form-title">
+            <label class="title-name">资质认证</label>
+            <div class="title-edit-dyn">
+                <i class="iconfont icon-bianji" ng-click="cancel()">取消</i> 
+            </div>
+        </div>
+    </div>
+    <div class="form-cointer">
+        <form class="labor-form-horizontal form-cointer labor-user-form w5c-form" fole="form" name="autherForm" w5c-form-validate="vm.validateOptions" id="autherForm">
+            <div class="form-group">
+                <label class="control-label">团队性质</label>
+                <div class="control-input-dyn">
+                    <input type="text" placeholder="请填写公司名称（必填）" name="name" ng-model="formData.companyName" maxlength="15" required>
+                </div>
+            </div>
+            <div class="form-group form-check-group">
+                <label class="control-label"></label>
+                <div class="control-input-dyn">
+                    <div class="type-sel-dyn">
+                        <label class="middle checkbox-lab">
+                            <input class="ace" type="radio" value="1" name="type" ng-model="formData.type">
+                            <span class="rbl"></span>
+                        </label>
+                        <span class="dln">个体</span>
+                    </div>
+                    <div class="type-sel-dyn">
+                        <label class="middle checkbox-lab">
+                            <input class="ace" type="radio" value="2" name="type" ng-model="formData.type">
+                            <span class="rbl"></span>
+                        </label>
+                        <span class="dln">公司</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">基本信息</label>
+                <div class="control-input-dyn">
+                    <textarea name="remark" ng-model="formData.baseInfo" placeholder="请填写公司或个人，项目履历或个人接活情况（必填）" maxlength="255" required></textarea>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label class="control-label">信誉积分</label>
+                <div class="control-input-dyn">
+                    <img ng-src="{{list.src}}" alt="" ng-repeat="list in starsObj">
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label class="control-label">服务区域</label>
+                <div class="control-input-dyn">
+                    <div class="address-checked-dyn">
+                        <div id="proviceChoosen" ng-class="{true:'chosen-container chosen-container-single chosen-with-drop', 
+                            false: 'chosen-container chosen-container-single'}[provinceObj.status]">
+                            <a href="javascript:void(0)" class="chosen-single" tabindex="-1">
+                                <span ng-bind="provinceObj.selName"></span>
+                                <div><b></b></div>
+                            </a>
+                            <div class="chosen-drop">
+                                <ul class="chosen-results">
+                                    <!--<li class="active-result" ng-click="proviceSureClick(provinceObj.emptyObj)">--请选择--</li>-->
+                                    <li class="active-result" ng-repeat="list in provinceObj.typeList" ng-bind="list.province" ng-click="proviceSureClick(list)"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <select class="custom-select" name="proviceType" ng-model="formData.provinceId" required
+                            ng-options="value.provinceId as value.province for value in provinceObj.typeList">
+                            <option value="">--请选择--</option>
+                        </select>
+                    </div>
+                    <div class="address-checked-dyn">
+                        <div id="cityChoosen" ng-class="{true:'chosen-container chosen-container-single chosen-with-drop', 
+                            false: 'chosen-container chosen-container-single'}[cityObj.status]">
+                            <a href="javascript:void(0)" class="chosen-single" tabindex="-1">
+                                <span ng-bind="cityObj.selName"></span>
+                                <div><b></b></div>
+                            </a>
+                            <div class="chosen-drop">
+                                <ul class="chosen-results">
+                                    <!--<li class="active-result" ng-click="citySureClick(cityObj.emptyObj)">--请选择--</li>-->
+                                    <li class="active-result" ng-repeat="list in cityObj.typeList" ng-bind="list.city" ng-click="citySureClick(list)"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <select class="custom-select" name="cityType" ng-model="formData.cityId" required
+                            ng-options="value.cityId as value.city for value in cityObj.typeList">
+                            <option value="">--请选择--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">认证</label>
+                <div class="control-input-dyn">
+                    <div>
+                        <div class="empty-dyn"></div>
+                        <div class="auther-title" for="">
+                            <i>1</i>
+                            <span>上传身份证正面照片</span>
+                        </div>
+                        <ul class="auth-ul">
+                            <li>
+                                <label for="">参考照片</label>
+                                <img src="./img/identification.png" alt="">
+                            </li>
+                            <li>
+                                <label for="">你的照片</label>
+                                <input type="file" custom-on-change="uploadPersonFile" id="personFile">
+                                <img id="personImg" src="" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="empty-dyn"></div>
+                        <div class="auther-title" for="">
+                            <i>2</i>
+                            <span>上传身份证背面照片</span>
+                        </div>
+                        <ul class="auth-ul">
+                            <li>
+                                <label for="">参考照片</label>
+                                <img src="./img/identification.png" alt="">
+                            </li>
+                            <li>
+                                <label for="">你的照片</label>
+                                <input type="file" custom-on-change="uploadPersonBacFile" id="personBacFile">
+                                <img id="personBacImg" src="" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                    <div ng-show="formData.type == 2">
+                        <div class="empty-dyn"></div>
+                        <div class="auther-title" for="">
+                            <i>3</i>
+                            <span>上传营业执照原件正面照片</span>
+                        </div>
+                        <ul class="auth-ul">
+                            <li>
+                                <label for="">参考照片</label>
+                                <img src="./img/license.png" alt="">
+                            </li>
+                            <li>
+                                <label for="">你的照片</label>
+                                <input type="file" custom-on-change="uploadCompanyFile" id="companyFile">
+                                <img src="" id="companyImg" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-center">
+            	<div class="btn submit-btn" w5c-form-submit="submit()">提&nbsp;&nbsp;交</div>
+            </div>
+        </form>
+    </div>
+    <success-dialog info-text="successDialog.infoText" btn-text="successDialog.btnText" ng-show="successDialog.status" dialog-sure-click="dialogSureClick()"></success-dialog>
+    <error-dialog err-info-data="errorDialog"></error-dialog>
+</div>
+

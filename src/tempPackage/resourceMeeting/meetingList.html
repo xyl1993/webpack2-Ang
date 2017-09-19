@@ -1,0 +1,32 @@
+<div class="ccic-tit-hy">
+    <a class="btn hy-tit-btn" ui-sref="main.workFlow.meetingEdit">发起会议</a>
+</div>
+<ul class="block-dyn zx-center">
+    <li class="block-dyn-wrap" ng-repeat= "list in meetingList track by $index">
+        <div class="dyn">
+            <div class="block-wrap-tit">
+                <label for="" class="job-name" ng-bind="list.title">
+                    
+                </label>
+                <div class="job-price hy">
+                    <div class="hy-studit-btn {{list.timestr | hystatesfilter}}" ng-bind="list.timestr">
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="job-con hy">
+                <label for="" class="con-hy-label">
+                    进入会议请输入“{{list.meeting_code}}”
+                </label>
+            </div>
+            <div class="hy-bottom-dy">
+                <div class="hy-lab-bf pointer" ng-click="live(list.id,list.meeting_security)"></div>
+                <div class="hy-lab-icon icon-bj pointer" ui-sref="main.workFlow.meetingEdit({meetingId:list.id})">编辑</div>
+                <div class="hy-lab-icon icon-tj pointer" ui-sref="main.workFlow.meetingStatistics({meetingId:list.id})">统计</div>
+            </div>
+        </div>
+    </li>
+</ul>
+<div class="more">
+    <button class="btn_more" ng-click="loadMore()" ng-if="moreStatus">加载更多</button>
+</div>

@@ -1,7 +1,90 @@
 @import "../../../../resources/css/global";
+@media screen and (max-device-width: 800px){
+  body{
+    padding-bottom:49px;
+  }
+   .footer-main-dyn{display: none;}
+   .footer-bottom{display: none;}
+   .footer-bottom-mobile{
+     display: block;
+    width:100%;}
+   .footer-main {
+    position:fixed;
+    background-color: #f3f3f3;
+    height:49px;
+    bottom:0;
+    width:100%;
+    z-index: 20000;
+  }
+  .footer-bottom-mobile ul{
+    width:100%;
+    height:100%;
+  }
+  .footer-bottom-mobile ul li{
+    float:left;
+    width:25%;
+    height:100%;
+    padding-top: 28px;
+    font-size: 11px;
+    text-align: center;
+    letter-spacing:1px;
+    cursor:pointer;
+  }
+  .footer-bottom-mobile ul li.active{
+    color:#f6b700;
+  }
 
-.footer-main {
-  background-color: #fff;
+  .footer-bottom-mobile ul li.zixun{
+    background: url("images/zixun.png") 50% 27% no-repeat;
+  }
+
+  .footer-bottom-mobile ul li.zixun.active{
+    background: url("images/zixun_select.png") 50% 27% no-repeat;
+  }
+  .footer-bottom-mobile ul li.resource{
+    background: url("images/resource.png") 50% 27% no-repeat;
+  }
+
+  .footer-bottom-mobile ul li.resource.active{
+    background: url("images/resource_select.png") 50% 27% no-repeat;
+  }
+
+    .footer-bottom-mobile ul li.connection{
+    background: url("images/connection.png") 50% 27% no-repeat;
+  }
+
+  .footer-bottom-mobile ul li.connection.active{
+    background: url("images/connection_select.png") 50% 27% no-repeat;
+  }
+  .footer-bottom-mobile ul li.my{
+    background: url("images/my.png") 50% 27% no-repeat;
+  }
+
+  .footer-bottom-mobile ul li.my.active{
+    background: url("images/my_select.png") 50% 27% no-repeat;
+  }
+}
+
+@media screen and (min-device-width: 801px){
+    body{
+    padding-bottom:0;
+    }
+   .footer-main-dyn{display: block;}
+   .footer-bottom{display: block;}
+   .footer-bottom-mobile{display: none;}
+   .footer-main {
+    background-color: #fff;
+  }
+}
+
+
+.footer-main-mobile{
+  position: fixed;
+  bottom: 0;
+  background-color: #f3f3f3;
+  width:100%;
+  height:49px;
+
 }
 
 .footer-main-dyn {

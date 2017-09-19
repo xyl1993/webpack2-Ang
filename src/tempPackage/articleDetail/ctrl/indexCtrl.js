@@ -1,12 +1,13 @@
 require('../style/index.scss');
-export default ['$scope', '$http', '$log', 'APPBASE','$stateParams' ,'articleDetailServ',
-    function($scope, $http, $log, APPBASE,$stateParams, articleDetailServ) {
+export default ['$scope', '$http', '$log', 'APPBASE','$stateParams' ,'articleDetailServ','$sce',
+    function($scope, $http, $log, APPBASE,$stateParams, articleDetailServ,$sce) {
         var articleId = $stateParams.id;
 
         articleDetailServ.selectInfoDetails($http, APPBASE,articleId).then((res) => {
             if(res.data.code==0){
-            	$scope.articleDetailData = res.data.data;
-            	$scope.htmlPath = $scope.articleDetailData.htmlPath;
+            	let articleDetailData = res.data.data;
+            	let htmlPath = articleDetailData.htmlPath;
+                $scope.trustSrc = $sce.trustAsResourceUrl(htmlPath);
             }
         });
 
@@ -26,7 +27,6 @@ export default ['$scope', '$http', '$log', 'APPBASE','$stateParams' ,'articleDet
         /*切换目录*/
     $scope.categoryClick = function(articleId){
         window.location.href = APPBASE.zixun_list_url+articleId;
-        console.log(articleId);
     }
     }
 ]

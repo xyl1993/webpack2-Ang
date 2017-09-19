@@ -16,7 +16,7 @@ export default ['$timeout',function($timeout){
             var startTooltip = $timeout(function () {
                 $("[data-toggle='tooltip']").tooltip();
             }, 500)
-            $(window).unbind('scroll').scroll(function(){
+            $(window).scroll(function(){
                 if($(window).scrollTop()>600){
                     scope.$apply(function(){
                         scope.ifSide = true;
@@ -25,6 +25,15 @@ export default ['$timeout',function($timeout){
                     scope.$apply(function(){
                         scope.ifSide = false;
                     })
+                }
+                let range = 50;             //距下边界长度/单位px 
+                let elemt = 500;           //插入元素高度/单位px  
+                let maxnum = 2;            //设置加载最多次数  
+                let totalheight = 0;
+                let srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)  
+                totalheight = parseFloat($(window).height()) + parseFloat(srollPos);  
+                if(($(document).height()-range) <= totalheight){
+                    scope.$apply(attr.loadMoreDynmic);
                 }
             });
         }

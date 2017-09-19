@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="hot-reserous-list">
-        <div class="child-list animated dn-lightspeed" ng-repeat="list in infoLists track by $index" ng-if="$index<3" ng-click="linkToDetail(list.id)">
+        <div class="child-list animated dn-lightspeed" ng-repeat="list in infoLists | limitTo:3 track by list.id " ng-click="linkToDetail(list.id)">
             <h3 class="text-overflow" ng-bind="list.article.title">
             </h3>
             <div class="content" ng-bind="list.article.contentText">

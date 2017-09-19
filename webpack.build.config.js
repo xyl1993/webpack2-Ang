@@ -50,13 +50,12 @@ module.exports = {
                 use:["babel-loader"],
                 exclude:path.resolve(__dirname, "node_modules")
             },
-            {   
-                test: /\.(png|jpg|gif)$/,
-                use:["url-loader?limit=8192&name=images/[hash:8].[name].[ext]"]
-            },
             {
-                test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
-                use:["url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]"]
+                test: /\.(png|jpg|gif|cur)$/,
+                use: ["url-loader?limit=8192&name=images/[hash:8].[name].[ext]"]
+            }, {
+                test: /\.(woff|woff2|eot|ttf|otf|svg)(\?.*$|$)/,
+                use: ["url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]"]
             },
             {
                 test: /\.html$/,
@@ -73,6 +72,7 @@ module.exports = {
         alias: {}
     },
     plugins: [
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),

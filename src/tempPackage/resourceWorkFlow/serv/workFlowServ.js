@@ -72,7 +72,7 @@ export default class {
     selectChaoSongFlowNormal($http, APPBASE, currentPage, pageSize, data) {
         return $http({
             method: 'post',
-            url: APPBASE.base_api_host + '/flow/selectChaoSongFlow/paging/' + currentPage + '/' + pageSize,
+            url: APPBASE.base_api_host + '/flow/selectChaoSongFlowNormal/paging/' + currentPage + '/' + pageSize,
             data: data
         })
     }
@@ -104,7 +104,18 @@ export default class {
             url: APPBASE.base_api_host + '/flow/getFlowTeamListAboutMe',
         })
     }
-
+    /**
+     * 获取关于我的团队(带团队人数)
+     * @param {*}  
+     * @param {*} APPBASE 
+     */
+    getFlowTeamListAboutMeWeb($http, APPBASE) {
+        return $http({
+            method: 'post',
+            async: true,
+            url: APPBASE.base_api_host + '/flow/getFlowTeamListAboutMeWeb',
+        })
+    }
     /**
      * 根据团队id获取成员,剔除我自己
      * @param {*}  
@@ -138,7 +149,7 @@ export default class {
      * @param {*} formData 
      */
     uploadFile($http, APPBASE, formData) {
-        return $http.post(APPBASE.base_api_host + 'common/uploadFile', formData, {
+        return $http.post(APPBASE.base_api_host + '/common/uploadFile', formData, {
             transformRequest: angular.identity,
             headers: { 'Content-Type': undefined }
         })
@@ -277,7 +288,6 @@ export default class {
         alert(APPBASE.base_api_host)
         $http.post('workFlow_detail.html', postData, config).
             success(function (data) {
-                console.log(data);
             }).
             error(function (err) {
                 //错误代码
@@ -326,13 +336,19 @@ export default class {
 selectMessageInfo($http, APPBASE, currentPage, pageSize){
  return $http({
             method: 'post',
-            url: APPBASE.base_api_host + '/flow/selectMessageInfo/paging/' + currentPage + '/' + pageSize
+            url: APPBASE.base_api_host + '/flow/selectMessageInfo/paging/' + currentPage + '/' + pageSize+'?type=2'
         })
 }
-getFlowTeamDetail($http, APPBASE,data){
+/**
+ * 根据teamid获取团队详情
+ * @param {*}  
+ * @param {*} APPBASE 
+ * @param {*} data 
+ */
+getFlowTeamDetail($http, APPBASE,teamId){
    return $http({
             method: 'post',
-            url: APPBASE.base_api_host + '/flow/getFlowTeamDetail?teamId=' + data
+            url: APPBASE.base_api_host + '/flow/getFlowTeamDetail?teamId=' + teamId
         })  
 }
 selectFlowNormalDetail($http, APPBASE, data) {

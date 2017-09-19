@@ -1,0 +1,329 @@
+<!-- 列表end -->
+<div class="meeting-seting-dyn">
+    <div class="content-zanorpl ccic_hy">
+        <li class="item" ng-class="{'active':menuStatus === 'hyBasc'}" data-flag="hy-basc" ng-click="menuSel('hyBasc')">基本设置</li>
+        <li class="item" ng-class="{'disabled':!meetingData.id,'active':menuStatus === 'hyZtsz'}" ng-click="menuSel('hyZtsz')">主题设置</li>
+        <li class="item" ng-class="{'disabled':!meetingData.id,'active':menuStatus === 'hyKmq'}" ng-click="menuSel('hyKmq')">开幕墙</li>
+        <li class="item" ng-class="{'disabled':!meetingData.id,'active':menuStatus === 'hyCjsz'}" ng-click="menuSel('hyCjsz')">抽奖设置</li>
+        <!--  <li class="item " data-flag="hy-qhbsz" lib-tab>抢红包设置</li> -->
+        <li class="item" ng-class="{'disabled':!meetingData.id,'active':menuStatus === 'hyJbsz'}" ng-click="menuSel('hyJbsz')">嘉宾设置</li>
+        <li class="item" ng-class="{'disabled':!meetingData.id,'active':menuStatus === 'hyBmq'}" ng-click="menuSel('hyBmq')">闭幕墙</li>
+    </div>
+    <!-- all start -->
+    <!-- 发起会议 div start -->
+    <form id="hy-basc" name="hyBasc" class="border-radiu-color basc-content other-hy-model jbsz-content w5c-form"
+         ng-show="menuStatus == 'hyBasc' "  w5c-form-validate="vm.validateOptions">
+        <div class="hy-logo-imgcontent jbsz-label">
+            <span ng-if="!meetingData.logo">主办方</span> <span ng-if="!meetingData.logo">LOGO</span>
+            <img id="zbfImg" ng-src="{{meetingData.logo}}" ng-if="meetingData.logo">
+        </div>
+        <div class="hy-basc-set">
+            <div class="input-list">
+                <label class="tit-label">会议标题</label>
+                <div class="hysz-input-concat">
+                    <input class="tit-input" name="title" required placeholder="请输入标题" type="text" ng-model="meetingData.title" maxLength="15" />
+                </div>
+            </div>
+            <div class="input-list basc-input">
+                <label class="tit-label">主办方LOGO</label>
+                <div class="hysz-input-concat">
+                    <div class="btn upload-btn">
+                        <input type="file" custom-on-change="uploadFile" id="logoFile" name="file">
+                        <i class="iconfont icon-shangchuan"></i>上传
+                    </div>
+                </div>
+            </div>
+            <div class="input-list">
+                <label class="tit-label">开始时间</label>
+                <div class="hysz-input-concat time">
+                    <input type="text" name="startTime" class="tit-input" id="startTime" ng-model="meetingData.start_time" placeholder="请选择开始时间" required>
+                    <span class="iconfont icon-rili" id="startTime-icon" for="startTime"></span>
+                </div>
+            </div>
+            <div class="input-list">
+                <label class="tit-label">结束时间</label>
+                <div class="hysz-input-concat time">
+                    <input type="text" name="endTime" class="tit-input" id="endTime" placeholder="请选择结束时间" ng-model="meetingData.end_time" required>
+                    <span class="iconfont icon-rili" id="startTime-icon" for="endTime"></span>
+                </div>
+            </div>
+            <div class="input-list">
+                <label class="tit-label">签到提示语</label>
+                <div class="hysz-input-concat">
+                    <input class="tit-input" required placeholder="请输入签到提示语" name="signPrompt" type="text" ng-model="meetingData.sign_prompt" maxLength="255" />
+                </div>
+            </div>
+            <div class="input-list">
+                <label class="tit-label">上墙提示语</label>
+                <div class="hysz-input-concat">
+                    <input class="tit-input" name="onwallPrompt" required placeholder="请输入上墙提示语" type="text" ng-model="meetingData.onwall_prompt" maxLength="255" />
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="hy-set-btn">
+                <a class="btn hy-qx-btn" ng-click="hyxqUpdateQx();">取消</a>
+                <a class="btn hy-qd-btn" w5c-form-submit="hyxqUpdateQd();">确定</a>
+            </div>
+        </div>
+    </form>
+    <!-- 发起会议 div end -->
+
+    <!-- 主题设置    start -->
+    <div id="hy-ztsz" class="border-radiu-color other-hy-model hide basc-content" ng-show="menuStatus == 'hyZtsz' ">
+        <div class="hy-szjl-concat">
+            <div class="hy-zt-content">
+                <p class="zt-p">主题</p>
+                <ul>
+                    <li ng-repeat="theme in themeAll">
+                        <div class="zt-set-cointer">
+                            <div class="zt-img-set"><img ng-src="{{theme.bgimg}}"></div>
+                            <div class="zt-select-radio">
+                                <input type="radio" name="themeRadio" value="{{theme.id}}" ng-checked="meetingData.theme" ng-model="meetingData.theme">
+                                <span>{{theme.name}}</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="hy-set-btn">
+                <a class="btn hy-qx-btn" ng-click="themeQx();">取消</a> <a class="btn hy-qd-btn" ng-click="themeQd();">确定</a>
+            </div>
+        </div>
+    </div>
+    <!-- 主题设置 end -->
+
+    <!-- 开幕墙 start -->
+    <form id="hy-kmq" name="hyKmq" class="border-radiu-color other-hy-model hide basc-content w5c-form"
+         ng-show="menuStatus == 'hyKmq' " w5c-form-validate="vm.validateOptions">
+        <div class="hy-szjl-concat">
+            <div class="hy-basc-set">
+                <div class="input-list km-list">
+                    <label class="tit-label">开幕词</label>
+                    <div class="hysz-input-concat">
+                        <textarea class="comments-text msgdt" id="content" name="openText" count="200" required
+                        placeholder="请输入开幕词" maxlength="255" id="openText" ng-model="meetingData.open_text"></textarea>
+                    </div>
+                </div>
+                <div class="hy-set-btn">
+                    <!--  <a class="btn hy-qx-btn" ng-click="openWallUpdataqx();">取消</a>   -->
+                    <a class="btn hy-qd-btn" w5c-form-submit="openWellUpdataQd();">确定</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- 开幕墙 end -->
+
+    <!-- 抽奖设置 start -->
+    <div id="hy-cjsz" class="border-radiu-color other-hy-model hide basc-content" ng-show="menuStatus == 'hyCjsz' ">
+        <div class="hy-jllist-concat">
+            <ul>
+                <li class="hy-basc-set li" ng-repeat="hycj in hycjData">
+                    <div class="jp-list-content">
+                        <div class="jl-del-btn" ng-click="awardDel($index,hycj.id);"></div>
+                        <div class="list-detail-content">
+                            <img ng-src="{{hycj.img}}">
+                            <div class="jl-list-dyn">
+                                <p class="jl-name">{{hycj.team}}</p>
+                                <p>
+                                    <strong>{{hycj.name}} *{{hycj.count}}</strong>
+                                </p>
+                                <div>
+                                    每份价值￥{{hycj.prize}}<span>1次抽取{{hycj.once_count}}份</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="hy-szjl-concat">
+            <div class="hy-logo-imgcontent cjsz-label">
+                <span ng-show="!mrpData.img">奖品</span> <span ng-show="!mrpData.img">图片</span>
+                <img id="cjfImg" ng-src="{{mrpData.img}}" ng-show="mrpData.img">
+            </div>
+            <form class="hy-basc-set w5c-form" name="price" class="w5c-form" w5c-form-validate="vm.validateOptions">
+                <div class="input-list">
+                    <label class="tit-label">奖项名称</label>
+                    <div class="hysz-input-concat cjsz-concat">
+                        <input class="tit-input" ng-model="mrpData.team" name="prizeName" required
+                        type="text" id="team" required placeholder="如：特等奖、一等奖" maxLength="255" />
+                    </div>
+                </div>
+                <div class="input-list">
+                    <label class="tit-label">奖品名称</label>
+                    <div class="hysz-input-concat">
+                        <input class="tit-input" ng-model="mrpData.name" name="prizesName" required
+                         type="text" id="name" placeholder="如：iphone 6s手机、高级会议本" maxLength="255" />
+                    </div>
+                </div>
+                <div class="input-list cjsz-input">
+                    <label class="tit-label">奖品图片</label>
+                    <div class="hysz-input-concat">
+                        <div class="btn upload-btn">
+                            <input type="file" custom-on-change="uploadJpFile" id="jpFile" name="file">
+                            <i class="iconfont icon-shangchuan"></i>上传
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="input-list" style="width:466px;">
+                    <label class="tit-label">奖品价值</label>
+                    <div class="hysz-input-concat">
+                        <span class="cha-hb"> ￥ </span> 
+                        <input type="number" id="prize" ng-model="mrpData.prize" name="value" required
+							class="jpjz-text other" min="0">
+                    </div>
+                </div>
+                <div class="input-list" style="width:466px;">
+                    <label class="tit-label"> 奖品数量</label>
+                    <div class="hysz-input-concat">
+                        <input type="number" id="count" ng-model="mrpData.count" name="count" required class="jpjz-text" min="0">
+                    </div>
+                </div>
+                <div class="input-list">
+                    <div class="jpjz-lab">
+                        <label class="jpjz-lab"> 一次抽取份额 </label>
+                        <input type="number" class="cho-text" name="onceCount" min="0" max="{{mrpData.count}}" required
+                         ng-model="mrpData.once_count" id="once_count" class="fe-nuber" >
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="hy-set-btn">
+                    <!--<a class="btn hy-qx-btn" ng-click="awardAddQx();">取消</a>-->
+                    <a class="btn hy-qd-btn" w5c-form-submit="awardAddQd();">确定</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 抽奖设置 end -->
+
+    <!-- 抢红包设置 start -->
+    <div id="hy-qhbsz" class="border-radiu-color other-hy-model hide basc-content" ng-show="menuStatus == 'hyQhb' ">
+        <div class="hy-jllist-concat">
+            <ul>
+                <li class="hy-basc-set li" ng-repeat="hyhb in hyhbData">
+                    <div class="jp-list-content">
+                        <div class="jl-del-btn" ng-click="redDel($index,hyhb.id);"></div>
+                        <div class="list-detail-content">
+                            <img ng-src="../ccic/images/hb.png">
+                            <div class="jl-list-dyn">
+                                <p class="jl-name">{{hyhb.team}}</p>
+                                <p>
+                                    <strong>每包金额 ￥{{hyhb.money}}</strong>
+                                </p>
+                                <div>
+                                    {{hyhb.count}}包
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="hy-szjl-concat">
+            <div class="hy-basc-set">
+                <div class="input-list">
+                    <label class="tit-label">红包名称</label>
+                    <div class="hysz-input-concat">
+                        <input class="tit-input" type="text" id="redTeam" placeholder="如：第一波红包、大吉大利红包" maxLength="255" />
+                    </div>
+                </div>
+                <div class="input-list">
+                    <label class="tit-label">红包金额</label>
+                    <div class="hysz-input-concat">
+                        <input class="tit-input" type="number" id="money" placeholder="请输入这一批红包的总金额" min="0" />
+                    </div>
+                </div>
+                <div class="input-list">
+                    <label class="tit-label">红包数量</label>
+                    <div class="hysz-input-concat">
+                        <input class="tit-input" type="number" id="redCount" min="0" />
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="hy-set-btn">
+                    <!--<a class="btn hy-qx-btn" ng-click="redAddQx();">取消</a>-->
+                    <a class="btn hy-qd-btn" ng-click="redAddQd();">确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 抢红包设置 end -->
+
+    <!-- 嘉宾设置 start -->
+    <div id="hy-jbsz" class="border-radiu-color other-hy-model hide basc-content" ng-show="menuStatus == 'hyJbsz' ">
+        <div class="hy-jllist-concat" ng-show="hyjbData.length>0">
+            <ul>
+                <li class="hy-basc-set li jb-list-li">
+                    <div>
+                        <ul>
+                            <li class="hy-list-dyn" ng-repeat="hyjb in hyjbData">
+                                <div class="jb-list">
+                                    <div class="jl-del-btn" ng-click="guestDel($index,hyjb.id);"></div>
+                                    <img ng-src="{{hyjb.photo}}">
+                                </div>
+                                <strong style="text-align: center;display: block;">{{hyjb.name}}</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="hy-szjl-concat">
+            <div class="guest-label hy-logo-imgcontent">
+                <span ng-show="!mdgObj.photo">嘉宾</span><span ng-show="!mdgObj.photo">图片</span>
+                <img id="jbImg" ng-src="{{mdgObj.photo}}" ng-show="mdgObj.photo">
+            </div>
+            <form class="hy-basc-set w5c-form" name="hYszjb" w5c-form-validate="vm.validateOptions">
+                <div class="input-list">
+                    <label class="tit-label">嘉宾姓名</label>
+                    <div class="hysz-input-concat">
+                        <input id="jbName" ng-model="mdgObj.name" name="jbName" required
+                         class="tit-input" type="text" maxlength="20" maxLength="5" />
+                    </div>
+                </div>
+                <div class="input-list guest-input">
+                    <label class="tit-label">嘉宾图片</label>
+                    <div class="hysz-input-concat">
+                        <div class="btn upload-btn">
+                            <input type="file" custom-on-change="uploadJbFile" id="jbFile" name="file">
+                            <i class="iconfont icon-shangchuan"></i>上传
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="input-list km-list">
+                    <label class="tit-label">嘉宾简介</label>
+                    <div class="hysz-input-concat">
+                        <textarea class="comments-text msgdt" id="jbContent" name="decription" required
+                         ng-model="mdgObj.simple_decription" placeholder="请填写嘉宾简介"></textarea>
+                    </div>
+                </div>
+                <div class="hy-set-btn">
+                    <!--<a class="btn hy-qx-btn" ng-click="guestAddQx();">取消</a>-->
+                    <a class="btn hy-qd-btn" w5c-form-submit="guestAddQd();">确定</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 嘉宾设置 end -->
+    <!-- 闭幕墙 start -->
+    <div id="hy-bmq" class="border-radiu-color other-hy-model hide basc-content" ng-show="menuStatus == 'hyBmq' ">
+        <div class="hy-szjl-concat">
+            <form class="hy-basc-set w5c-form" name="hy-szjl-concat" w5c-form-validate="vm.validateOptions">
+                <div class="input-list km-list">
+                    <label class="tit-label">闭幕词</label>
+                    <div class="hysz-input-concat">
+                        <textarea class="comments-text msgdt" id="content" name="closeText" required
+                        placeholder="请填写闭幕词" maxlength="255" id="closeText" ng-model="meetingData.close_text"></textarea>
+                    </div>
+                </div>
+                <div class="hy-set-btn">
+                    <!--<a class="btn hy-qx-btn" ng-click="closeWallUpdataqx();">取消</a>-->
+                    <a class="btn hy-qd-btn" w5c-form-submit="closeWellUpdataQd();">确定</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<success-dialog info-text="successDialog.infoText" btn-text="successDialog.btnText" ng-show="successDialog.status" dialog-sure-click="dialogSureClick()"></success-dialog>

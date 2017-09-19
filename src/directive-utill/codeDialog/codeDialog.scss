@@ -1,0 +1,98 @@
+@import "compass/css3";
+@media screen and (max-device-width: 800px) {
+    .code_dialog>ul>li .iconfont {
+        font-size: 20px !important;
+    }
+    .code_dialog {
+        right: 10px !important;
+    }
+    .side-tool {
+        right: 10px !important;
+    }
+}
+
+.code_dialog {
+    position: fixed;
+    right: 40px;
+    bottom: 96px;
+    z-index: 9;
+    >ul {
+        >li {
+            margin-bottom: 2px;
+            width: 56px;
+            height: 56px;
+            border: 1px solid #dcdcdc;
+            background-color: #fff;
+            text-align: center;
+            cursor: pointer;
+            @include transition(.1s ease-in);
+            .iconfont {
+                font-size: 25px;
+            }
+        }
+        li:hover {
+            border: 1px solid #feb907;
+            background-color: #feb907;
+            color: white;
+        }
+    }
+}
+
+.phone_app {
+    position: fixed;
+    right: 110px;
+    bottom: 95px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #C0C0C0; //@include box-shadow(1px 1px 4px 1px #8F8F8F);
+    background-color: white;
+    & img {
+        padding-top: 10px;
+        padding-left: 10px;
+        width: 190px;
+        height: 190px;
+    }
+}
+
+.code_div {
+    position: fixed;
+    right: 110px;
+    bottom: 35px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #C0C0C0; //@include box-shadow(1px 1px 4px 1px #8F8F8F);
+    background-color: white;
+}
+
+.dialog_div {
+    &:before {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        width: 0;
+        height: 0;
+        border-top: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        border-left: 12px solid black;
+        content: "";
+    }
+    &:after {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        width: 0;
+        height: 0;
+        border-top: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        border-left: 12px solid white;
+        content: "";
+    }
+    & img {
+        padding-top: 10px;
+        padding-left: 10px;
+        width: 190px;
+        height: 190px;
+    }
+}

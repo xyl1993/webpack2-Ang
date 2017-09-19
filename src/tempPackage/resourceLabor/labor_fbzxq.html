@@ -1,0 +1,74 @@
+<div class="launch_user_header">
+    <div class="launch__header">
+        <div class="launch_title"><label class="title_name">&nbsp;&nbsp;发布者详情</label>
+        </div>
+    </div>
+    <div class="launch_user_info">
+        <div class="user_div">
+            <div class="user_img"><img class="img" ng-src="{{fbzInfo.portrait}}" image-404><div class="renzheng">&nbsp;</div></div>
+            <div class="gs_info">
+                <div class="gs_name">{{fbzInfo.enterprise}}</div>
+                <div class="gs_lxfs">
+                    <ul>
+                        <li>
+                            <div><i class="iconfont icon-telephone"></i>{{fbzInfo.handPhone}}</div>
+                        </li>
+                        <li>
+                            <div><i class="iconfont icon-location"></i>{{fbzInfo.province}} {{fbzInfo.city}}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user_star"><img ng-src="{{list.src}}" alt="" ng-repeat="list in star" class="star"></div>
+        </div>
+    </div>
+    <div class="com_profile_div">
+        <div class="com_profile">
+            <div class="profile">
+                <div class="profile_title">
+                    <div><i class="iconfont icon-hengxian"></i><label>&nbsp;公司简介&nbsp;</label><i class="iconfont icon-hengxian"></i></div>
+                </div>
+                <div class="profile_info">
+                    {{fbzInfo.baseInfo}}
+                </div>
+            </div>
+            <div class="profile_rz">
+                <div class="rz_title"><div><i class="iconfont icon-hengxian"></i><label>&nbsp;认证信息&nbsp;</label><i class="iconfont icon-hengxian"></i></div></div>
+                <div class="rz_img "><img image-404 ng-src="{{fbzInfo.personImg}}" alt="" class="right"><img image-404 ng-src="{{fbzInfo.personBackImg}}" alt="" ></div>
+                <div class="rz_font">（个人认证）</div>
+                <div class="rz_img"><img image-404 ng-src="{{fbzInfo.companyImg}}" alt="" ></div>
+                <div class="rz_font">（公司认证）</div>
+            </div>
+        </div>
+    </div>
+    <div class="launch_foot">
+        <div class="launch_comment_div">
+            <div class="launch_comment_title"><font>累计评价</font>
+            </div>
+            <div class="comment_ilst">
+                <div class="launch_comment" ng-repeat="list in plList">
+                    <div class="comment_img">
+                        <div class="comment_user">
+                            <img class="user_img" ng-src="{{list.portrait}}" image-404>
+                        </div>
+                    </div>
+                    <div class="comment_info">
+                        <div class="comment_name">{{list.realName}}
+                            <i class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[list.score&gt;=1]"></i>
+                            <i class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[list.score&gt;=2]"></i>
+                            <i class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[list.score&gt;=3]"></i>
+                            <i class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[list.score&gt;=4]"></i>
+                            <i class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[list.score&gt;=5]"></i>
+                        </div>
+                        <div class="comment_time">{{list.createTime|date:"yyyy-MM-dd HH:mm"}} </div>
+                        <div class="comment_content">{{list.content}}
+                        </div>
+                    </div>
+                    <div class="clearBoth"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="more_comment_btn" ng-if="plList.length>0&amp;&amp;currentPage!=pageCount" ng-click="moreComment()">更多评论</div>
+</div>

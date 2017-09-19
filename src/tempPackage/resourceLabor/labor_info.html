@@ -1,0 +1,42 @@
+<div class="labor-info-dyn">
+    <div class="labor-info-header">
+        <span>消息中心</span>
+        <span class="float-right pointer">全部</span>
+    </div>
+    <ul>
+        <li ng-repeat="list in infoData.lists track by $index">
+            <div class="info-list-dyn">
+                <div class="info-logo">
+                    <i class="iconfont icon-youjian1"></i>
+                </div>
+                <div class="info-content">
+                    <label class="title text-overflow" ng-bind="list.title">
+                    </label>
+                    <label class="content text-overflow" ng-bind-html="list.content | mopReplaceFilter">
+                    </label>
+                    <time ng-bind="list.sendDate | dateDivision"></time>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="labor-info-footer">
+        <div class="pagin-dyn">
+            <span>
+                共{{infoData.recordCount}}条
+            </span>
+            &nbsp;&nbsp;
+            <span ng-click="prevPage()" class="pointer">
+                上一页
+            </span>
+            &nbsp;
+            <span>
+                {{infoData.currentPage}}/{{infoData.pageCount}}
+            </span>
+            &nbsp;
+            <span ng-click="nextPage()" class="pointer">
+                下一页
+            </span>
+            &nbsp;
+        </div>
+    </div>
+</div>

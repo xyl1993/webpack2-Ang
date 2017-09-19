@@ -1,0 +1,82 @@
+<div class="maybeLike">
+    <ul><li class="select pointer" ng-click="maybeLikeChange($event,1)">猜你喜欢</li><li class="pointer" ng-click="maybeLikeChange($event,2)">优质用工</li><li class="pointer" ng-click="maybeLikeChange($event,3)">优质供方</li></ul>
+</div>
+<div id="canMaybeLike" class="canMaybeLike">
+<div class="div_info" ng-repeat="x in maybeLikeList">
+    <div class="div_info_title"><div class="qiye">{{x.title}}&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size:14px;font-weight:normal;">{{x.enterprise}}</font><div class="zuobiao">{{x.province}} {{x.city}}</div></div></div>
+    <div class="div_info_content" ui-sref="main.labor.laborfbxq({id:x.id})"  ng-bind-html="x.content|textSplitFilter">
+    </div>
+    <div class="div_info_bottom">
+        <ul class="create_user_info">
+            <li class="pointer" ui-sref="main.labor.laborFbzxq({id:x.createId})"><img image-404 class="user_img_like" ng-src="{{x.portrait==null||x.portrait==''?'':x.portrait}}"/>{{x.realName}}
+            <div class="renzheng" ng-if="x.laborIsAuthentic==1">&nbsp;</div>
+            </li>
+            <li class="xy_li">信誉：<font class="fenshu">{{x.laborScore|mathCeil}}</font></li>
+        </ul>
+        <ul class="user_operation">
+            <li class="delete pointer" ng-if="x.createFlag==1" ng-click="deleteLabor(x.id)">删除</li>
+            <li class="hasshoucang pointer" ng-if="x.conllectionFlag==1" ng-click="collectionState(x)">取消收藏</li>
+            <li class="noshoucang pointer" ng-if="x.conllectionFlag==0" ng-click="collectionState(x)">收藏</li>
+        </ul>
+    </div>
+
+</div>
+</div>
+
+<div id="goodEmployee" class="goodEmployee" style="display:none;">
+<div class="div_info" ng-repeat="x in bestEmployeeList">
+    <div class="div_info_title">
+        <ul class="create_user_info">
+            <li class="pointer" ui-sref="main.labor.laborFbzxq({id:x.id})"><img image-404 class="user_img_like" ng-src="{{x.portrait==null||x.portrait==''?'':x.portrait}}"/>{{x.enterprise}}&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size:14px;font-weight:normal;">{{x.realName}}</font>
+            <div class="renzheng" ng-if="x.laborIsAuthentic==1">&nbsp;</div>
+            </li>
+            <li class="xy_li">信誉：<font class="fenshu">{{x.laborScore|mathCeil}}</font></li>
+        </ul>
+        <div class="zuobiao">{{x.province==''?'未知':x.province}} {{x.city==''?'未知':x.city}}</div></div>
+    <div class="div_info_content"  ui-sref="main.labor.laborFbzxq({id:x.id})" ng-bind-html="x.baseInfo==null||x.baseInfo==''?'暂无信息':x.baseInfo|textSplitFilter">
+       
+    </div>
+    <div class="div_info_bottom">
+        <ul class="create_user_info">
+            <li class="pointer">{{x.handPhone==''?'暂无联系方式 ':x.handPhone}}</li>
+            <li class="pointer" ui-sref="main.labor.laborFbzxq({id:x.id})"><font class="fenshu">相关评价</font></li>
+        </ul>
+        <ul class="user_operation">
+            <li class="call pointer">&nbsp;</li>
+            <li class="feedback pointer">&nbsp;</li>
+        </ul>
+    </div>
+
+</div>
+
+</div>
+
+<div id="goodGiver" class="goodEmployee" style="display:none;">
+<div class="div_info" ng-repeat="x in bestSupplierList">
+    <div class="div_info_title">
+        <ul class="create_user_info">
+                        <li class="pointer" ui-sref="main.labor.laborFbzxq({id:x.id})"><img image-404 class="user_img_like" ng-src="{{x.portrait==null||x.portrait==''?'':x.portrait}}"/>{{x.enterprise}}&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size:14px;font-weight:normal;">{{x.realName}}</font>
+            <div class="renzheng" ng-if="x.laborIsAuthentic==1">&nbsp;</div>
+            </li>
+            <li class="xy_li">信誉：<font class="fenshu">{{x.laborScore|mathCeil}}</font></li>
+        </ul>
+        <div class="zuobiao">{{x.province==''?'未知':x.province}} {{x.city==''?'未知':x.city}}</div></div>
+    <div class="div_info_content" ui-sref="main.labor.laborFbzxq({id:x.id})" ng-bind-html="x.baseInfo==null||x.baseInfo==''?'暂无信息':x.baseInfo|textSplitFilter">
+        <!--{{x.baseInfo==null||x.baseInfo==''?'暂无信息':x.baseInfo}}
+        <font class="detail pointer" ui-sref="main.labor.laborfbxq({id:x.id})">详情</font>-->
+    </div>
+    <div class="div_info_bottom">
+        <ul class="create_user_info">
+            <li class="pointer">{{x.handPhone==''?'暂无联系方式 ':x.handPhone}}</li>
+            <li ui-sref="main.labor.laborFbzxq({id:x.id})"><font class="fenshu">相关评价</font></li>
+        </ul>
+        <ul class="user_operation">
+            <li class="call pointer">&nbsp;</li>
+            <li class="feedback pointer">&nbsp;</li>
+        </ul>
+    </div>
+
+</div>
+
+</div>
+<info-dialog info-data="infoData" info-sure-click="infoSureClick()"></info-dialog>

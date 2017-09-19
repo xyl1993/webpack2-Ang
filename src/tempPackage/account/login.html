@@ -1,36 +1,37 @@
-<div class="middle-box register">
-    <div class="lg-page-name">
-        <strong>登录</strong>网页端
+<div class="lg_box_main">
+    <div class="lg_page_name">
+        <strong>登录云筑加账号</strong>
     </div>
-    
-    <form class="form-horizontal  w5c-form" id="loginForm" fole="form" name="loginForm" w5c-form-validate="vm.validateOptions">
-        <label class="f-item">
-            <input class="f-text" type="text" name="tel" ng-model="vmModel.loginId" ng-pattern="/^1(3|4|5|7|8)\d{9}$/"  placeholder="请输入手机号码"  required="" />
-            <span class="iconfont icon-shouji"></span>
-        </label> 
-        <label class="f-item"> 
-            <input class="f-text" type="password" name="password" placeholder="请输入密码" ng-model="vmModel.password" required="" /> 
-        	<span class="iconfont icon-mima"></span>
+    <form>
+        <label class="lg_item">
+            <input type="text" class="lg_text" placeholder="请输入用户名" ng-blur="phoneYz()" ng-model="vmModel.loginId"/>
+            <span  class="iconfont icon-geren-copy"></span>
         </label>
-
-        <label class="f-item f-check">
-        	<input type="checkbox" ng-model="vmModel.reme" class="ng-pristine">记住我 
-        </label> 
-        <a class="forget-password" ui-sref="account.forgetPassWord">忘记密码？</a>
-
-        <div class="register-rule"></div>
-        <div class="btn-group">
-            <div class="login-btn" w5c-form-submit="submit()">登录</div> 
-            <span class="or">或</span>
-            <a class="register-btn" ui-sref="account.register">注册一个账号</a>
+        <div class="sj tishi" ng-show="errorShow.phoneShow"><i class="iconfont icon-gantanhao"></i>{{errorShow.phoneError}}</div>
+        <label class="lg_item">
+            <input type="passWord" class="lg_text" placeholder="请输入密码" ng-model="vmModel.password">
+            <span  class="iconfont icon-mima"></span>
+        </label>
+        <div class="mima tishi" ng-show="errorShow.passwordShow"><i class="iconfont icon-gantanhao"></i>{{errorShow.passwordError}}</div>
+        <div class="lg_btn" ng-click="submit()">立即登录</div>
+        <div class="lg_other">
+            <ul>
+                <li>
+                    <div ng-click="tenxunLogin()"><i class="iconfont icon-QQ"></i></div>
+                </li>
+                <li>
+                    <div ng-click="wxLogin()"><i class="iconfont icon-weixin"></i></div>
+                </li>
+                <li>
+                    <div ng-click="weiboLogin()"><i class="iconfont icon-xinlangweibo"></i></div>
+                </li>
+            </ul>
         </div>
-    </form> 
-    <div class="lg-other">
-        <div class="login-other">使用第三方账号登录</div>
-        <ul class="login-other-list">
-            <li class="other-ele"><img src="./img/login_07.png" alt="" id="tenxun_dl" ng-click="tenxunLogin()"></li>
-            <li class="other-ele"><img src="./img/login_12.png" alt="" id="weibo_dl" ng-click="weiboLogin()"></li>
-            <li class="other-ele"><img src="./img/login_14.png" alt="" id="wx_dl" ng-click="wxLogin()"></li>
-        </ul>
-    </div>
+        <div class="passWord_fuwu">
+            <ul>
+                <li ng-click="xzmm()">忘记密码</li>
+                <li ui-sref="password.register">马上注册</li>
+            </ul>
+        </div>
+    </form>
 </div>

@@ -1,38 +1,44 @@
 <div class="team_member">
-	<div class="team_title">团队成员<div class="team_set" ng-click="teamSet()">设置</div></div>
+	<div class="team_title">团队成员
+		<div class="team_set" ng-style="{display:teamDetaillist.createUserId == userData.account.id&&teamDetaillist.createUserId?'block':'none'}" ng-click="teamSet()">设置</div>
+		<div class="team_set" ng-style="{display:teamDetaillist.createUserId != userData.account.id&&teamDetaillist.createUserId?'block':'none'}" ng-click="delFlowTeamMember(userData.account.id,userData.account.loginId)" 
+		>退出团队</div>
+	</div>
 	<div class="team_member_people">
-		<div class="turn_left">
-			<</div>
-				<ul class="member_content">
-					<li ng-repeat="list in teamMemberList">
-						<img ng-src="{{list.portrait|defaultImg:list.userId}}" image-404>
-						<span class="team_member_name text-overflow" ng-bind="list.memberName"></span>
-						<span class="team_member_decription" ng-if="list.ifCreator !== 0">(管理员)</span>
-						<span class="team_member_decription" ng-if="!list.userId">(未注册)</span>
-					</li>
-				</ul>
-				<div class="turn_right">></div>
+		<div class="turn_left" ng-click="turnFun('left')"><</div>
+			<ul class="member_content">
+				<li ng-repeat="list in memberList">
+					<img ng-src="{{list.portrait|defaultImg:list.userId}}" image-404>
+					<span class="team_member_name text-overflow" ng-bind="list.memberName"></span>
+					<span class="team_member_decription" ng-if="list.ifCreator !== 0">(管理员)</span>
+					<span class="team_member_decription" ng-if="!list.userId">(未注册)</span>
+				</li>
+			</ul>
+			<div class="turn_right" ng-click="turnFun('right')">></div>
 		</div>
 	</div>
 	<div class="team_bottom">
+		<div class="team_list">
+			<div class="team_list_title">全部团队</div>
+			<ul class="team_list_content">
+				<li ng-repeat="list in teamList" ng-class="{true:'select',false:''}[teamId==list.id]" ng-click="selMyTeam($index,list)">
+					<span ng-bind="list.name"></span>
+					<span class="team_member_num">{{list.number}}人</span>
+				</li>
+			</ul>
+		</div>
 		<div class="team_message">
 			<div class="team_title">消息中心<span class="team_title_all">全部</span></div>
 			<div ng-class=" {true:'team_message_content no_message',false:'team_message_content'}[messageInfoData.recordCount==0]">
 				<ul>
 					<li ng-class="{true:'no_open',false:'has_open'}[list.readStatus==0]" ng-repeat="list in messageInfoData.list">
-						<div class="message_name text-overflow" ng-bind="list.content"></div>
+						<div class="message_name text-overflow" ng-bind="list.title"></div>
+						<div class="message_text text-overflow" ng-bind="list.content"></div>
 						<div class="message_time">{{list.sendDate| limitTo :10}}</div>
 					</li>
 				</ul>
 			</div>
 		</div>
-		<div class="team_list">
-			<div class="team_list_title">全部团队</div>
-			<ul class="team_list_content">
-				<li ng-repeat="list in teamList" ng-class="{true:'select',false:''}[teamId==list.id]">
-					<span ng-bind="list.name"></span>
-					<span class="team_member_num">8人</span>
-				</li>
-			</ul>
-		</div>
 	</div>
+	<info-dialog info-data="infoData" info-sure-click="infoSureClick()"></info-dialog>
+</div>

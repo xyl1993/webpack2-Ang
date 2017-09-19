@@ -1,0 +1,360 @@
+@import '../../../resources/css/global';
+@import 'compass/css3';
+
+.labor-base-form{
+	width:100%;
+	background: #fff;
+	.form-header{
+		padding: 0 43px;
+	}
+	.form-cointer{
+		padding-top: 64px;
+		padding-bottom: 45px;
+	}
+	.form-title{
+		position: relative;
+		height:55px;
+		border-bottom: 1px solid #ffedc1;
+		text-align: center;
+		line-height: 55px;
+		&:before{
+			position: absolute;   
+			top: 100%;   
+			left:50%;
+			width: 0;   
+			height: 0;   
+			border-top: 8px solid $baseColor;   
+			border-right: 8px solid transparent;   
+			border-left: 8px solid transparent;   
+			content: " ";   
+  			transform:translate(-50%,0);
+		}
+		&:after{
+			position: absolute;   
+			top: 100%;   
+			left:50%;
+			width: 0;   
+			height: 0;   
+			border-top: 8px solid #fff;   
+			border-right: 8px solid transparent;
+			border-left: 8px solid transparent;   
+			content: " ";   
+  			transform:translate(-50%,0);
+		}
+	}
+}
+.labor-form-title{
+	.title-name{
+		color: $baseColor;
+		font-size: 18px;
+	}
+	.title-edit-dyn{
+	    position: absolute;
+    	top: 2px;
+    	right: 0;
+		color: $flowFormEditColor;
+		font-size: 16px;
+		&:focus,&:hover{
+            cursor:pointer;
+		}
+	}
+}
+
+.labor-form-horizontal{
+	position: relative;
+	.form-group{
+		margin-bottom: 22px;
+		&::before,
+		&::after{
+			display: table;
+    		content: " ";
+		}
+		&::after{
+			clear: both;
+		}
+		.control-label{
+			display: block;
+			float:left;
+			padding-right: 25px;
+			width:417px;
+			height: 34px;
+			color: $flowFormLabelColor;
+			text-align: right;
+			font-size: 16px;
+			line-height: 34px;
+			&::after{
+			    clear: both;
+		    }
+		}
+		.fl{
+			float:left;
+			padding-top:34px;
+			width:450px;
+			border-bottom:1px dashed rgb(219,219,219);
+			.fl-label , .tjfl-label{
+				float:left;
+				margin-top:5px;
+				margin-right:15px;
+				margin-bottom:30px;
+				width:120px;
+				height:26px;
+				text-align: center;
+			}
+			.fl-label {
+				background-color:rgb(255,251,242);
+
+				@include border-radius(10px);
+				.fl-name{
+					color:$baseColor;
+					font-size: 16px;
+				}
+				.delete-fl{
+					position:relative;
+					bottom:26px;
+					left:60px;
+					width:12px;
+					height:12px;
+
+					@include border-radius(5px);
+			    }
+			}
+			.tjfl-label{
+				border:1px solid rgb(254,207,84);
+				text-align: center;
+				cursor:pointer;
+
+				@include border-radius(20px);
+                .tjfl-name{
+					color:$baseColor;
+					font-size: 16px;
+			    }
+			}
+		}
+		.control-input-dyn{
+			float: left;
+			width: 450px;
+			.custom-select{
+				display:none;
+				padding-left: 17px;
+				height: 32px;
+				border: none;
+				background: none;
+				line-height: 32px;
+			}
+			textarea,input,.chosen-container{
+				padding-left: 17px;
+				width: 100%;
+				border: 1px solid #e5e5e5;
+				color: black;
+
+				@include border-radius(5px);
+				&:hover,
+			    &:focus{
+			    	border: 1px solid $baseColor;
+
+			    	@include box-shadow(0 0 4px 4px #fff5dc);
+			    }
+			}
+			textarea{
+				padding:17px;
+			}
+			textarea::placeholder,input::placeholder{
+				color:#ffe1af;
+                font-size:16px;
+			}
+			input{
+			    padding-right: 34px;
+			    height: 34px;
+			}
+			textarea{
+				height: 150px;
+			}
+			.chosen-container{
+				padding-left: 0;
+				height: 34px;
+				a.chosen-single{
+					padding-left: 17px;
+					height: 32px;
+					border: none;
+					background: none;
+					line-height: 32px;
+				}
+			}
+			&:after{
+				clear: both;
+			}
+			.empty-dyn{
+				margin-bottom: 7px;
+				height: 19px;
+			}
+			.auther-title{
+				position: relative;
+				margin-bottom: 24px;
+				i{
+					position: absolute;
+					top: 1px;
+					display: block;
+					overflow: hidden;
+					width: 20px;
+					height: 20px;
+					border-radius: 50%;
+					background: #feb907;
+					color: #fff;
+					text-align: center;
+					text-indent: 1px;
+					font-style: normal;	
+					font-size: 12px;
+					line-height: 20px;
+				}
+				span{
+					padding-left: 29px;
+					color: #666;
+					font-size: 18px;
+				}
+			}
+			.province , .city{
+				float:left;
+				margin-right:10px;
+				width:160px;
+			}
+            .position-type , .validity-date{
+				width:200px;
+			}
+
+		}
+		
+		.address-checked-dyn{
+   			float: left;
+			margin-right: 10px;
+			width: 160px;
+		}
+		&.form-check-group{
+			margin-top: -10px;
+			margin-bottom: 0;
+		}
+		.auth-ul{
+			li{
+				position: relative;
+				float: left;
+				width: 212px;
+				input[type='file']{
+					position: absolute;
+					top: 29px;
+					left: 0;
+					width: inherit;
+					height: 142px;
+					opacity: 0;
+				}
+				&:first-of-type{
+				    margin-right: 26px;
+				}
+				label{
+    				color: #999;
+					font-size: 16px;
+				}
+				img{
+					padding-top: 7px;
+					width: 212px;
+					height: 148px;
+				}
+			}
+			&:after{
+				display: table;
+				clear: both;
+				content: '';
+			}
+		}
+	}
+	
+	
+	.submit-btn{
+		display: inline-block;
+		margin-top: 53px;
+		padding: 9px 27px;
+		background: #f6b700;
+		color: #fff;
+		font-weight: 700;
+		font-size: 16px;
+		cursor: pointer;
+
+		@include border-radius(5px);
+		@include box-shadow(2px 2px 6px 3px #fdefc6);
+	}
+	.type-sel-dyn{
+		position: relative;
+		float: right;
+		margin-left: 14px;
+		width: 77px;
+		text-align: right;
+		.dln{
+			color:#666633;
+			letter-spacing: 6px;
+			font-size: 18px;
+		}
+		.checkbox-lab{
+			position: absolute;
+			top: 1px;
+			left: 0;
+		}
+		input[type=radio].ace{
+			width: 77px;
+    		height: 18px;
+		}
+	}
+	&.labor-user-form{
+		.form-group{
+			.control-label{
+				width: 338px;
+			}
+			.control-input-dyn{
+				width: 450px;
+			}
+			
+		} 
+	}
+}
+@media (max-width:681px) {
+	.labor-base-form .form-cointer{
+		padding: 10px;
+	}
+	.labor-form-horizontal .form-group .control-label{
+		float: none;
+		width: 100%;
+		padding-right:0;
+		text-align: left;
+	}
+	.labor-form-horizontal .form-group .fl,
+	.labor-form-horizontal .form-group .control-input-dyn,
+	.labor-form-horizontal.labor-user-form .form-group .control-input-dyn{
+		width: 100%;
+	}
+	.labor-form-horizontal .form-group .control-input-dyn .auther-title{
+		margin-bottom: 2px;
+	}
+	.labor-form-horizontal .form-group .auth-ul li img{
+		width: 176px;
+		height: 105px;
+	}
+	.labor-form-horizontal .form-group .control-input-dyn .empty-dyn{
+		margin-bottom: 0;
+		height: 0;
+	}
+	.labor-form-horizontal .form-group{
+		margin-bottom: 0;
+	}
+	.labor-form-horizontal .form-group .address-checked-dyn{
+		width: 130px;
+	}
+	.labor-form-horizontal .form-group .control-label{
+		height: auto;
+	}
+	.labor-form-horizontal.labor-user-form .form-group .control-label{
+		width: 100%;
+	}
+	.labor-form-horizontal .submit-btn{
+		margin-top: 20px;
+		padding: 6px 23px;
+		font-size: 14px;
+		font-weight: 500;
+	}
+}

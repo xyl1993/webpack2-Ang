@@ -17,9 +17,9 @@
                 ARCHITECTURE
             </div>
         </div>
-        <div class="menu-list" ng-repeat="data in menu.jzq" ng-click="menuClick(data.id)">
+        <div  ng-repeat="data in menu.jzq" ng-click="menuClick(data.id)" class="menu-list {{data.class}}">
             <p class="resources-title" ng-bind="data.englishName"></p>
-            <div class="split-line"></div>
+            <div class="split-line "></div>
             <a class="btn resources-menu-btn" ng-bind="data.name">
                 
             </a>
@@ -41,7 +41,7 @@
                 ARCHITECTURE
             </div>
         </div>
-        <div class="menu-list" ng-repeat="data in menu.wbg" ng-click="menuClick(data.id)">
+        <div ng-repeat="data in menu.wbg" ng-click="menuClick(data.id)" class="menu-list {{data.class}}">
             <p class="resources-title" ng-bind="data.englishName"></p>
             <div class="split-line"></div>
             <a class="btn resources-menu-btn" ng-bind="data.name">
@@ -55,3 +55,4 @@
         <div class="clear"></div>
     </div>
 </div>
+<alert-dialog info-data="infoData"></alert-dialog>

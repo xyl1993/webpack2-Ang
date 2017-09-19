@@ -1,27 +1,59 @@
- <div class="middle-box register">
-     <div class="lg-page-name"><strong>注册</strong>网页端</div>
-	 <form class="form-horizontal w5c-form" fole="form" name="regForm" novalidate w5c-form-validate="vm.validateOptions">
-		<label class="f-item">
-			<input class="f-text" type="text" name="tel" placeholder="请输入手机号码" ng-model="telphone" 
-			required  ng-pattern="/1[0-9]{10}/"/>
-			<span class="iconfont icon-shouji"></span>
-		</label>
-		
-		<label class="f-item">
-			<input class="f-text" type="number" name="validCode" placeholder="请输入验证码" ng-model="validCode" required/>
-			<div class="identify-btn " id="btn-send" ng-click="setValid()">{{text}}</div>
-		</label>
-		<label class="f-item"> 
-			<input class="f-text" type="password" placeholder="请输入密码" name="password" ng-model="password" 
-			required ng-pattern="/^[a-zA-Z\d]{6,16}$/"/> 
-			<span class="iconfont icon-mima"></span>
-		</label>
-		<div class="register-rule"></div>
-		<a class="sub-btn btn" w5c-form-submit="confirm();">完成</a>
-		<a class="go-back" ui-sref="account.login">
-			<div><span class="iconfont icon-fanhui"></span>返回登录</div>
-		</a>
-	</form>
- </div>
-
-      
+<div class="res_div">
+    <img src="./img/yunzhujia-logo.png" alt="" class="yunzhujia-logo"/>
+    <div class="res_left">
+        <div class="res_title"><strong>注册新用户</strong></div>
+        <form>
+            <label class="lg_item">
+            <input type="text" class="lg_text" placeholder="请输入手机号码" ng-model="telphone" name="telphone" id="telphone">
+            <span  class="iconfont icon-geren-copy"></span>
+            
+        </label>
+            <div class="sj tishi" ><i class="iconfont icon-gantanhao"></i>{{phoneInfo}}</div>
+            <label class="lg_item">
+                <div class="yzm">
+            <input type="text" class="lg_text" placeholder="请输入验证码" ng-model="validCode" id="validCode">
+            </div>
+            <div class="fsyzm" ng-click="setValid()">{{text}}</div>
+            <div style="clear:both;"></div> 
+        </label>
+            <div class="yzmError tishi" ng-show="yzmShow"><i class="iconfont icon-gantanhao"></i>{{yzmInfo}}</div>
+            <label class="lg_item">
+            <input type="passWord" class="lg_text" placeholder="请设置密码" ng-model="password" ng-keyup="passWordYz()">
+            <span  class="iconfont icon-mima"></span>
+        </label>
+            <div class="mima tishi" ng-show="passWordTiShi"><i class="iconfont icon-gantanhao"></i>{{passWordInfo}}</div>
+            <label class="lg_item">
+            <input type="passWord" class="lg_text" placeholder="请确认密码" ng-model="rePassword" ng-keyup="passWordYz()">
+            <span  class="iconfont icon-mima"></span>
+        </label>
+            <label class="lg_sz">
+            <input type="checkbox" class="yzj_zs" ng-model="ifAgree" id="ifAgree"/>
+            <span>我同意遵守《云主筑加用户协议》</span>
+        </label>
+         <div class="zsError tishi" ng-show="zsTiShi"><i class="iconfont icon-gantanhao"></i>{{zsInfo}}</div> 
+            <div class="zc_btn" ng-dblclick="ifAgree" ng-click="confirm()">立即注册</div>
+        </form>
+    </div>
+    <div class="res_right">
+        <div class="lidl">
+            <div>已有账号，</div>
+            <div class="dl" ui-sref="account.login">立即登录</div>
+        </div>
+        <div class="other">
+            <div class="other_font">其他账号登录</div>
+            <div class="other_zh">
+                <ul>
+                    <li ng-click="tenxunLogin()">
+                        <div><i class="iconfont icon-QQ"></i></div>
+                    </li>
+                    <li ng-click="wxLogin()">
+                        <div><i class="iconfont icon-weixin"></i></div>
+                    </li>
+                    <li ng-click="weiboLogin()">
+                        <div><i class="iconfont icon-xinlangweibo"></i></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

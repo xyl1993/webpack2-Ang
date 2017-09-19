@@ -30,6 +30,15 @@ export default ['$scope','$http','$log','APPBASE','$stateParams','teamServ','$st
         accountServ.findUserByTokenResource($http,APPBASE).then(function(res){
             if(res.data.code === 0){
                 $scope.yunzhujiaUser = res.data.data;
+                $scope.teamModel.flowTeamMemberList.push(
+                {
+                    memberName:$scope.yunzhujiaUser.realName,
+                    portrait:$scope.yunzhujiaUser.portrait,
+                    memberTelphone:$scope.yunzhujiaUser.handPhone,
+                    isRegist:true,
+                    isController:true
+                }
+            );
             }
         })
     }             
@@ -64,7 +73,8 @@ export default ['$scope','$http','$log','APPBASE','$stateParams','teamServ','$st
                     memberName:$scope.addMemberObj.addMember.realName,
                     portrait:portrait,
                     memberTelphone:$scope.addMemberObj.addMember.tel,
-                    isRegist:isRegist
+                    isRegist:isRegist,
+                    isController : false
                 }
             );
             $scope.addMemberObj.addMember = {};
@@ -91,18 +101,20 @@ export default ['$scope','$http','$log','APPBASE','$stateParams','teamServ','$st
             ]
         };          
         angular.forEach($scope.teamModel.flowTeamMemberList,function(data,index,array){
-            ajaxTeamModel.flowTeamMemberList.push(
-                {
-                    memberName:data.memberName,
-                    memberTelphone:data.memberTelphone
-                }
-            )
+            if(!data.isController){
+                ajaxTeamModel.flowTeamMemberList.push(
+                    {
+                        memberName:data.memberName,
+                        memberTelphone:data.memberTelphone
+                    }
+                )
+            }
         })   
         teamServ.createTeam($http,APPBASE,ajaxTeamModel).then(function(res){
             if(res.data.code === 0){
                 $scope.successDialog.status = true;
                 submitStatus = false;
-                sessionStorage.teamId=res.data.data.id;
+                // sessionStorage.teamId=res.data.data.id;
             }
         })
     } 
@@ -110,6 +122,6 @@ export default ['$scope','$http','$log','APPBASE','$stateParams','teamServ','$st
      * 保存成功弹窗的按钮点击事件
      */
     $scope.dialogSureClick = function(){
-        location.href=APPBASE.team_set_url;
+        $state.go('main.workFlow.default');
     }
 }]

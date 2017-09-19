@@ -1,0 +1,19 @@
+<div class="modal show-tip-dialog" id="show-tip-dialog" role="dialog" ng-show="errInfoData.status">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="success-logo-dyn">
+                    <i class="iconfont icon-gantanhao01"></i>
+                </div>
+                <div class="toolip-dyn">
+                    <p class="toolip-text" ng-bind="errInfoData.infoText"></p>
+                </div>
+                <div class="success-btn-dyn">
+                    <div class="btn save-btn" ng-click="dialogReturnClick()" ng-bind-html="errInfoData.btnText">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

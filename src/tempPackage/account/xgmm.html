@@ -3,7 +3,7 @@
 @author by chengy 
 @date 2015年8月4日
 -->
-<div class="middle-box register">
+<!-- <div class="middle-box register">
     <div class="lg-page-name">
         <strong>修改</strong>密码
     </div>
@@ -30,7 +30,40 @@
        
          <a class="sub-btn btn" ng-click="saveData()">提交</a>
      </form>
- </div>
+ </div> -->
 
+ <div class="password-main">
+     <img src="./img/yunzhujia-logo.png" alt="" class="yunzhujia-logo"/>
+    <div class="password-header">
+        找回密码
+    </div>
+    <div class="qrzh-title-bar xgmm-title-bar">
+        <div class="qrzh-title-bar-inner">
+            <div class="title-bar1">
+                确认账号
+            </div>
+            <div class="title-bar2">
+                安全验证
+            </div>
+            <div class="title-bar3 checked">
+                重置密码
+            </div>
+        </div>
+    </div>
+    <div class="xgmm-text">
+        您正在找回的账号是：{{name}}
+    </div>  
+    <div class="sr-input">
+        <input type="password" placeholder="请输入新密码" name="password" ng-change="passwordChange()" ng-model="password" class="sr" maxlength="16"/>
+        <div class="password-warning ts" ng-if="passwordTiShi"><i class="iconfont icon-gantanhao"></i>{{passwordTiShi}}</div>
+    </div>
+    <div class="sr-input">
+        <input type="password" placeholder="确认新密码" name="repeatPassword" ng-change="repeatPasswordChange()" ng-click="firstPasswordValid()" ng-keypress="nextStep($event)" ng-model="repeatPassword" class="sr" maxlength="16"/>
+        <div class="password-warning ts" ng-if="repeatPasswordTiShi"><i class="iconfont icon-gantanhao"></i>{{repeatPasswordTiShi}}{{passwordDisaccordTiShi}}</div>
+    </div>
+    <div class="next">
+        <div class="next-step" ng-click="confirm()">确&nbsp;定</div>
+    </div>
+</div>
 
       

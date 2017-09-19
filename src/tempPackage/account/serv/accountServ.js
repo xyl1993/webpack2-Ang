@@ -40,10 +40,23 @@ export default class {
      * @param {*}  
      * @param {*} APPBASE 
      */
-    sendValidCodeRegist($http,APPBASE){
+    sendValidCodeRegist($http,APPBASE,data){
         return $http({
 			method : 'post',
-			url : APPBASE.base_api_host+'/login/sendValidCodeRegist'
+            url : APPBASE.base_api_host+'/login/sendValidCodeRegist',
+            data:data
+		})
+    }
+    /**
+     * 忘记密码获取验证码
+     * @param {*}  
+     * @param {*} APPBASE 
+     */
+    sendValidCode($http,APPBASE,data){
+        return $http({
+            data:data,
+			method : 'post',
+			url : APPBASE.base_api_host+'/login/sendValidCode'
 		})
     }
     /**
@@ -58,5 +71,49 @@ export default class {
 			url : APPBASE.base_api_host+'/login/userWebRegistResource',
             data:data
 		})
+    }
+    /**
+     * userlogin
+     * @param {*}  
+     * @param {*} APPBASE 
+     * @param {*} data 
+     */
+     userLoginResource($http,APPBASE,data){
+        return $http({
+            data:data,
+			method : 'post',
+			url : APPBASE.base_api_host+'/login/userLoginResource',
+		})
+    }
+    /**
+     * 修改密码
+     * @param {*}  
+     * @param {*} APPBASE 
+     * @param {*} data 
+     */
+     setPassword($http,APPBASE,data){
+        return $http({
+            data:data,
+            method : 'post',
+			url:APPBASE.base_api_host+'/login/setPassword'
+		})
+    }
+    /**
+     * 获取个人信息
+     */
+    personalData($http,APPBASE){
+        return $http.post(APPBASE.base_api_host + '/userInfo/personalData')
+    }
+    /**
+     * 更新个人资料
+     */
+    updateUserInfoResource($http,APPBASE,data){
+        return $http.post(APPBASE.base_api_host + '/userInfo/updateUserInfoResource',data)
+    }
+    /**
+     * 修改密码
+     */
+    updatePassword($http,APPBASE,data){
+        return $http.post(APPBASE.base_api_host + '/account/updatePassword',data)
     }
 }

@@ -1,0 +1,37 @@
+<div class="labor-user-info">
+    <div class="user-detail-dyn">
+        <div class="user-img-dyn">
+            <img ng-src="{{userData.portrait}}" alt="">
+        </div>
+        <div class="user-content-dyn">
+            <div class="user-name">
+                <label ng-bind="userData.realName">
+                </label>
+            </div>
+            <div class="user-company">
+                <label ng-bind="userData.enterprise"></label>
+            </div>
+        </div>
+    </div>
+    <nav class="labor-user-menu" labor-user-nav>
+        <a ui-sref="main.labor.index.userInfo.info" id="nav-xiaoxi">
+            <div class="dyn-icon info">
+                <i class="iconfont icon-xiaoxi"></i>
+            </div>
+            <span>消息通知</span>
+        </a>
+        <a ui-sref="main.labor.index.userInfo.auther" id="nav-ca">
+            <div class="dyn-icon zizhi">
+                <i class="iconfont icon-ai-ca"></i>
+            </div>
+            <span>资质认证</span>
+        </a>
+        <a id="nav-chat">
+            <div class="dyn-icon chat">
+                <i class="iconfont icon-liaotian1"></i>
+            </div>
+            <span>聊天记录</span>
+        </a>
+    </nav>
+</div>
+<div ui-view></div>

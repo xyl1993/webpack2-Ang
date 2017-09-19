@@ -1,0 +1,24 @@
+<div class="modal add-comment-dialog" id="add-comment-dialog" role="diglog" g-show="addCommentData.addCommentStatus">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close" ng-click="closeDialog()"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header" >评论
+            </div>
+             <div class="modal-body">
+                <textarea placeholder="请输入您的评论" ng-model="addCommentData.opinion"></textarea>
+                <div class="xypf" ng-init="type=5"><font>信誉评分</font>
+                    <i ng-click="updateStar(1)" class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[type&gt;=1]"></i>
+                    <i ng-click="updateStar(2)" class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[type&gt;=2]"></i>
+                    <i ng-click="updateStar(3)" class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[type&gt;=3]"></i>
+                    <i ng-click="updateStar(4)" class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[type&gt;=4]"></i>
+                    <i ng-click="updateStar(5)" class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[type&gt;=5]"></i>
+                </div>
+                <div class="success-btn-dyn">
+                    <div class="btn success-btn" ng-click="addCommentSureClick()">
+                        确&nbsp;&nbsp;定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

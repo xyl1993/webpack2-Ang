@@ -1,19 +1,23 @@
 @import "../../../../resources/css/global";
 @import "../../../../resources/css/mixin";
 $bannerHeight:365px;
-.hot-reserous-dyn{
-  height:$bannerHeight;
-}
-.binna-dyn{
-  position: relative;
-  width: 510px;
-  height: inherit;
-  float: left;
-  margin-right: -510px;
-  z-index: 12;
-  img{
-    min-height:$bannerHeight;
-    max-height: $bannerHeight;
+
+@media screen and (max-device-width: 800px){
+    .hot-reserous-dyn {
+        height: 0;
+        margin-bottom: 185px;
+    }
+    .binna-dyn {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 185px;
+    float: left;
+    margin-right: -510px;
+    z-index: 12;
+      img{
+    min-height:100%;
+    max-height: 185px;
     width:100%;
   }
   .nivo-controlNav{
@@ -23,12 +27,15 @@ $bannerHeight:365px;
     z-index: 999;
   }
 }
-
+.nivoSlider{
+  height:100%;
+}
 .hot-reserous-list{
   float: left;
   padding-left:540px;
-  width: 100%;
-  height: inherit;
+  width: 0;
+  height: 0;
+  display: none;
   .child-list{
     width: 100%;
     border-bottom: 1px solid #ccc;
@@ -67,3 +74,86 @@ $bannerHeight:365px;
     padding-top:15px;
   }
 }
+}
+
+@media screen and (min-device-width: 801px){
+    .hot-reserous-dyn{
+    height:$bannerHeight;
+  }
+  .binna-dyn{
+  position: relative;
+  z-index: 12;
+  float: left;
+  margin-right: -510px;
+  width: 510px;
+  height: inherit;
+  img{
+    min-height:$bannerHeight;
+    max-height: $bannerHeight;
+    width:100%;
+  }
+  .nivo-controlNav{
+    position: absolute;
+    right: 0;
+    bottom: -19px;
+    z-index: 999;
+  }
+}
+.nivoSlider{
+  height:auto;
+}
+.hot-reserous-list{
+  float: left;
+  padding-left:540px;
+  width: 100%;
+  height: inherit;
+  .child-list{
+    padding-bottom: 10px;
+
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+  .child-list:last-of-type{
+    border-bottom: none;
+  }
+  .child-list{
+    h3 {
+        color: #3b3b3b;
+
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .content{
+      overflow: hidden;
+      margin-top: 10px;
+      margin-bottom: 6px;
+      height: 44px;
+
+      color: #999;
+      line-height: 21px;
+
+      @include text-line-clamp(2);
+    }
+    i{
+      color: #705330;
+      font-weight: 700;
+      font-style: normal;
+    }
+    time{
+      float: right;
+
+      color: $baseColor;
+    }
+  }
+  .child-list:not(:first-of-type){
+    padding-top:15px;
+  }
+}
+}
+
+
+
+
+
+

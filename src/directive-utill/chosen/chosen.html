@@ -5,8 +5,8 @@
     </a>
     <div class="chosen-drop">
         <ul class="chosen-results">
-            <li class="active-result" ng-click="typeSureClick({type:'leave',data:emptyObj})">--请选择--</li>
-            <li class="active-result" ng-repeat="list in typeList" ng-bind="list.name" ng-click="typeSureClick({type:'leave',data:list})"></li>
+            <li class="active-result" ng-click="typeSureClick({type:type,data:emptyObj})">--请选择--</li>
+            <li class="active-result" ng-repeat="list in typeList" ng-bind="list.name" ng-click="typeSureClick({type:type,data:list})"></li>
         </ul>
     </div>
 </div>

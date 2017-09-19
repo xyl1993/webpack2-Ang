@@ -1,0 +1,363 @@
+<div class="chat_send_div connections_replay">
+    <div class="title_area">
+        <span class="title">有什么新鲜事想告诉大家</span>
+    </div>
+    <div class="text_el_div">
+        <textarea id="sendTextEl" ng-model="dynamicObj.content" auto-textarea></textarea>
+    </div>
+    <div class="send_other">
+        <a class="img" ng-click="uploadImg();">
+            图片
+        </a>
+        <a class="face" id="sendEmoj" data-type="main_emoj_to" ng-click="choseEmoj()">
+            表情
+        </a>
+        <div class="send_btn" ng-click="createDynamic()" ng-class="{true:'btn_disabled',false:''}[senderImgObj.imgList.length==0&&dynamicObj.content=='']">
+            发布
+        </div>
+        <!--上传图片-->
+        <div class="insert_img_dynic" ng-if="senderImgObj.status">
+            <div class="triangle_up one"></div>
+            <div class="triangle_up two"></div>
+            <div class="concat">
+                <div class="layer_pic_list">
+                    <i class="iconfont icon-guanbi" ng-click="closeUpImg()"></i>
+                    <div class="layer_con_tit">
+                        <h1>本地上传</h1>
+                        <h2>
+                            <span class="tit_txt">
+                                共<em ng-bind="senderImgObj.imgList.length"></em>张,还能上传<em ng-bind="9-senderImgObj.imgList.length"></em>张
+                            </span>
+                        </h2>
+                    </div>
+                    <div class="drag_pic_list">
+                        <li class="pic" ng-repeat="list in senderImgObj.imgList">
+                            <div style="background-image:url({{list.url}})">
+
+                            </div>
+                        </li>
+                        <li class="add" ng-if="senderImgObj.imgList.length<9">
+                            <a href="javascript:;">+</a>
+                            <div class="add_div">
+                                <input type="file" class="file" custom-on-change="uploadFile" multiple id="senderImg">
+                            </div>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--上传图片-->
+        <!--表情包-->
+        <div class="face_content_div emojDiv" id="emojDiv" ng-if="emojStatus">
+            <div class="emoj_triangle_up one"></div>
+            <div class="emoj_triangle_up two"></div>
+            <div class="concat">
+                <ul class="clearflx">
+                    <li ng-repeat="face in faceList" ng-click="selEmoj(face)">
+                        <img ng-src="{{face.url}}">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--表情-->
+    </div>
+</div>
+<div class="connections_list_div" ng-repeat="list in allDynamicList track by list.id">
+    <div class="list_info_main">
+        <div ng-if="list.canDel">
+            <i class="iconfont icon-jiantou1" ng-click="listDelFun(list)"></i>
+            <div class="layer_menu_list" ng-if="list.showDel">
+                <ul>
+                    <li ng-click="delDynamc(list,$index)"><a href="javascript:;">删除</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="sender_info">
+            <img ng-src="{{list.userInfo.portrait}}" alt="">
+            <div class="sender_info_text">
+                <p>
+                    <span class="send_user_name" ng-bind="list.userInfo.realName"></span>
+                    <em class="lab" ng-bind="list.userInfo.industry?list.userInfo.industry:'暂无'"></em>
+                </p>
+                <p>
+                    <span class="company_name" ng-bind="list.userInfo.enterprise?list.userInfo.enterprise:'暂未设置'"></span>
+                </p>
+            </div>
+        </div>
+        <div class="sender_content">
+            <div class="content_text" ng-bind-html="list.content | emotionsToHtml">
+            </div>
+            <div class="sender_image_div" ng-if="!list.isShowBigImg && list.rmImgs.length>0">
+                <div class="media_wrap">
+                    <!--定宽度,9张图片378px-->
+                    <ul class="media_a_mn" ng-class="{false:'smill',true:'big'}[list.rmImgs.length===4||list.rmImgs.length===8]">
+                        <li class="bigcursor" ng-repeat="senderImg in list.rmImgs" ng-click="showBigImg(list,$index)">
+                            <img ng-src="{{senderImg.imgUrl}}" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sender_to_big" ng-if="list.isShowBigImg">
+                <div class="sender_tab">
+                    <ul class="clearflx">
+                        <li>
+                            <span class="line" ng-click="cancelBigImg(list)">
+                                <a href="javascript:;">
+                                    <i class="iconfont icon-shouqi"></i>收起
+                                </a>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="line">
+                                <a href="javascript:;">
+                                    <i class="iconfont icon-fangdajing"></i>查看大图
+                                </a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="big_media_view">
+                    <ul class="clearflx big_img_ul">
+                        <img class="big_img" ng-src="{{list.currentImg}}" alt="">
+                        <li class="one" ng-if="list.currentBigImgIndex>0" ng-click="prevBigImg(list)">
+
+                        </li>
+                        <li class="two" ng-click="cancelBigImg(list)">
+
+                        </li>
+                        <li class="three" ng-if="list.currentBigImgIndex<list.rmImgs.length-1" ng-click="nextBigImg(list)">
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="stage_box">
+                    <ul>
+                        <li ng-repeat="smallImg in list.rmImgs" ng-click="tabBigImg(list,$index)">
+                            <a href="javascript:;" ng-class="{true:'active'}[smallImg.active]">
+                                <img ng-src="{{smallImg.imgUrl}}" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sender_list_bottom">
+            <div class="option_div">
+                <a ng-click="laudation(list)" >
+                    <em class="iconfont" ng-class="{true:'icon-zan1',false:'icon-zan2'}[list.laudationStatus==0]"></em>
+                    <span  ng-bind="list.laudationCount"></span> 
+                    <!--ng-click="displayComp(list,1)"-->
+                </a>
+                <a ng-click="displayComp(list,2)" id="pinlun_{{list.id}}">
+                    <em class="iconfont icon-pinlun"></em>{{list.replyCount}}
+                </a>
+                <!--<a>
+                    <em class="iconfont icon-edit"></em>写评论
+                </a>-->
+            </div>
+            <time ng-bind="list.publishTime | dateFilter">
+                
+            </time>
+        </div>
+    </div>
+    <!--currTo:2代表显示留言,1显示赞-->
+    <div class="list_replay_div list_comment_div connections_replay" ng-show="list.currTo == 2">
+        <div class="triangle_up"></div>
+        <div class="first_replay_div" ng-class="{'gload_bottom p_d_10':list.rmReplys.length>0}">
+            <div class="replay_text_div">
+                <img ng-src="{{userData.portrait}}" alt="">
+                <div class="replay_textarea_round">
+                    <textarea auto-textarea ng-model="list.replayContent"></textarea>
+                </div>
+            </div>
+            <div class="send_other">
+                <!--<a class="img">
+                图片
+            </a>-->
+                <a class="face" id="repeatface{{list.id}}" ng-click="replayListEmojClick(list);">
+                表情
+            </a>
+                <div class="send_btn" ng-click="replyNew(list,$event)">
+                    发布
+                </div>
+                <!--表情包-->
+                <div class="face_content_div emojDiv replay_emoj_div" id="repeatEmoj{{list.id}}" ng-if="list.emojStatus">
+                    <div class="emoj_triangle_up replay_emoj one"></div>
+                    <div class="emoj_triangle_up replay_emoj two"></div>
+                    <div class="concat">
+                        <ul class="clearflx">
+                            <li ng-repeat="face in faceList" ng-click="replayListselEmoj(list,face)">
+                                <img ng-src="{{face.url}}">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--表情-->
+            </div>
+        </div>
+        <div class="list_answer_div" ng-if="list.rmReplys.length>0">
+            <div class="triangle_up"></div>
+            <!--评论列表-->
+            <div class="replay_text_div child_replay" ng-repeat="replaylist in list.rmReplys track by replaylist.id">
+                <img ng-src="{{replaylist.replyUser.portrait}}" alt="">
+                <div class="other_comment_div">
+                    <div class="child_replay_div">
+                        <p class="name">
+                            <span class="user" ng-bind-template="{{replaylist.replyUser.realName}}:"></span>
+                            <span class="content" ng-bind-html="replaylist.content | emotionsToHtml"></span>
+                        </p>
+                        <div class="repeat_text_option">
+                            <div class="op_handle">
+                                <ul>
+                                    <!--<li><em class="iconfont icon-zan1"></em>赞</li>-->
+                                    <li ng-click="replyChildComp(replaylist,2)">回复</li>
+                                    <li class="del_li" ng-click="delFirstReplay(list,replaylist,$index)" ng-if="replaylist.canDel">删除</li>
+                                </ul>
+                                <time ng-bind="replaylist.replyTime | dateFilter"></time>
+                            </div>
+                        </div>
+                    </div>
+                    <!--2显示评论-->
+                    <div class="comment_first_repeat" ng-show="replaylist.currTo === 2">
+                        <div class="repeat_triangle_up"></div>
+                        <div class="list_replay_div list_comment_div connections_replay">
+                            <div class="replay_text_div">
+                                <img ng-src="{{userData.portrait}}" alt="">
+                                <div class="replay_textarea_round">
+                                    <textarea auto-textarea ng-model="replaylist.replayContent"></textarea>
+                                </div>
+                            </div>
+                            <div class="send_other">
+                                <!--<a class="img">
+                                    图片
+                                </a>-->
+                                <a class="face" id="toRpelayUserface{{replaylist.id}}" ng-click="toRpelayUserEmojClick(replaylist);">
+                                    表情
+                                </a>
+                                <div class="send_btn" ng-click="replytoRpelayUser(list,replaylist,$event)">
+                                    发布
+                                </div>
+                                <!--表情包-->
+                                <div class="face_content_div emojDiv replay_emoj_div" id="toRpelayUserEmoj{{replaylist.id}}" ng-if="replaylist.emojStatus">
+                                    <div class="emoj_triangle_up replay_emoj one"></div>
+                                    <div class="emoj_triangle_up replay_emoj two"></div>
+                                    <div class="concat">
+                                        <ul class="clearflx">
+                                            <li ng-repeat="face in faceList" ng-click="toRpelayUserselEmoj(replaylist,face)">
+                                                <img ng-src="{{face.url}}">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--表情-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--回复-->
+                    <div class="comment_repeat_list" ng-show="replaylist.rmReplyChild.length>0">
+                        <!--<div class="repeat_triangle_up"></div>-->
+                        <!--回复人列表-->
+                        <div class="list_ul" ng-repeat="replayChildList in replaylist.rmReplyChild | limitTo:3">
+                            <div class="repeat_text">
+                                <a ng-bind="replayChildList.replyUser.realName"></a>
+                                <span ng-if="replayChildList.toReplyUser.id !== replaylist.replyUserId">:回复</span>
+                                <a ng-if="replayChildList.toReplyUser.id !== replaylist.replyUserId" ng-bind-template="@{{replayChildList.toReplyUser.realName}}"></a>                                :
+                                <span class="w_html_rep" ng-bind-html="replayChildList.content | emotionsToHtml"></span>
+                            </div>
+                            <!--对评论图片的处理-->
+                            <div class="repeat_media_box"></div>
+                            <!--对回复图片的处理-->
+                            <!-- 对回复的操作 -->
+                            <div class="repeat_text_option">
+                                <div class="op_handle">
+                                    <ul>
+                                        <!--<li><em class="iconfont icon-zan1"></em>赞</li>-->
+                                        <li ng-click="replyChildComp(replayChildList,2)">回复</li>
+                                        <li class="child_del_li" ng-click="delChildReplay(list,replaylist,replayChildList,$index)" ng-if="replayChildList.canDel">删除</li>
+                                    </ul>
+                                    <time ng-bind="replayChildList.replyTime | dateFilter"></time>
+                                </div>
+                                <div class="list_replay_div list_comment_div connections_replay child_replay" ng-show="replayChildList.currTo === 2">
+                                    <div class="triangle_up"></div>
+                                    <div class="replay_text_div">
+                                        <img ng-src="{{userData.portrait}}" alt="">
+                                        <div class="replay_textarea_round">
+                                            <textarea auto-textarea ng-model="replayChildList.replayContent"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="send_other">
+                                        <!--<a class="img">
+                                            图片
+                                        </a>-->
+                                        <a class="face" id="replayChildface{{replayChildList.id}}" ng-click="replayChildEmojClick(replayChildList);">
+                                            表情
+                                        </a>
+                                        <div class="send_btn" ng-click="replytoRpelayChildUser(list,replaylist,replayChildList,$event)">
+                                            发布
+                                        </div>
+                                        <!--表情包-->
+                                        <div class="face_content_div emojDiv replay_emoj_div" id="replayChildEmoj{{replayChildList.id}}" ng-if="replayChildList.emojStatus">
+                                            <div class="emoj_triangle_up replay_emoj one"></div>
+                                            <div class="emoj_triangle_up replay_emoj two"></div>
+                                            <div class="concat">
+                                                <ul class="clearflx">
+                                                    <li ng-repeat="face in faceList" ng-click="replayChildEmoj(replayChildList,face)">
+                                                        <img ng-src="{{face.url}}">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!--表情-->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 对评论的操作 -->
+                        </div>
+                        <div class="list_ul" ng-if="replaylist.rmReplyChildCount>3" ui-sref="main.connections.detail({id:list.id})">
+                            <div class="repeat_text">
+                                <a href="javascript:;" ng-bind-template="共{{replaylist.rmReplyChildCount}}条回复"></a>
+                            </div>
+                        </div>
+                        <!--回复人列表-->
+                    </div>
+                    <!--回复-->
+                </div>
+            </div>
+            <!--评论列表-->
+            <div class="load_more_div" ng-if="list.rmReplayRecordCount>8" ui-sref="main.connections.detail({id:list.id})">
+                <span>查看更多<i class="iconfont icon-jiantou"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <!--点赞列表-->
+    <div class="list_replay_div list_surpot_div" ng-show="list.currTo == 1 && list.rmLaudations.length>0">
+        <div class="triangle_up"></div>
+        <ul class="replay_surpot_ul">
+            <li ng-repeat="laudatList in list.rmLaudations">
+                <a href="javascript:;">
+                    <img ng-src="{{laudatList.laudationUser.portrait}}" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--点赞列表-->
+    <div class="con_loading_div" ng-if="list.loadReplay">
+        <p>
+            <i class="con_loading"></i>正在加载中，请稍候...
+        </p>
+    </div>
+</div>
+<div class="con_loading_div" ng-if="loadingStatus">
+    <p>
+        <i class="con_loading"></i>正在加载中，请稍候...
+    </p>
+</div>
+<div class="con_nomore_div" ng-if="noDynamic">
+    <p>
+        <i class="iconfont icon-tishi"></i>已读完所有动态
+    </p>
+</div>
+<side-tool load-more-dynmic="loadMoreDynmic()"></side-tool>
+<!--<code-dialog></code-dialog>-->
+<info-dialog info-data="infoData" info-sure-click="infoSureClick()"></info-dialog>

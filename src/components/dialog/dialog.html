@@ -212,6 +212,27 @@
     </div>
 </div>
 <!-- 操作成功弹窗 end  -->
+<!-- 错误信息弹窗 start  -->
+<div class="modal show-tip-dialog" id="show-tip-dialog" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="success-logo-dyn">
+                    <i class="iconfont icon-gantanhao01"></i>
+                </div>
+                <div class="toolip-dyn">
+                    <p class="toolip-text">错误信息</p>
+                </div>
+                <div class="success-btn-dyn">
+                    <div class="btn save-btn">
+                        返&nbsp;&nbsp;回
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 错误信息弹窗 end  -->
 <script>
     $('.close').click(function(){
         $(this).closest('.modal').hide();
@@ -233,5 +254,11 @@
     }
     function showTipDialog(){
         $('.show-tip-dialog').show();
+    }
+     function showTipDialog(){
+          $('.add-comment-dialog').show();
+     }
+    function showTipDialog(){
+        $('.complaint-dialog').show();
     }
 </script>

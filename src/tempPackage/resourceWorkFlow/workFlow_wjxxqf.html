@@ -13,19 +13,19 @@
             <div class="form-group">
                 <label class="control-label">文件名称</label>
                 <div class="control-input-dyn">
-                    <input type="text" placeholder="请填写文件名称（必填）" name="name" ng-model="wjxxqfFormData.name" max="100" required>
+                    <input type="text" placeholder="请填写文件名称（必填）" name="name" ng-model="wjxxqfFormData.name" maxlength="100" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label">审核人</label>
                 <div class="control-input-dyn">
-                    <input type="text" placeholder="请填写审核人（必填）" name="approver" ng-model="wjxxqfFormData.approver" max="100" required>
+                    <input type="text" placeholder="请填写审核人（必填）" name="approver" ng-model="wjxxqfFormData.approver" maxlength="100" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label">相关部门</label>
                 <div class="control-input-dyn">
-                    <input type="text" placeholder="请填写相关部门（必填）" name="department" ng-model="wjxxqfFormData.department" max="255" required>
+                    <input type="text" placeholder="请填写相关部门（必填）" name="department" ng-model="wjxxqfFormData.department" maxlength="255" required>
                 </div>
             </div>
             <div class="form-group">
@@ -34,7 +34,7 @@
                     <ul>
                         <li ng-repeat="list in fileObj.fileList">
                             <div class="file-list-dyn">
-                                <label for="" class="text-overflow file-list" ng-bind="list"></label>
+                                <label for="" class="text-overflow file-list" ng-bind="list.name"></label>
                                 <i class="iconfont icon-guanbi" ng-click="removeFile($index)"></i>
                             </div>
                         </li>
@@ -90,4 +90,5 @@
     <approval approval-data="approvalData" approval-sure-click="approvalSureClick()"></approval>
     <cc-directive cc-data="ccData" cc-sure-click="ccSureClick()"></cc-directive>
     <success-dialog info-text="successDialog.infoText" btn-text="successDialog.btnText" ng-show="successDialog.status" dialog-sure-click="dialogSureClick()"></success-dialog>
+    <error-dialog err-info-data="errorDialog"></error-dialog>
 </div>

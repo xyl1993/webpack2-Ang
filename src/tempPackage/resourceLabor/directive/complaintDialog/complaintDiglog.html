@@ -1,0 +1,34 @@
+<div class="modal complaint-dialog" id="complaint-dialog" role="diglog" g-show="complaintData.complaintStatus">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close" ng-click="closeDialog()"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">请输入投诉原因
+            </div>
+            <div class="control-input-dyn fbxqts">
+                <div class="ts_radio">
+                    <ul class="ts_ul">
+                        <li ng-repeat="list in complaintData.tsList">
+                            <div class="type-sel-dyn pad">
+                                <label class="middle checkbox-lab">
+                            <input class="ace" type="radio" value="{{list.name}}" name="type" ng-model="complaintData.text">
+                            <span class="rbl"></span>
+                        </label>
+                                <span class="tsyy">{{list.name}}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="textarea_div">
+                <textarea placeholder="其他原因" ng-model="complaintData.opinion" ></textarea>
+                </div>
+                <div class="success-btn-dyn">
+                    <div class="btn success-btn" ng-click="complaintSureClick()">
+                        确&nbsp;&nbsp;定
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

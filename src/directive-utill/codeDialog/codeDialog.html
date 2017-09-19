@@ -1,0 +1,14 @@
+<div class="code_dialog">
+    <ul>
+        <li ng-click="toGame();">
+            <div>
+                <i class="iconfont icon-majiang"></i>
+            </div>麻将
+        </li>
+        <li ng-mouseenter="download(1)" ng-mouseleave="download(0)" ng-click="download(2)"><div><i class="iconfont icon-shouji" ng-class="{true:'icon-shouji',false:'icon-xiazai'}[downloadIcon]"></i></div>{{downloadFont}}</li>
+        <li ng-mouseenter="weixin(1)" ng-mouseleave="weixin(0)"><div><i class="iconfont icon-erweima"></i></div>公众号</li>
+    </ul>
+    
+</div>
+<div class="phone_app dialog_div" ng-show="downloadStatus" ><img src="share_load.png"/></div>
+<div class="code_div dialog_div" ng-show="weixinStatus"><img src="share_erwm.png"/></div> 

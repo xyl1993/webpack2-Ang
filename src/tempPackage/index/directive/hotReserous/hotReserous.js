@@ -32,7 +32,6 @@ export default [function(){
             */
             $scope.linkToDetail = function(articleId){
                 window.open(APPBASE.article_detail_url+articleId);
-                console.log(articleId);
             }
         }]
     };

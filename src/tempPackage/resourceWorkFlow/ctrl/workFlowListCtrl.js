@@ -4,7 +4,7 @@ export default ['$scope', '$http', '$state', 'APPBASE', 'workFlowServ',
 
         //菜单对象,默认我的申请,待审批
         //$scope.approvalData = navJson;
-
+        var currentTeam = $scope.currentTeam;
         var teamId = $scope.currentTeam.id;
 
         var pageSize = 10, currentPage = 1;
@@ -16,6 +16,7 @@ export default ['$scope', '$http', '$state', 'APPBASE', 'workFlowServ',
 
         //接收workFlowCtrl广播事件
         $scope.$on('selTeamFun', function (event, data) {
+            currentTeam = data;
             teamId = data.id;
             currentPage = 1;
             selApprovalData = {
@@ -23,12 +24,18 @@ export default ['$scope', '$http', '$state', 'APPBASE', 'workFlowServ',
                 flagDataIndex: 0
             };
             $scope.approvalData = angular.copy(navJson);
+            $scope.approvalData.typeData[0].count = currentTeam.shenQingAgreeCount+currentTeam.shenQingNoagreeCount;
+            $scope.approvalData.typeData[1].count = currentTeam.shenPiCount;
+            $scope.approvalData.typeData[2].count = currentTeam.writeCount;
             selectShenQinFlow();
         });
 
         ; (function () {
             if (typeof (teamId) != "undefined") {
                 $scope.approvalData = angular.copy(navJson);
+                $scope.approvalData.typeData[0].count = currentTeam.shenQingAgreeCount;
+                $scope.approvalData.typeData[1].count = currentTeam.shenPiCount;
+                $scope.approvalData.typeData[2].count = currentTeam.writeCount;
                 selectShenQinFlow();
             }
         }());
@@ -65,7 +72,6 @@ export default ['$scope', '$http', '$state', 'APPBASE', 'workFlowServ',
                 default: break;
             }
             data.select = true;
-            console.log(data)
         }
 
         $scope.tabPage = function (type, current, count) {
@@ -112,7 +118,6 @@ export default ['$scope', '$http', '$state', 'APPBASE', 'workFlowServ',
                 if (res.data.code === 0) {
                     $scope.infoData = res.data.data;
                     $state.go('main.workFlow.list.data');
-                    console.log(res)
                 }
             })
         }

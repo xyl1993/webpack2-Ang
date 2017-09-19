@@ -1,0 +1,223 @@
+@import 'compass/css3';
+@import '../../../resources/css/global';
+.connections_main {
+    position: relative;
+    padding: 20px 0;
+    background-color: #f4f6f7;
+    &:after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+    .wb_frame {
+        display: inline-block;
+        vertical-align: top;
+        word-spacing: normal;
+        letter-spacing: normal;
+    }
+}
+
+.connections_left_dyn {
+    min-height: 1024px;
+    width: 195px;
+}
+
+.connections_kind_div {
+    position: fixed;
+    width: 195px;
+}
+
+.connections_kind {
+    overflow: hidden;
+    overflow-y: auto;
+    padding-left: 17px;
+    .mCSB_inside>.mCSB_container {
+        margin-right: 16px;
+    }
+    li {
+        padding-left: 13px;
+        height: 49px;
+        border-bottom: 1px solid #dde3e7;
+        color: #666;
+        font-size: 16px;
+        line-height: 49px;
+        cursor: pointer;
+    }
+}
+
+.set_icon_div {
+    height: 49px;
+    line-height: 49px;
+    cursor: pointer;
+    >div {
+        position: relative;
+        margin: 0 auto;
+        padding-left: 25px;
+        width: 92px;
+        font-size: 16px;
+    }
+    i {
+        position: absolute;
+        top: 2px;
+        left: 0;
+        color: #feb907;
+        font-size: 18px;
+    }
+}
+
+.connections_right_dyn {
+    display: inline-block;
+    width: 1000px;
+    font-family: "SourceHanSansCN-Regular" !important;
+    .user_main_dyn {
+        position: fixed;
+        z-index: 4;
+        padding: 0 20px;
+        width: 265px;
+    }
+    .info_dyn {
+        padding-top: 40px;
+        padding-bottom: 30px;
+        border: 1px solid #ebeced;
+        background-color: #fff;
+        @include border-radius(5px);
+        &:after {
+            display: table;
+            clear: both;
+            content: '';
+        }
+    }
+    .user_name {
+        padding: 21px 0 50px 0;
+        color: #6699cc;
+        text-align: center;
+        font-weight: 700;
+        font-size: 20px;
+    }
+    .user_portrait {
+        margin: 0 auto;
+        @include border-radius(50%);
+        &.one {
+            width: 140px;
+            height: 140px;
+            border: 2px solid #e6e7ff;
+        }
+        &.two {
+            width: 130px;
+            height: 130px;
+            border: 2px solid #b6b9ff;
+        }
+        &.three {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #6699ff;
+        }
+        &.user_img {
+            overflow: hidden;
+            width: 110px;
+            height: 110px;
+            >img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .my_send_btn {
+        float: right;
+        width: 173px;
+        height: 40px;
+        background: url('../img/my-send-btn.png');
+        cursor: pointer;
+        .img_icon {
+            position: absolute;
+            width: 40px;
+            height: inherit;
+            border-right: 1px solid #6eadff;
+            background: url(../img/img-icon.png) center center no-repeat;
+        }
+        .text {
+            padding-left: 53px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 40px;
+        }
+    }
+}
+
+.connections_list_main {
+    min-height: 1024px;
+    width: 733px;
+}
+
+.phone_set_type {
+    padding:5px 12px 5px 10px;
+    display: none;
+    &:after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+    .button {
+        float: right;
+        margin-left: -64px;
+        padding: 5px 4px;
+        position: relative;
+        background: #ffcc00;
+        color: #fff;
+        z-index: 12;
+    }
+    .con_c {
+        float: right;
+        padding-right: 90px;
+        padding-left: 10px;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+    }
+    span {
+        color: #ffcc00;
+    }
+}
+
+@media (max-width:1199px) {
+    .main_div {
+        width: 100%!important;
+    }
+    .connections_list_main {
+        width: 100%;
+    }
+}
+
+@media (min-width: 682px) and (max-width:1199px) {
+    .connections_left_dyn {
+        float: left;
+        margin-right: -195px;
+    }
+    .connections_right_dyn {
+        float: left;
+        padding-left: 195px;
+        width: 100%;
+        .user_main_dyn {
+            display: none;
+        }
+    }
+}
+
+@media (max-width:681px) {
+    .connections_main {
+        padding-top: 0;
+        .connections_left_dyn {
+            display: none;
+        }
+    }
+    .connections_right_dyn {
+        width: 100%;
+        .user_main_dyn {
+            display: none;
+        }
+    }
+    .phone_set_type{
+        display: block;
+    }
+}

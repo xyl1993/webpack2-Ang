@@ -1,0 +1,36 @@
+<div class="modal tjfl-dialog" id="tjfl-dialog" role="dialog" ng-show="tjflData.tjflStatus">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close" ng-click="closeDialog()"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">
+                <span class="header-label">添加福利标签</span>
+            </div>
+            <div class="modal-body">
+                <ul class="ggbq-list">
+                    <li ng-class="{true : 'ggbq-left' , false : 'ggbq-right'}[$index % 2 == 0]" ng-repeat="list in tjflData.tagList">
+                        <span class="ggbq-name" ng-bind="list.name"></span>
+                        <label class="checkbox">
+                            <input class="ace" type="checkbox" ng-model="list.selStatus" ng-checked="list.selStatus">
+                            <span class="lbl"></span>
+                        </label>
+                    </li>
+                </ul>
+                <ul class="srbq-list">
+                    <li ng-class="{true : 'srbq' , false : 'srbq-right'}[$index !== 2]" ng-repeat="srbq in tjflData.srbqList" ng-click="selectSrbq({index:$index})">
+                        <span class="srbq-name" ng-bind="srbq.text"></span>
+                        <span class="lbl" ng-show="srbq.status"></span>
+                    </li>
+                </ul>
+                <textarea placeholder="请输入标签名称" ng-model="tjflData.zdyTag" maxlength="6"></textarea>
+                <div class="success-btn-dyn">
+                    <div class="btn confirm-btn"  ng-click="tjflSureClick()">
+                        确&nbsp;&nbsp;认
+                    </div>
+                    <div class="btn cancel-btn" ng-click="tjflCancelClick()">
+                        取&nbsp;&nbsp;消
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

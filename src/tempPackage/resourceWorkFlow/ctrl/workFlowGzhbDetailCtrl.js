@@ -4,10 +4,7 @@ export default ['$scope', '$http', '$stateParams', 'APPBASE', 'workFlowServ','$l
     function ($scope, $http, $stateParams, APPBASE, workFlowServ,$log,$state ) {
         
         (function() {
-            
             selectFlowNormalDetail($stateParams.id);
-           
-            
         }());
 
         
@@ -22,14 +19,10 @@ export default ['$scope', '$http', '$stateParams', 'APPBASE', 'workFlowServ','$l
                     gzhbDetail();
                 }     
             })
-            
-            
-           
         }
 
         function gzhbDetail() {
             $scope.detailType = workJson.gzhb;
-            $log.info( $scope.detailType);
             $scope.detailType[0].value = $scope.infoData.startTime
             $scope.detailType[1].value = $scope.infoData.endTime
             $scope.detailType[2].value = $scope.infoData.workComplete

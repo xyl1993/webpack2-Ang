@@ -58,7 +58,7 @@
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.5.0",
+    "webpack": "^3.0.0",
     "webpack-dev-middleware": "^1.10.2",
     "webpack-dev-server": "^1.16.5"
   },
@@ -68,6 +68,7 @@
     "express": "^4.15.2",
     "log4js": "^1.1.1",
     "mysql": "^2.13.0",
+    "node-sass": "^4.5.3",
     "serve-favicon": "^2.4.2"
   }
 }

@@ -28,6 +28,10 @@
 
         @include box-shadow(0 5px 15px rgba(0,0,0,.5));
         @include border-radius(6px);
+        .header-label{
+            color: #705330;
+			font-size: 20px;
+        }
     }
     .modal-header{
         margin: 0 75px;
@@ -84,15 +88,81 @@
         }
         .tjsp-ul{
             position: relative;
-
             overflow: auto;
-            height: 409px;
+            height: 280px;
         }
         .base-li{
             margin: 0 auto;
             padding: 28px 0;
             width: 388px;
             border-bottom: 1px solid #f5f5f5;
+        }
+        .ggbq-list{
+            position: relative;
+            margin-top:20px;
+            width:350px;
+            height:220px;
+            list-style: none;
+            .ggbq-left , .ggbq-right{
+                float:left;
+                margin-right:45px;
+                width:130px;
+                height:25px;
+                .ggbq-name{
+                    float:left;
+                    width:100px;
+                    font-size: 14px;
+                }
+                .checkbox{
+                    float:right;
+                }
+            }
+            .ggbq-right{
+                margin-right:0px;
+                margin-left:45px;
+            }
+        }
+        .srbq-list{
+            position: relative;
+            margin-top:10px;
+            width:350px;
+            height:70px;
+            list-style: none;
+            .srbq , .srbq-right{
+                float:left;
+                margin-top:10px;
+                margin-right:10px;
+                width:110px;
+                height:25px;
+                background-color:rgb(255,251,242);
+                text-align: center;
+                cursor:pointer;
+
+                @include border-radius(5px);
+                .srbq-name{
+                    color:$goldColor;
+                    font-size: 14px;
+                    line-height: 25px;
+                }
+                .lbl::before{
+                    display: inline-block;
+                    margin-right: 1px;
+                    min-width: 16px;
+                    height: 16px;
+                    color: $baseColor;
+                    content: '\e6b8';
+                    vertical-align: middle;
+                    text-align: center;
+                    font-weight: normal;
+                    font-size: 12px;
+                    font-family: iconfont;
+                    line-height: 16px;
+                }
+            }
+            .srbq-right{
+                float:right;
+                margin-right:0px;
+            }
         }
         .toolip-dyn{
             position: relative;
@@ -121,10 +191,10 @@
             }
         }
         .success-btn-dyn{
+            position: relative;
             padding-top:34px;
             padding-bottom: 34px;
             text-align: center;
-            position: relative;
             .btn{
                 display: inline-block;
                 text-align: center;
@@ -139,6 +209,27 @@
                 padding: 8px 48px;
                 background: $goldColor;
                 color: #fff;
+            }
+            .confirm-btn , .cancel-btn{
+                width:110px;
+                height:32px;
+                border:1px solid $goldColor;
+                background: $goldColor;
+                color: #fff;
+                line-height: 32px;
+                &:hover,&:active{
+                    border:1px solid $goldColor;
+                    background: white;
+                    color:$goldColor;
+                }
+            }
+            .confirm-btn{
+                position:relative;
+                right:20px;
+            }
+            .cancel-btn{
+                position:relative;
+                left:20px;
             }
             .save-btn{
                 padding: 7px 48px;
@@ -168,6 +259,36 @@
             .iconfont{
                 color: $goldColor;
                 font-size: 40px;
+            }
+        }
+        .set_like_tag{
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: -20px;
+            width: 350px;
+            &::after{
+                display: table;
+                clear: both;
+                content: '';
+            }
+            li{
+                float: left;
+                margin-bottom: 20px;
+                width: 50%;
+                >div{
+                    position: relative;
+                }
+                i{
+                    position: absolute;
+                    top: 0;
+                    left: 34px;
+                    color: #ffcc00;
+                    font-style: normal;
+                    font-size: 16px;
+                }
+                &:nth-child(2n){
+                    padding-left: 57px;
+                }
             }
         }
     }
@@ -210,6 +331,11 @@
                     background: #f7f7f7;
 
                     @include border-radius(6px);
+                    &:focus,
+                    &:hover{
+                        border: 1px solid #fec533;
+                        color: #ffcc00; 
+                    }
                 }
             }
             .control-label{
@@ -237,9 +363,145 @@
         border: none;
     }
 }
+.add-comment-dialog{
+    z-index:999;
+    textarea{
+       padding-top: 13px;
+        width: 300px;
+        height: 360px;
+        border: none;
+    } 
+}
+.complaint-dialog{
+     z-index:999;
+    textarea{
+       padding-top: 13px;
+        width: 300px;
+        height: 340px;
+        border: none;
+    } 
+     textarea::placeholder{
+        color: $goldColor;
+        font-size: 14px;
+    }
+    .modal-content{
+
+    }
+}
+.xypf{
+    margin-left: -23px;
+    font-size: 15px;
+    font-family: 宋体;
+    
+    & font{
+        padding-right: 15px;
+    }
+    .s1{
+        color: $goldColor;
+        cursor: pointer;
+    }
+    .s2{
+        color: #e6e6e6;
+        cursor: pointer;
+    }
+}
+.tjfl-dialog{
+    z-index:999;
+    textarea{
+        padding-top:20px;
+        width:350px;
+        border: none;
+        text-align: center;
+    }
+    textarea::placeholder{
+        color: #cccccc;
+        font-size: 16px;
+    }
+}
 
 .add-teammember-dialog,.del-teammember-dialog,.dissolved-dialog,.show-tip-dialog{
     .modal-body{
         padding-top: 33px;
+    }
+}
+.ifriend-body{
+    padding:15px 0;
+}
+.fbxqts{
+    color: $goldColor;
+    .ts_radio{
+        margin: 0px auto;
+        width: 400px;
+        height: 100px;
+        text-align: center;
+        .tsyy{
+            padding-left: 8px;
+            font-weight: bold;
+        }
+        .pad{
+            position: relative;
+            //margin-right: 20px;
+            float: left;
+            width: 200px;
+            text-align: left;
+        }
+        .ts_ul li{
+            position: relative;
+            top: 20px;
+            float: left;
+            padding-bottom: 10px;
+        }
+        .ts_ul li:nth-of-type(even) div {
+            .checkbox-lab{
+                  padding-left: 80px;
+            }
+           
+        }
+        
+    }
+}
+.textarea_div{
+    width: 385px;
+    height: 250px;
+    background-color: #fffbf2;
+    text-align: center;
+
+    @include border-radius(5px);
+    & textarea{
+        width: 350px;
+        background-color: transparent;
+    }
+
+}
+@media (max-width:681px) {
+    .modal .modal-body{
+        padding: 0 23px;
+    }
+    .modal .modal-body.like-body{
+        padding: 0 13px;
+    }
+    .modal .modal-header{
+        margin:0;
+        font-size: 18px;
+        height:40px;
+        line-height: 40px;
+    }
+    .add-teammember-dialog .modal-body, .del-teammember-dialog .modal-body, .dissolved-dialog .modal-body, .show-tip-dialog .modal-body{
+        padding-top: 11px;
+    }
+    .modal .modal-body .success-btn-dyn{
+        padding:9px 0;
+    }
+    
+    .modal .modal-body .success-btn-dyn .save-btn,.modal .modal-body .success-btn-dyn .success-btn{
+        padding: 3px 10px;
+    }
+
+    .modal .modal-body .set_like_tag li:nth-child(2n){
+        padding-left: 0;
+    }
+    .modal .modal-body .set_like_tag{
+        width: 270px;
+        margin-bottom: -8px;
     }
 }

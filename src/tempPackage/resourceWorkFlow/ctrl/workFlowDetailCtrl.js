@@ -1,86 +1,36 @@
 import navJson from '../data/approvalData.json';
 import workJson from '../data/detailDate.json';
-export default ['$scope', '$http', '$stateParams', 'APPBASE', 'workFlowServ',
-    function ($scope, $http, $stateParams, APPBASE, workFlowServ) {
+export default ['$scope', '$http', '$stateParams', 'APPBASE', 'workFlowServ', 'accountServ',
+    function ($scope, $http, $stateParams, APPBASE, workFlowServ, accountServ) {
         $scope.approveStatus = 0;
+        $scope.successDialog = {                   //显示成功弹窗
+            status: false,
+            infoText: '审批成功',
+            btnText: '确&nbsp;&nbsp;定'
+        };
         ; (function () {
             $scope.ifType = $stateParams.type;
             searchFlow($stateParams.type, $stateParams.id, $stateParams.workId);
+            let token = sessionStorage.getItem('token');
+            if (token) {
+                accountServ.findUserByTokenResource($http, APPBASE).then(function (res) {
+                    if (res.data.code === 0) {
+                        $scope.currrntUserId = res.data.data.account.id;
+                    }
+                })
+            }
         }());
         function searchFlow(type, id, workId) {
             let data = {
-                id:id
+                id: id
             }
             workFlowServ.searchFlowById($http, APPBASE, data).then(function (res) {
-                //  classification($stateParams.workId);//类别划分
                 if (res.data.code === 0) {
-                    console.log(res)
                     $scope.infoData = res.data.data.formInfo;
                     $scope.flowInfo = res.data.data.flowInfo;
-                    //$scope.flowData = res.data.data.FlowDetailList;
-                    $scope.flowData = [//测试用
-                        {
-                            id: 145,
-                            flowInfoId: 3,
-                            approvePersonId: 9818,
-                            approveSort: 1,
-                            approveTime: "2015/12/12",
-                            approveStatus: 0,
-                            approveRemark: "",
-                            memberName: "张大宝",
-                            approveTimeStr: null
-                        },
-                        {
-                            id: 146,
-                            flowInfoId: 3,
-                            approvePersonId: 12,
-                            approveSort: 2,
-                            approveTime: "2015/12/12",
-                            approveStatus: 1,
-                            approveRemark: "勉强同意",
-                            memberName: "张小宝",
-                            approveTimeStr: null
-                        }
-                    ]
-                    $scope.ccDate = [//测试信息
-                        {
-                            "addTime": "1498526328000",
-                            "id": 988,
-                            "ifCreator": 0,
-                            "memberName": "吴彦祖",
-                            "memberTelphone": "18306296096",
-                            "portrait": "http://d.hiphotos.baidu.com/zhidao/pic/item/a8ec8a13632762d0a4f84343a7ec08fa503dc60c.jpg",
-                            "realName": "吴彦祖",
-                            "status": 0,
-                            "userId": 361,
-                            "workflowTeamId": 546
-                        },
-                        {
-                            "addTime": "1498526328000",
-                            "id": 988,
-                            "ifCreator": 0,
-                            "memberName": "吴彦祖",
-                            "memberTelphone": "18306296096",
-                            "portrait": "http://dimg07.c-ctrip.com/images/100s0b0000005r0k2BB61_R_1024_10000_Q90.jpg",
-                            "realName": "飞车",
-                            "status": 0,
-                            "userId": 361,
-                            "workflowTeamId": 546
-                        },
-                        {
-                            "addTime": "1498526328000",
-                            "id": 988,
-                            "ifCreator": 0,
-                            "memberName": "吴彦祖",
-                            "memberTelphone": "18306296096",
-                            "portrait": "http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201502/20/224743ax99nuujyueunjer.jpg",
-                            "realName": "脸哥",
-                            "status": 0,
-                            "userId": 361,
-                            "workflowTeamId": 546
-                        }
-                    ]
-                    console.log($scope.flowData);
+                    $scope.flowData = res.data.data.FlowDetailList;
+                    $scope.ccDate = res.data.data.writeInfo;
+                    $scope.ccIfShow= $scope.ccDate.length;
                     switch (workId) {
                         case '1':
                             leaveDetail();//请假
@@ -132,7 +82,7 @@ export default ['$scope', '$http', '$stateParams', 'APPBASE', 'workFlowServ',
         }
         function bxDetail() {
             $scope.detailType = angular.copy(workJson.bx);
-            $scope.detailType[0].value = $scope.infoData.typeName
+            $scope.detailType[0].value = $scope.infoData.type
             $scope.detailType[1].value = $scope.infoData.detail
             $scope.detailType[2].value = $scope.infoData.amount
         }
@@ -224,8 +174,16 @@ export default ['$scope', '$http', '$stateParams', 'APPBASE', 'workFlowServ',
             }
             workFlowServ.flowStatus($http, APPBASE, data).then(function (res) {
                 if (res.data.code === 0) {
-
+                    $scope.spSuccessData.spSuccessStatus = false;
+                    $scope.successDialog.status = true;
                 }
             });
+        }
+        /**
+        * 关闭保存成功弹窗
+        */
+        $scope.dialogSureClick = function () {
+            searchFlow($stateParams.type, $stateParams.id, $stateParams.workId);
+            $scope.successDialog.status = false;
         }
     }]

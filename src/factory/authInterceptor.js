@@ -1,6 +1,7 @@
 /**
  * 认证相关
  */
+import { client } from '../js-plug/client';
 export default ['$rootScope','$q','$window','$injector','APPBASE',
     function($rootScope, $q, $window, $injector,APPBASE){
 
@@ -18,11 +19,18 @@ export default ['$rootScope','$q','$window','$injector','APPBASE',
             return config;
         },
         response: function (response) {
+            if(response.data.code === 8010){
+                if(client.system.win || client.system.mac || (client.system.xll && !client.system.android)){
+                    location.href = APPBASE.login_path;
+                }else{
+                    location.href = APPBASE.app_login_path;
+                }
+            }
             return response || $q.when(response);
         },
         responseError: function (rejection) {
             if (rejection && rejection.status === 403) {
-                //location.href = APPBASE.loginPath;
+                // location.href = APPBASE.loginPath;
             } else {
                 alert('服务器异常');
             }

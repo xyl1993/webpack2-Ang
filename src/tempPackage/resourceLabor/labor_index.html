@@ -1,0 +1,28 @@
+<div class="labor_main_info">
+    <div class="mini_labor_menu" ng-click="miniMenuClick()">
+        <i class="iconfont icon-menu"></i>
+    </div>
+    <div class="labor_menu">
+        <nav labor-nav>
+            <a class="pointer" id="navMayBeLike" ui-sref="main.labor.index.laborMaybeLike">
+                <i class="iconfont icon-tuijian" ></i>
+                <span class="name">推&nbsp;荐</span>
+            </a>
+            <a class="pointer" id="navFindPeople" ui-sref="main.labor.index.laborFindPeople">
+                <i class="iconfont icon-zhaoren" ></i>
+                <span class="name">找&nbsp;人</span>
+            </a>
+            <a class="pointer" id="navFindJob" ui-sref="main.labor.index.laborFindJob">
+                <i class="iconfont icon-gongzuonan" ></i>
+                <span class="name">找&nbsp;活</span>
+            </a>
+            <a class="pointer" id="navUserInfo" ui-sref="main.labor.index.userInfo.myFabu">
+                <i class="iconfont icon-geren-copy"></i>
+                <span class="name">我&nbsp;的</span>
+            </a>
+        </nav>
+    </div>
+    <div class="labor-content-right" ui-view>
+        
+    </div>
+</div>

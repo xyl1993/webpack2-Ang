@@ -1,0 +1,7 @@
+<div class="title_div title_font_size">
+    <span class="title_font_color1" ui-sref="main.resources">资&nbsp;&nbsp;源</span>
+    <span class="title_font_color2 iconfont icon-jiantou"></span>
+    <span ng-class="{true: 'title_font_color1', false: 'title_font_color3'}[navText!=false]" ng-click="toDefault()">微办公</span>
+    <span class="title_font_color2 iconfont icon-jiantou" ng-if="navText"></span>
+    <span class="title_font_color3" ng-bind="navText" ng-if="navText"></span>
+</div>

@@ -1,78 +1,81 @@
-
-<div class="workFlow_cointer"> 
+<div class="workFlow_cointer fixed_top_margin">
 	<div class="main_div">
-	<div class="title_div title_font_size">
-		<span class="title_font_color1" ui-sref="main.resources">资&nbsp;&nbsp;源</span><span class="title_font_color2 iconfont icon-jiantou"></span><span class="title_font_color3">微办公</span>
-	</div>
-	<div class="user_team_info">
-		<div class="headimg_div">
-			<img ng-src="{{userData.portaint}}" image-404 class="headimg">
-		</div>
-		<div class="user_info">
-			<div class="user_info_middle">
-				<div class="user_info_name" ng-bind="userData.account.nickName">
+		<div class="view_div">
+			<work-flow-title></work-flow-title>
+			<div class="user_team_info">
+				<div class="headimg_div">
+					<img ng-src="{{userData.portrait}}" class="headimg">
 				</div>
-				<div class="user_info_team">
-				团队：{{currentTeam.name}}
-				</div>
-			</div>
-		</div>
-		<div class="team_info">
-			<div class="team_info_middle">
-			    <div class="team_info_menu_green">
-					<div class="team_info_menu_ico bg_green"></div>
-					<span class="team_menu_font_div" ui-sref="main.workFlow.list.data">工作审批</span>
-			    </div>
-			    <div class="team_info_menu_blue" ui-sref="main.createTeam">
-					<div class="team_info_menu_ico bg_blue"></div>
-					<span class="team_menu_font_div">创建团队</span>
-			    </div>
-			   <div class="team_info_menu_red team_menu_font_div_bg">
-					<div class="team_info_menu_ico bg_red"></div>
-					<span class="team_menu_font_div text-overflow" style="width:74px;" ng-click="" ng-bind="currentTeam.name"></span>
-					<div class="team_list_choose">
-						<ul>
-							<li ng-class="{true: 'select', false: ''}[list.select]" ng-repeat="list in myTeamDataList" 
-								ng-bind="list.name" ng-click="selMyTeam($index,list)">
-								
-							</li>
-						</ul>
+				<div class="user_info">
+					<div class="user_info_middle">
+						<div class="user_info_name" ng-bind="userData.account.nickName">
+						</div>
+						<div class="user_info_team">
+							团队：{{currentTeam.name}}
+						</div>
 					</div>
-			    </div>
+				</div>
+				<div class="team_info">
+					<div class="team_info_middle">
+						<div class="team_info_menu_green">
+							<div class="team_info_menu_ico bg_green"></div>
+							<span class="team_menu_font_div" ui-sref="main.workFlow.list.data">工作审批</span>
+						</div>
+						<div class="team_info_menu_blue" ui-sref="main.createTeam">
+							<div class="team_info_menu_ico bg_blue"></div>
+							<span class="team_menu_font_div">创建团队</span>
+						</div>
+						<div class="team_info_menu_red team_menu_font_div_bg">
+							<div class="team_info_menu_ico bg_red"></div>
+							<span class="team_menu_font_div text-overflow" style="width:74px;"
+							ng-click="" ng-bind="currentTeam.name">
+							</span>
+							<i class="icon-tishi iconfont team_menu_tishi" ng-if="currentTeam.unMessageStatus"></i>
+							<div class="team_list_choose">
+								<ul>
+									<li ng-class="{true: 'select', false: ''}[list.select]" ng-repeat="list in myTeamDataList" ng-click="selMyTeam($index,list)">
+										<span ng-bind="list.name"></span>
+										<i class="iconfont icon-tishi" ng-if="list.shenPiCount>0||list.shenQingAgreeCount>0||list.shenQingNoagreeCount>0||list.writeCount>0"></i>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="user_team_main_info">
-		<div class="workFlow_menu">
-			<ul flow-menu-click>
-				<li class="gzhb" ui-sref="main.workFlow.gzhbList">工作汇报
-				</li>
-				<li class="swsp" ui-sref="main.workFlow.approval">事务审批
-				</li>
-				<li class="why">微会议
-				</li>
-				<li class="wjxxqf" ui-sref="main.workFlow.wjxxqf">文件消息签发
-				</li>
-				<li class="qj" ui-sref="main.workFlow.leave">请假
-				</li>
-				<li class="bx" ui-sref="main.workFlow.bx">报销
-				</li>
-				<li class="cc" ui-sref="main.workFlow.cc">出差
-				</li>
-				<li class="yy" ui-sref="main.workFlow.yy">用印
-				</li>
-				<li class="bgyply" ui-sref="main.workFlow.bgyply">办公用品领用
-				</li>
-				<li class="cgsq" ui-sref="main.workFlow.cgsq">采购申请
-				</li>
-				<li class="zjsq" ui-sref="main.workFlow.zjsq">资金申请
-				</li>
-				<li class="zsjy" ui-sref="main.workFlow.zsjy">证书借用
-				</li>
-			</ul>
-		</div>
-		<div class="wrokFlow_right" ui-view>
-			
+			<div class="user_team_main_info">
+				<div class="workFlow_menu">
+					<ul flow-menu-click>
+						<li class="gzhb" ui-sref="main.workFlow.gzhbList">工作汇报
+						</li>
+						<li class="swsp" ui-sref="main.workFlow.approval">事务审批
+						</li>
+						<li class="why" ui-sref="main.workFlow.meeting">微会议
+						</li>
+						<li class="wjxxqf" ui-sref="main.workFlow.wjxxqf">文件消息签发
+						</li>
+						<li class="qj" ui-sref="main.workFlow.leave">请假
+						</li>
+						<li class="bx" ui-sref="main.workFlow.bx">报销
+						</li>
+						<li class="cc" ui-sref="main.workFlow.cc">出差
+						</li>
+						<li class="yy" ui-sref="main.workFlow.yy">用印
+						</li>
+						<li class="bgyply" ui-sref="main.workFlow.bgyply">办公用品领用
+						</li>
+						<li class="cgsq" ui-sref="main.workFlow.cgsq">采购申请
+						</li>
+						<li class="zjsq" ui-sref="main.workFlow.zjsq">资金申请
+						</li>
+						<li class="zsjy" ui-sref="main.workFlow.zsjy">证书借用
+						</li>
+					</ul>
+				</div>
+				<div class="wrokFlow_right" ui-view>
+
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

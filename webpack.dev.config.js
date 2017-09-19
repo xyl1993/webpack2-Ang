@@ -4,7 +4,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 var ROOT_PATH = path.resolve(__dirname);
 var publicPath = 'http://localhost:3000/';
-const proxyPath = 'http://192.168.60.200:8080/';
+const devProxyPath = 'http://192.168.60.136:3030/';  //192.168.60.200:8080
+const buildProxyPath = 'http://115.159.93.52/';  //192.168.60.200:8080
+//const buildProxyPath = 'http://192.168.60.138:8080/';
 module.exports = {
     entry: {
         vendor: [
@@ -28,7 +30,9 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true, //不跳转
+        disableHostCheck: true,
         port: 3000,
+        host: '0.0.0.0',
         inline: true, //实时刷新
         stats: {
             // colors: true,
@@ -36,29 +40,8 @@ module.exports = {
         },
         proxy: {
             '/platform/*': {
-              target: proxyPath
-            },
-            // '/flow/*': {
-            //   target: proxyPath
-            // },
-            // '/userInfo/*': {
-            //   target: proxyPath
-            // },
-            // '/labor/*': {
-            //   target: proxyPath
-            // },
-            // '/login/userWebLogin': {
-            //   target: proxyPath
-            // },
-            // '/login/findUserByTokenResource': {
-            //   target: proxyPath
-            // },
-            // '/login/loginOut': {
-            //   target: proxyPath
-            // },
-            // '/common/*': {
-            //   target: proxyPath
-            // }
+              target: buildProxyPath    //devProxyPath  //buildProxyPath
+            }
          }
     },
     module: {
@@ -103,10 +86,10 @@ module.exports = {
                 exclude: path.resolve(__dirname, "node_modules"),
                 include: path.resolve(__dirname, 'src')
             }, {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|gif|cur)$/,
                 use: ["url-loader?limit=8192&name=images/[hash:8].[name].[ext]"]
             }, {
-                test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+                test: /\.(woff|woff2|eot|ttf|otf|svg)(\?.*$|$)/,
                 use: ["url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]"]
             }, {
                 test: /\.html$/,
@@ -125,6 +108,7 @@ module.exports = {
         }
     },
     plugins: [
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.LoaderOptionsPlugin({
             options: {
                 context: __dirname,

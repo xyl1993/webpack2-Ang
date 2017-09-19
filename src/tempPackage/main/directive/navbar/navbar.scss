@@ -6,8 +6,46 @@ $headerTopMainHeight: 512px;
 $navLeftTop: 35px;
 $fontColor: #ccc;
 $fontSize:16px;
+
+
+@media screen and (max-device-width: 800px){
+   .app-header{display: none;}
+   .app-header-mobile{display: block;}
+}
+
+@media screen and (min-device-width: 801px){
+   .app-header{display: block;}
+   .app-header-mobile{display: none;}
+}
+
+.header-title{width:100%;height:100%;line-height: 45px;
+    font-size: 16px;text-align: center;vertical-align: middle;
+    color:#ffffff;}
+
 .app-header {
     height: $headerTopMainHeight;
+}
+
+.app-header-mobile{
+    position: relative;
+    padding:0 22px;
+    top:0;
+    width:100%;
+    height:45px;
+    background: -webkit-linear-gradient(left, #f6b700 0%,#f6b700 15%, #ffdf04 50%);
+    background: -o-linear-gradient(right, #f6b700 0%,#f6b700 15%, #ffdf04 50%);
+    background: -moz-linear-gradient(right, #f6b700 0%,#f6b700 15%, #ffdf04 50%);
+    background: linear-gradient(to right, #f6b700 0%,#f6b700 15%, #ffdf04 50%);
+}
+
+.search_mobile{
+    position: absolute;
+    top:11px;
+    right:22px;
+    background: url("images/search.png") no-repeat;
+    background-size: cover;
+    width:25px;
+    height:25px;
 }
 
 .header-top-main {
@@ -108,12 +146,13 @@ $fontSize:16px;
     cursor: pointer;
 }
 .header-user-info {
+    position: relative;
     float: right;
     margin-top: 21px;
     margin-right: 30px;
     min-width: 81px;
     max-width: 113px;
-    height: 45px;
+    height: inherit;
     line-height: 50px;
     cursor: pointer;
     .user-img {
@@ -130,6 +169,49 @@ $fontSize:16px;
     }
     .user-name {
         padding-left: 54px;
+    }
+    .user_set_op{
+        position: absolute;
+        top: 59px;
+        right: -21px;
+        z-index: 999;
+        display: none;
+        width: 120px;
+    }
+    .triangle_up{
+        position: absolute;
+        top: -8px;
+        left: 16px;
+        width: 0;
+        height: 0;
+        border-right: 8px solid transparent;
+        border-bottom: 10px solid #fff;
+        border-left: 8px solid transparent;
+    }
+    .in_user_box{
+        padding: 2px 0px;
+        border: 1px solid #e3e3e3;
+        border-radius: 3px;
+        background: #fff;
+    }
+    .user_item{
+        padding: 0 8px;
+        height: 32px;
+        color: #717172;
+        font-size: 12px;
+        line-height: 32px;
+        i{
+            margin-right: 6px;
+            color: #717172;     
+        }
+        &:hover{
+            background: rgba(0, 0, 0, 0.1);;
+        }
+    }
+    &:hover{
+        .user_set_op{
+            display: block;
+        }
     }
 }
 

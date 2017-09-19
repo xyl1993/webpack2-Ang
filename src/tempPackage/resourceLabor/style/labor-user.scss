@@ -1,0 +1,172 @@
+@import 'compass/css3';
+@import '../../../resources/css/global';
+.labor-user-info{
+    margin-bottom: 20px;
+    padding-left: 76px;
+    width:100%;
+    height: 116px;
+    border: 1px solid #efefef;
+    background: #fff;
+
+    @include border-radius(4px);
+    .user-detail-dyn{
+        position: relative;
+        top: 50%;
+        float: left;
+        width: 443px;
+        height: 80px;
+
+        @include transform(translate(0,-50%));
+    }
+    .user-img-dyn{
+        position: absolute;
+        overflow: hidden;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .user-content-dyn{
+        padding-left: 103px;
+        width: 100%;
+        height: 100%;
+        .user-name,.user-company{
+            height: 40px;
+        }
+        .user-name{
+            padding-top: 9px;
+            font-size: 24px;
+        }
+        .user-company{
+            padding-top: 4px;
+            color: #b2b2b2;
+            font-size: 16px;
+        }
+    }
+    .labor-user-menu{
+        float: left;
+        &:after{
+            clear: both;
+            content: '';
+            display: table;
+        }
+        a{
+            position: relative;
+            float: left;
+            padding-left: 39px;
+            height: inherit;
+            line-height: 116px;
+            cursor: pointer;
+               
+            span{
+                padding-left: 50px;
+                color:#666;
+            }
+            &.active{
+                span{
+                    color: $goldColor;
+                }
+            }
+            &:hover,
+            &:focus{
+                span{
+                    color: $goldColor;
+                }
+            }
+        }
+        .dyn-icon{
+            position: absolute;
+            top: 50%;
+            overflow: hidden;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: #fff;
+            text-align: center;
+            line-height: 36px;
+
+            @include transform(translate(0,-50%));
+            &.info{
+                background: #1bbc9b;
+
+                @include box-shadow(0px 0px 8px 1px rgba(27, 188, 155, 0.51));
+            }
+            &.zizhi{
+                background: #f64747;
+
+                @include box-shadow(0px 0px 8px 1px rgba(246, 71, 71, 0.38));
+            }
+            &.chat{
+                background: #feb907;
+
+                @include box-shadow(0px 0px 8px 1px rgba(254, 185, 7, 0.4));
+            }
+            .icon-xiaoxi{
+                font-size: 18px;
+            }
+        }
+    }
+}
+@media (max-width:681px) {
+
+    .labor-user-info{
+        padding-left:0px;
+        padding-top: 15px;
+    }
+    .labor-user-info .user-detail-dyn{
+        top:0;
+        height: auto;
+        width: 100%;
+        @include transform(translate(0, 0));
+    }
+    .labor-user-info .user-img-dyn{
+        width: 45px;
+        height: 45px;
+        left:10px;
+    }
+    .labor-user-info .user-content-dyn{
+        padding-left: 63px;
+    }
+    .labor-user-info .labor-user-menu{
+        padding-top:12px;
+    }
+    .labor-user-info .labor-user-menu a span{
+        padding-left: 32px;
+    }
+    .labor-user-info .user-content-dyn .user-name, .labor-user-info .user-content-dyn .user-company{
+        height: auto;
+    }
+    .labor-user-info .user-content-dyn .user-name{
+        padding-top: 5px;
+        font-size: 14px;
+    }
+    .labor-user-info .user-content-dyn .user-company{
+        padding-top: 2px;
+        font-size: 12px;
+    }
+    .labor-user-info .labor-user-menu a{
+        height: 30px;
+        padding-left:10px;
+        line-height: 30px;
+    }
+    .labor-user-info .labor-user-menu .dyn-icon{
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+    }
+    .labor-user-info .labor-user-menu .dyn-icon .icon-xiaoxi{
+        font-size: 14px;
+    }
+    .maybeLike ul{
+        padding-left:7px;
+    }
+    .labor_type{
+        height: 33px;
+    }
+    .labor_type .labor_type_element{
+        line-height: 33px;
+    }
+}

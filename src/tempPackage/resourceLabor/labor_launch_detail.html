@@ -1,0 +1,143 @@
+<div class="launch_detail">
+    <div class="launch_header">
+        <div class="launch_title"><label class="title_name">&nbsp;&nbsp;发布详情</label>
+            <div class="title_tousu">
+                <i class="iconfont icon-bianji" ng-click="complaint()">投诉</i>
+            </div>
+        </div>
+    </div>
+    <div class="launch_middle">
+        <div class="company_info_div">
+            <div class="company_info">
+                <div class="company_name">{{fbxqInfo.enterprise}}
+                    <div class="compny_title">
+                        <ul>
+                            <li>
+                                <div class="font_div"><i class="iconfont icon-time"></i>{{fbxqInfo.createTime|date:"yyyy-MM-dd"}}</div>
+                            </li>
+                            <li>
+                                <div class="font_div"><i class="iconfont icon-location"></i>{{fbxqInfo.province}} {{fbxqInfo.city}}</div>
+                            </li>
+                            <li>
+                                <div class="font_div xs" ng-click="collectionState()"><i class="iconfont collection" ng-class="{true:'icon-collection1',false:'icon-collection'}[fbxqInfo.conllectionFlag==0]"></i>
+                                    <font
+                                        ng-if="fbxqInfo.conllectionFlag==0">收藏</font>
+                                        <font ng-if="fbxqInfo.conllectionFlag==1">已收藏</font>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clearBoth"></div>
+                    </div>
+
+                </div>
+
+                <div class="launch_user">
+                    <div class="user_img_div">
+                        <img ng-src="{{fbxqInfo.portrait}}" class="user_img" image-404>
+                        <div class="renzheng">&nbsp;</div>
+                    </div>
+                    <div class="labor_user_info">
+                        <div class="user_name">
+                            <label class="text-overflow" for="">{{fbxqInfo.realName}}</label><img ng-src="{{list.src}}" alt=""
+                                ng-repeat="list in star" class="star">
+                        </div>
+                        <div class="user_phone">
+                            {{fbxqInfo.hand_phone==''?'暂无联系方式 ':fbxqInfo.hand_phone}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="launch_project_div">
+            <div class="launch_project">
+                <div class="project_title">{{fbxqInfo.title}}</div>
+                <div class="project_name">{{fbxqInfo.positionType}}<span class="project_number">/&nbsp;{{fbxqInfo.peopleNum}}&nbsp;人</span></div>
+                <div class="fenxiang"><i class="iconfont icon-share" ng-click="updateShareType()"></i></div>
+                <div class="fenxiang_href" ng-show="shareType">
+                    <div class="shara_div">
+                        <ul>
+                            <li name="laborfbxq+qq" share-component>
+                                <div class="radius_div"><i class="iconfont icon-QQ"></i></div>
+                                <div class="share_name">腾讯QQ</div>
+                            </li>
+                            <li name="laborfbxq+wxpy" share-component>
+                                <div class="radius_div"><i class="iconfont icon-pengyouquan"></i></div>
+                                <div class="share_name">微信朋友圈</div>
+                            </li>
+                            <li name="laborfbxq+sina" share-component>
+                                <div class="radius_div"><i class="iconfont icon-tengxunweibo"></i></div>
+                                <div class="share_name">新浪微博</div>
+                            </li>
+                            <li name="laborfbxq+tx" share-component>
+                                <div class="radius_div"><i class="iconfont icon-xinlangweibo"></i></div>
+                                <div class="share_name">腾讯微博</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project_fuli">
+                    <ul class="fuli_ul">
+                        <li ng-repeat="list in tagList"><div class="bg">{{list}}</div></li>
+                    </ul>
+                    <div class="clearBoth"></div>
+                </div>
+            </div>
+            <div class="launch_demand">
+                <div class="demand_btn">项目需求</div>
+                <div class="demand_content">{{fbxqInfo.content}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="launch_foot">
+        <div class="launch_comment_div">
+            <div class="comment_write" ng-click="addComment()">填写评论</div>
+            <div class="launch_comment_title"><font>累计评价</font>
+            </div>
+            <div class="comment_ilst">      
+                <div class="launch_comment" ng-repeat="list in plList">  
+                                             
+                    <div class="comment_img">
+                        <div class="comment_user">
+                            <img class="user_img" ng-src="{{list.portrait}}" image-404>
+                        </div>
+                    </div>
+                     
+                    <div class="comment_info">
+                        <div class="comment_name">{{list.realName}}
+                            <i class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[list.score&gt;=1]"></i>
+                            <i class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[list.score&gt;=2]"></i>
+                            <i class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[list.score&gt;=3]"></i>
+                            <i class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[list.score&gt;=4]"></i>
+                            <i class="iconfont icon-xing-copy" ng-class="{true:'s1',false:'s2'}[list.score&gt;=5]"></i>
+                        </div>
+                        <div class="comment_del" ng-if="list.commentFlag==1" ng-click="delCommentByid(list.id,$index)"><i class="iconfont icon-del"></i>删除</div>
+                        <div class="comment_time">{{list.createTime|date:"yyyy-MM-dd HH:mm"}} </div>
+                        <div class="comment_content">{{list.content}}
+                        </div>
+                    </div>
+                    <div class="clearBoth"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="more_comment_btn" ng-if="plList.length>0&amp;&amp;currentPage!=pageCount" ng-click="moreComment()">更多评论</div>
+    <add-comment add-comment-data="addCommentData" add-comment-sure-click="addCommentSureClick()" ng-show="addCommentData.addCommentStatus"></add-comment>
+    <complaint-dialog complaint-data="complaintData" complaint-sure-click="complaintSureClick()" ng-show="complaintData.complaintStatus"></complaint-dialog>
+    <success-dialog info-text="successDialog.infoText" btn-text="successDialog.btnText" ng-show="successDialog.status" dialog-sure-click="dialogSureClick()"></success-dialog>
+    <info-dialog info-data="infoData" info-sure-click="infoSureClick()"></info-dialog>
+    <div class="modal dissolved-dialog" id="ifriend-dialog" role="dialog" style="display:none;">+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="close" id="ifriendCloseBtn"><i class="iconfont icon-guanbi"></i></div>
+                <div class="modal-header">
+                    扫描下方二维码分享
+                </div>
+                <div class="ifriend-body">
+                    <div class="text-center" id="friend">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

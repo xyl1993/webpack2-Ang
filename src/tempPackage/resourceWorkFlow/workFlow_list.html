@@ -1,7 +1,9 @@
 <div class="list_menu">
 	<ul>
-		<li ng-class="{true: 'select', false: ''}[list.select]" ng-repeat="list in approvalData.typeData" ng-click="changeWorkFlow($index,list,1)"
-		 ng-bind="list.name"></li>
+		<li ng-class="{true: 'select', false: ''}[list.select]" ng-repeat="list in approvalData.typeData" 
+			ng-click="changeWorkFlow($index,list,1)">
+		    {{list.name}}<i class="icon-tishi iconfont team_menu_tishi ng-scope" ng-if="list.count>0"></i> 
+		</li>
 	</ul>
 </div>
 <div class="list_main">

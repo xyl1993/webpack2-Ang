@@ -1,0 +1,9 @@
+.fixed_top_margin {
+    margin-top: 80px !important;
+}
+
+@media (max-width: 600px) {
+    .fixed_top_margin {
+        margin-top: 0 !important;
+    }
+}

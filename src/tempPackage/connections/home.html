@@ -1,0 +1,78 @@
+<div class="main_div connections_main fixed_top_margin">
+    <div class="connections_left_dyn wb_frame">
+        <ul class="connections_kind_div">
+            <ul class="connections_kind">
+                <li ng-repeat="list in myConnections" finished>
+                    <span ng-bind="list.name"></span>
+                </li>
+            </ul>
+            <div class="set_icon_div" ng-click="setConnection()">
+                <div>
+                    <i class="iconfont icon-shezhi"></i>
+                    设置偏好
+                </div>
+            </div>
+        </ul>
+    </div>
+    <div class="connections_right_dyn">
+        <div class="phone_set_type">
+            <div class="button" ng-click="setConnection()">设置偏好</div>
+            <div class="con_c text-overflow">所在工作圈: <span ng-bind="myConnectionsStr"></span></div>
+        </div>
+        <div class="connections_list_main wb_frame" ui-view>
+            
+        </div>
+        <div class="wb_frame">
+            <div class="user_main_dyn">
+                <div class="info_dyn">
+                    <div class="user_portrait one align-items-center">
+                        <div class="user_portrait two align-items-center">
+                            <div class="user_portrait three align-items-center">
+                                <div class="user_portrait user_img align-items-center">
+                                    <img ng-src="{{userData.portrait}}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="user_name" ng-bind="userData.account.nickName">
+                    </p>
+                    <div class="my_send_btn">
+                        <div class="img_icon">
+                            
+                        </div>
+                        <div class="text">我发布的</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--设置偏好-->
+<div class="modal" role="dialog" ng-show="connectionsDialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="close" ng-click="closeConnectionsDialog()"><i class="iconfont icon-guanbi"></i></div>
+            <div class="modal-header">
+                设置偏好
+            </div>
+            <div class="modal-body like-body">
+               <ul class="set_like_tag">
+                    <li ng-repeat="list in connectionsList">
+                        <div>
+                            <label class="checkbox">
+                                <input class="ace ng-pristine ng-untouched ng-valid ng-empty" type="checkbox" ng-model="list.selStatus" ng-checked="list.selStatus">
+                                <span class="lbl"></span>
+                            </label>
+                            <i ng-bind="list.name"></i>
+                        </div>
+                    </li>
+               </ul>
+                <div class="success-btn-dyn">
+                    <div class="btn save-btn" ng-click="newRmq()">
+                        保存
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

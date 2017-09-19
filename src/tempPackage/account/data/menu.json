@@ -1,0 +1,32 @@
+{
+    "data":[
+        {
+            "id":0,
+            "name":"资讯",
+            "active":false,
+            "sref":"main.index"
+
+        },
+        {
+            "id":1,
+            "name":"资源",
+            "active":false,
+            "sref":"main.resources"
+
+        },
+        {
+            "id":2,
+            "name":"社交圈",
+            "active":false,
+            "sref":"main.index"
+
+        },
+        {
+            "id":3,
+            "name":"智建云",
+            "active":false,
+            "sref":"main.index"
+
+        }
+    ]
+}

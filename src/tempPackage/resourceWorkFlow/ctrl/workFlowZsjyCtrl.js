@@ -71,15 +71,30 @@ export default ['$scope', '$state','$http', 'APPBASE', '$compile', 'workFlowServ
             let file = event.target.files;
             if(!file) return;
             let fileName = file[0].name;
-            if(fileName == $scope.fileObj.fileList[0] || fileName == $scope.fileObj.fileList[1]){
-                   alert("请不要重复上传文件");
-                   return;
+            switch ($scope.fileObj.fileList.length){
+                case 1:
+                    if(fileName == $scope.fileObj.fileList[0].name){
+                        showErrDialog("请不要重复上传文件");
+                        return;
+                    }
+                break;
+                case 2:
+                    if(fileName == $scope.fileObj.fileList[0].name || fileName == $scope.fileObj.fileList[1].name){
+                        showErrDialog("请不要重复上传文件");
+                        return;
+                    }
+                break;
             }
+            
             let formData = new FormData();
             formData.append("file", file[0]);
             workFlowServ.uploadFile($http,APPBASE,formData).then(function(res){
                 if(res.data.code === 0){
-                    $scope.fileObj.fileList.push(fileName);
+                    let file_path = res.data.data;
+                    $scope.fileObj.fileList.push({
+                        name:fileName,
+                        path:file_path
+                    })
                     if($scope.fileObj.fileList.length===3){
                         $scope.fileObj.btnStatus = false;
                     }
@@ -117,12 +132,14 @@ export default ['$scope', '$state','$http', 'APPBASE', '$compile', 'workFlowServ
          * 确定选择审批人
          */
         $scope.approvalSureClick = function(){
-            let selIndex = $scope.approvalData.selIndex,
-                selObj = $scope.approvalData.approvalList[selIndex];
-            $scope.approvalList.push(selObj);
+            if($scope.approvalData.approvalList.length>0){
+                let selIndex = $scope.approvalData.selIndex,
+                    selObj = $scope.approvalData.approvalList[selIndex];
+                $scope.approvalList.push(selObj);
+                $scope.approvalData.approvalList.splice(selIndex,1);
+                $scope.approvalData.selIndex = 0;
+            }
             $scope.approvalData.approvalStatus = false;
-            $scope.approvalData.approvalList.splice(selIndex,1);
-            $scope.approvalData.selIndex = 0;
         }
         /**
          * 确定选择抄送人
@@ -154,20 +171,20 @@ export default ['$scope', '$state','$http', 'APPBASE', '$compile', 'workFlowServ
             //循环审核人
             angular.forEach($scope.approvalList,function(data,index,array){
                 let flowData = {
-                    approvePersonId:data.id,
+                    approvePersonId:data.userId,
                     approveSort:index+1
                 }
                 formData.flowDetailList.push(flowData);
             })
             if(formData.flowDetailList.length===0){
-                alert('请选择审核人')
+                showErrDialog('请选择审核人')
                 return;
             }
             //循环抄送人
             angular.forEach($scope.ccData.ccList,function(data,index,array){
                 if(data.selStatus){
                     let ccData = {
-                        writePersonId:data.id,
+                        writePersonId:data.userId,
                     }
                     formData.flowWriteList.push(ccData);
                 }
@@ -175,17 +192,19 @@ export default ['$scope', '$state','$http', 'APPBASE', '$compile', 'workFlowServ
             //循环文件对象
             angular.forEach($scope.fileObj.fileList,function(data,index,array){
                 switch (index){
-                    case 0 : formData.fileUrlOne = data;
+                    case 0 : formData.fileUrlOne = data.path;
                         break;
-                    case 1 : formData.fileUrlTwo = data;
+                    case 1 : formData.fileUrlTwo = data.path;
                         break;
-                    case 2 : formData.fileUrlThree = data;
+                    case 2 : formData.fileUrlThree = data.path;
                         break;
                 }
             })
             workFlowServ.saveFormZsjy($http,APPBASE,formData).then(function(res){
                 if(res.data.code === 0){
                     $scope.successDialog.status = true;
+                } else if(res.data.code === 9001){
+                    showErrDialog('系统错误');
                 }
             })
         }
@@ -201,5 +220,16 @@ export default ['$scope', '$state','$http', 'APPBASE', '$compile', 'workFlowServ
          */
         $scope.cancel = function(){
             $state.reload('main.workFlow.zsjy');
+        }
+
+        /**
+         * 错误提示
+         */
+        function showErrDialog(text){
+            $scope.errorDialog = {
+                infoText:text,
+                btnText:'返&nbsp;&nbsp;回',
+                status:true
+            }
         }
     }]

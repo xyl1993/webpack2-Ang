@@ -38,225 +38,225 @@
   			transform:translate(-50%,0);
 		}
 	}
-}
-.form-title{
-	.title-name{
-		color: $baseColor;
-		font-size: 18px;
-	}
-	.title-edit-dyn{
-	    position: absolute;
-    	top: 2px;
-    	right: 0;
-		color: $flowFormEditColor;
-		font-size: 16px;
-		&:focus,&:hover{
-            cursor:pointer;
+	.form-title{
+		.title-name{
+			color: $baseColor;
+			font-size: 18px;
 		}
-	}
-}
-.form-cointer{
-	padding-top: 64px;
-	padding-bottom: 45px;
-}
-.form-horizontal{
-	position: relative;
-	.form-group{
-		margin-bottom: 22px;
-		&::before,
-		&::after{
-			display: table;
-    		content: " ";
-		}
-		&::after{
-			clear: both;
-		}
-		.control-label{
-			display: block;
-			float: left;
-			padding-right: 25px;
-			width:318px;
-			height: 34px;
-			color: $flowFormLabelColor;
-			text-align: right;
+		.title-edit-dyn{
+			position: absolute;
+			top: 2px;
+			right: 0;
+			color: $flowFormEditColor;
 			font-size: 16px;
-			line-height: 34px;
-			span.remark{
-				position: absolute;
-				color:#feb907;
+			&:focus,&:hover{
+				cursor:pointer;
 			}
 		}
-		.control-input-dyn{
-			float: left;
-			width: 682px;
-			.custom-select{
-				display:none;
-				padding-left: 17px;
-				height: 32px;
-				border: none;
-				background: none;
-				line-height: 32px;
+	}
+	.form-cointer{
+		padding-top: 64px;
+		padding-bottom: 45px;
+	}
+	.form-horizontal{
+		position: relative;
+		.form-group{
+			margin-bottom: 22px;
+			&::before,
+			&::after{
+				display: table;
+				content: " ";
 			}
-			textarea,input,.chosen-container{
-				padding-left: 17px;
-				width: 452px;
-				border: 1px solid #e5e5e5;
-				color: black;
-
-				@include border-radius(5px);
-				&:hover,
-			    &:focus{
-			    	border: 1px solid $baseColor;
-
-			    	@include box-shadow(0 0 4px 4px #fff5dc);
-			    }
+			&::after{
+				clear: both;
 			}
-			textarea{
-				padding:17px;
-			}
-			textarea::placeholder,input::placeholder{
-				color:#ffe1af;
-                font-size:16px;
-			}
-			input{
-			    padding-right: 34px;
-			    height: 34px;
-			}
-			.chosen-container{
-				padding-left: 0;
+			.control-label{
+				display: block;
+				float: left;
+				padding-right: 25px;
+				width:318px;
 				height: 34px;
-				a.chosen-single{
+				color: $flowFormLabelColor;
+				text-align: right;
+				font-size: 16px;
+				line-height: 34px;
+				span.remark{
+					position: absolute;
+					color:#feb907;
+				}
+			}
+			.control-input-dyn{
+				float: left;
+				width: 452px;
+				.custom-select{
+					display:none;
 					padding-left: 17px;
 					height: 32px;
 					border: none;
 					background: none;
 					line-height: 32px;
 				}
-			}
-			textarea{
-				height: 150px;
-			}
-			.file-list-dyn{
-				position: relative;
-				width: 170px;
-				height: 30px;
-				line-height: 30px;
-				.file-list{
-					display: block;
-					padding-right: 19px;
-					width: initial;
-				}
-				.icon-guanbi{
-					position: absolute;
-					top: 0;
-					right: 0;
-					cursor: pointer;
-				}
-			}
-			.upload-btn{
-				position: relative;
-				display: inline;
-				padding:6px;
-				border-radius: 5px;
-				background-color: #449d44;
-				color: #fff;
-				text-align: center;
-				line-height: 30px;
-				cursor: pointer;
-				
-				input[type="file"]{
-					position: absolute;
-					top: 1px;
-					left: 0px;
-					width: 67px;
-					height: 31px;
-					opacity: 0;
-				}
-				.icon-shangchuan{
-					font-size: 23px;
-				}
-			}
-			&:after{
-				clear: both;
-			}
-			.info-dyn{
-				padding-left: 15px;
-				color: $flowFormEditColor;
-			}
-			.icon-rili{
-				top: 4px;
-				color:#705330;
-				font-size: 24px;
-			}
-			.icon-accessory{
-			    top: 60px;
-			    color: #ccc;
-			    font-size: 44px;
-			}
-		}
-		.control-list{
-			float:left;
-			margin-left:318px;
-			width:450px;
-			border-bottom:1px dashed rgb(219,219,219);
-			.person{
-				float:left;
-				width:95px;
-				height:inherit;
-				line-height: 120px;
-				.person-content{
-					position:relative;
-					width:85px;
-					height:100px;
-					background: url('../img/arrow.png') 100% 50% no-repeat;
-					.person-portrait{
-						position:relative;
-						top:12px;
-					    width:58px;
-						height:58px;
+				textarea,input,.chosen-container{
+					padding-left: 17px;
+					width: 100%;
+					border: 1px solid #e5e5e5;
+					color: black;
 
-						@include border-radius(10px);
+					@include border-radius(5px);
+					&:hover,
+					&:focus{
+						border: 1px solid $baseColor;
+
+						@include box-shadow(0 0 4px 4px #fff5dc);
 					}
-					.delete-person{
-						position:relative;
-						right:12px;					
-						bottom:40px;
-						width:16px;
-						height:16px;
-					}	
-					.person-name{
-						position:absolute;
-						top:80px;
-						width:58px;
-						text-align: center;
-                        font-size: 12px;
-						line-height: 20px;
-					}		
 				}
-				.person-content-cc{
-					background:none;
+				textarea{
+					padding:17px;
+				}
+				textarea::placeholder,input::placeholder{
+					color:#ffe1af;
+					font-size:16px;
+				}
+				input{
+					padding-right: 34px;
+					height: 34px;
+				}
+				.chosen-container{
+					padding-left: 0;
+					height: 34px;
+					a.chosen-single{
+						padding-left: 17px;
+						height: 32px;
+						border: none;
+						background: none;
+						line-height: 32px;
+					}
+				}
+				textarea{
+					height: 150px;
+				}
+				.file-list-dyn{
+					position: relative;
+					width: 170px;
+					height: 30px;
+					line-height: 30px;
+					.file-list{
+						display: block;
+						padding-right: 19px;
+						width: initial;
+					}
+					.icon-guanbi{
+						position: absolute;
+						top: 0;
+						right: 0;
+						cursor: pointer;
+					}
+				}
+				.upload-btn{
+					position: relative;
+					display: inline;
+					padding:6px;
+					border-radius: 5px;
+					background-color: #449d44;
+					color: #fff;
+					text-align: center;
+					line-height: 30px;
+					cursor: pointer;
+					
+					input[type="file"]{
+						position: absolute;
+						top: 1px;
+						left: 0px;
+						width: 67px;
+						height: 31px;
+						opacity: 0;
+					}
+					.icon-shangchuan{
+						font-size: 23px;
+					}
+				}
+				&:after{
+					clear: both;
+				}
+				.info-dyn{
+					padding-left: 15px;
+					color: $flowFormEditColor;
+				}
+				.icon-rili{
+					top: 4px;
+					color:#705330;
+					font-size: 24px;
+				}
+				.icon-accessory{
+					top: 60px;
+					color: #ccc;
+					font-size: 44px;
 				}
 			}
-			.last-person{
+			.control-list{
 				float:left;
-				padding-top:15px;
-				width:95px;
-				height:inherit;
-				line-height: 120px;
+				margin-left:318px;
+				width:450px;
+				border-bottom:1px dashed rgb(219,219,219);
+				.person{
+					float:left;
+					width:95px;
+					height:inherit;
+					line-height: 120px;
+					.person-content{
+						position:relative;
+						width:85px;
+						height:100px;
+						background: url('../img/arrow.png') 100% 50% no-repeat;
+						.person-portrait{
+							position:relative;
+							top:12px;
+							width:58px;
+							height:58px;
+
+							@include border-radius(10px);
+						}
+						.delete-person{
+							position:relative;
+							right:12px;					
+							bottom:40px;
+							width:16px;
+							height:16px;
+						}	
+						.person-name{
+							position:absolute;
+							top:80px;
+							width:58px;
+							text-align: center;
+							font-size: 12px;
+							line-height: 20px;
+						}		
+					}
+					.person-content-cc{
+						background:none;
+					}
+				}
+				.last-person{
+					float:left;
+					padding-top:15px;
+					width:95px;
+					height:inherit;
+					line-height: 120px;
+				}
 			}
 		}
-	}
-	.submit-btn{
-		display: inline-block;
-		margin-top: 53px;
-		padding: 9px 27px;
-		background: #f6b700;
-		color: #fff;
-		font-weight: 700;
-		font-size: 16px;
-		cursor: pointer;
+		.submit-btn{
+			display: inline-block;
+			margin-top: 53px;
+			padding: 9px 27px;
+			background: #f6b700;
+			color: #fff;
+			font-weight: 700;
+			font-size: 16px;
+			cursor: pointer;
 
-		@include border-radius(5px);
-		@include box-shadow(2px 2px 6px 3px #fdefc6);
+			@include border-radius(5px);
+			@include box-shadow(2px 2px 6px 3px #fdefc6);
+		}
 	}
 }

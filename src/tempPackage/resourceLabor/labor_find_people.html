@@ -1,0 +1,74 @@
+<div class="searchTitle">
+    <div class="search_left">省份： 
+        <select id="province" name="province" ng-model="e" ng-change="selectCity();findPeople();"><option value="">&nbsp;&nbsp;&nbsp;&nbsp;------请选择----&nbsp;&nbsp;&nbsp;</option><option ng-repeat="x in provinceObj" value="{{x.provinceId}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{x.province}}</option></select>
+        &nbsp;&nbsp;&nbsp;&nbsp;城市：<select id="city" ng-model="f" name="city" ng-change="findPeople();"><option value="">&nbsp;&nbsp;&nbsp;&nbsp;------请选择----&nbsp;&nbsp;&nbsp;</option><option ng-repeat="x in citiesObj" value="{{x.cityId}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{x.city}}</option></select>
+    </div>
+    <div class="search_right">工种类型：
+        <select id="workType" ng-model="g" name="workType" ng-change="findPeople();"><option value="">&nbsp;&nbsp;&nbsp;&nbsp;------请选择----&nbsp;&nbsp;&nbsp;</option><option ng-repeat="x in workTypeObj" value="{{x.id}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{x.name}}</option></select>
+    </div>
+</div>
+<div class="searchTitle searchTitle_line_two">
+    <input type="text" id="title" class="search_input" ng-model="h" placeholder="请输入标题进行搜索" ng-change="findPeople();"/>
+    <button class="btn_search search_right" ui-sref="main.labor.laborYgfb">发布用工</button>
+</div>
+<div id="canMaybeLike" class="canMaybeLike">
+<div class="div_info" ng-repeat="x in findPeopleList">
+
+    <div class="div_info_title"><div class="qiye">{{x.title}}&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size:14px;font-weight:normal;">{{x.enterprise}}</font><div class="zuobiao">{{x.province}} {{x.city}}</div></div></div>
+    <div class="div_info_content" ui-sref="main.labor.laborfbxq({id:x.id})" ng-bind-html="x.content|textSplitFilter">
+        <!--{{x.content}}
+        <font class="detail pointer" ui-sref="main.labor.laborfbxq({id:x.id})">详情</font>-->
+    </div>
+    <div class="div_info_bottom">
+        <ul class="create_user_info">
+            <li class="pointer" ui-sref="main.labor.laborFbzxq({id:x.createUserId})">
+                <img image-404 class="user_img_like"  ng-src="{{x.portrait==null||x.portrait==''?'':x.portrait}}"/>{{x.realName}}
+                <div class="renzheng" ng-if="x.laborIsAuthentic==1">&nbsp;</div>
+            </li>
+            <li>信誉：<font class="fenshu">{{x.laborScore|mathCeil}}</font></li>
+        </ul>
+        <ul class="user_operation">
+            <li class="delete pointer" ng-if="x.createFlag==1" ng-click="deleteLabor(x.id)">删除</li>
+            <li class="hasshoucang pointer" ng-if="x.conllectionFlag==1"ng-click="collectionState(x)">取消收藏</li>
+            <li class="noshoucang pointer" ng-if="x.conllectionFlag==0" ng-click="collectionState(x)">收藏</li>
+        </ul>
+    </div>
+
+    <!-- <div class="div_info_title"><div class="qiye">中南世纪城<div class="zuobiao">江苏 南通</div></div></div>
+    <div class="div_info_content">
+        因公司扩大规模，现招泥瓦工20名，水电工20名，公司包吃住，待遇丰厚有意者请联系因公司扩大规模，现招泥瓦工20名，水电工20名，公司包吃住，待遇丰厚有意者请联系 因公司扩大规模，现招泥瓦工20名，水电工20名，公司包吃住，待遇丰厚有意者请联系
+    </div>
+    <div class="div_info_bottom">
+        <ul class="create_user_info">
+            <li class="pointer"><img class="user_img_like" src="img/headpic.png"/>陈乔恩</li>
+            <li>信誉：<font class="fenshu">5.0</font></li>
+        </ul>
+        <ul class="user_operation">
+            <li class="delete pointer">删除</li>
+            <li class="hasshoucang pointer">收藏</li>
+        </ul>
+    </div> -->
+
+</div>
+<!-- <div class="div_info">
+    <div class="div_info_title"><div class="qiye">中南世纪城<div class="zuobiao">江苏 南通</div></div></div>
+    <div class="div_info_content">
+        因公司扩大规模，现招泥瓦工20名，水电工20名，公司包吃住，待遇丰厚有意者请联系因公司扩大规模，现招泥瓦工20名，水电工20名，公司包吃住，待遇丰厚有意者请联系 因公司扩大规模，现招泥瓦工20名，水电工20名，公司包吃住，待遇丰厚有意者请联系
+    </div>
+    <div class="div_info_bottom">
+        <ul class="create_user_info">
+            <li class="pointer"><img class="user_img_like" src="img/headpic.png"/>陈乔恩</li>
+            <li>信誉：<font class="fenshu">5.0</font></li>
+        </ul>
+        <ul class="user_operation">
+            <li class="delete pointer">删除</li>
+            <li class="noshoucang pointer">收藏</li>
+        </ul>
+    </div>
+
+</div> -->
+<div class="more" ng-if="currentPage < totalPage">
+    <button class="btn_more" ng-click="findPeopleMore()">加载更多</button>
+</div>
+</div>
+<info-dialog info-data="infoData" info-sure-click="infoSureClick()"></info-dialog>

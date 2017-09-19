@@ -1,0 +1,39 @@
+<div class="password-main">
+    <img src="./img/yunzhujia-logo.png" alt="" class="yunzhujia-logo"/>
+    <div class="password-header">
+        找回密码
+    </div>
+    <div class="qrzh-title-bar">
+        <div class="qrzh-title-bar-inner">
+            <div class="title-bar1 checked">
+                确认账号
+            </div>
+            <div class="title-bar2">
+                安全验证
+            </div>
+            <div class="title-bar3">
+                重置密码
+            </div>
+        </div>
+    </div>
+    <div class="sr-input">
+        <input type="text" placeholder="请输入手机号/用户名" class="sr" ng-change="telInputChange()" name="telephone" ng-model="telephone"  maxlength="11"/>
+        <span class="iconfont icon-geren-copy"></span>
+        <div class="telephone-warning ts" ng-if="phoneTiShi"><i class="iconfont icon-gantanhao"></i>{{phoneTiShi}}</div>
+    </div>
+    <div class="yzm-input">
+        <input type="text" placeholder="请输入验证码" class="yzm-sr" maxlength = 4 id="code_input" ng-click="telephoneChange()" ng-change="validcodeChange()" ng-keypress="nextStep($event)" ng-model="validcode"/>
+        <div id="v_container" style="width: 115px;height: 40px;" class="yzm-image"></div>
+    </div>
+    <div class="yzm-yz">
+        <div class="valicode-warning ts" ng-if="!validcodeTiShi">&nbsp;</div>
+        <div class="valicode-warning ts" ng-if="validcodeTiShi"><i class="iconfont icon-gantanhao"></i>{{validcodeTiShi}}</div>
+        <div class="yzm-text" ng-click="changeOne()">换一张</div> 
+    </div>
+    <div class="next ensure-account-next">
+        <div class="next-step" ng-click="next()">下一步</div>
+    </div>
+    <div class="login">
+        <div class="login-text" ng-click="login()">立即登录 >></div>
+    </div>
+</div>

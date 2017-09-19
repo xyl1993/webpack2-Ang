@@ -1,56 +1,53 @@
 <!--项目首页-->
-<div class="app-cointer wrapper {{ctrl.page1Style}}"
-    ng-style="{
-        '-webkit-transition-duration': ctrl.speed + 'ms',
-        '-moz-transition-duration': ctrl.speed + 'ms',
-        '-ms-transition-duration': ctrl.speed + 'ms',
-        '-o-transition-duration': ctrl.speed + 'ms',
-        'transition-duration': ctrl.speed + 'ms'
-    }">
+<div class="app-cointer wrapper fixed_top_margin ">
     <div class="workFlow_cointer">
         <div class="main_div">
-            <div class="title_div title_font_size">
-                <span class="title_font_color1" ui-sref="main.resources">资&nbsp;&nbsp;源</span>
-                <span class="title_font_color2">&gt;</span>
-                <span class="title_font_color3">微办公</span>
-            </div>
-            <div class="flow-base-form ng-scope">
-                <div class="form-header">
-                    <div class="form-title">
-                        <label class="title-name">团队设置</label>
-                    </div>
-                    <div class="team-set-main">
-                        <ul>
-                            <li ng-repeat="list in teamList" id="tel{{list.memberTelphone}}">
-                                <div class="member-list">
-                                    <span class="iconfont icon-guanbi" ng-click="removeMember($index,list)" ng-if="list.ifCreator == 0">
-                                    </span>
-                                    <div class="list-round-dyn">
-                                        <img ng-src="{{list.portrait}}" image-404 alt="">
+            <div class="view_div">
+                <div class="title_div title_font_size">
+                    <span class="title_font_color1" ui-sref="main.resources">资&nbsp;&nbsp;源</span>
+                    <span class="title_font_color2 iconfont icon-jiantou"></span>
+                    <span class="title_font_color1" ui-sref="main.workFlow.default">微办公</span>
+                    <span class="title_font_color2 iconfont icon-jiantou"></span>
+                    <span class="title_font_color3">团队设置</span>
+                </div>
+                <div class="flow-base-form ng-scope">
+                    <div class="form-header">
+                        <div class="form-title">
+                            <label class="title-name">团队设置</label>
+                        </div>
+                        <div class="team-set-main">
+                            <ul>
+                                <li ng-repeat="list in teamList" id="tel{{list.memberTelphone}}">
+                                    <div class="member-list">
+                                        <span class="iconfont icon-guanbi" ng-click="removeMember($index,list)" ng-if="list.ifCreator == 0">
+                                        </span>
+                                        <div class="list-round-dyn">
+                                            <img ng-src="{{list.portrait}}" image-404 alt="">
+                                        </div>
+                                        <p class="name text-overflow" ng-bind="list.memberName">
+                                        
+                                        </p>
+                                        <p class="remark" ng-if="!list.userId">
+                                            (未注册)
+                                        </p>
                                     </div>
-                                    <p class="name text-overflow" ng-bind="list.memberName">
-                                       
-                                    </p>
-                                    <p class="remark" ng-if="!list.userId">
-                                        (未注册)
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="member-list">
-                                    <div class="list-round-dyn add-list-round" ng-click="addTeamMember()">
-                                        <span class="iconfont icon-plus"></span>
+                                </li>
+                                <li>
+                                    <div class="member-list">
+                                        <div class="list-round-dyn add-list-round" ng-click="addTeamMember()">
+                                            <span class="iconfont icon-plus"></span>
+                                        </div>
+                                        <p class="add-text">
+                                            添加成员
+                                        </p>
                                     </div>
-                                    <p class="add-text">
-                                        添加团队
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                        
-                    </div>
-                    <div class="teamset-btn-group text-center">
-                        <div class="submit-btn" ng-click="delFlowTeam()">解散团队</div>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                        <div class="teamset-btn-group text-center">
+                            <div class="submit-btn" ng-click="delFlowTeam()">解散团队</div>
+                        </div>
                     </div>
                 </div>
             </div>

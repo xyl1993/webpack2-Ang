@@ -16,7 +16,7 @@
         <div class="clear"></div>
         <hot-reserous></hot-reserous>
         <ul class="indexres-list-ul">
-            <li ng-repeat="infoList in infoLists track by $index" ng-if="$index>2" class="animated dn-lightspeed" ng-click="linkToDetail(infoList.id)">
+            <li ng-repeat="infoList in infoLists track by infoList.id" ng-if="$index>2" class="animated dn-lightspeed" ng-click="linkToDetail(infoList.id)">
                 <img ng-src="{{infoList.article.cover}}" image-404>
                 <div class="child-list">
                     <h3 class="text-overflow" ng-bind="infoList.article.title">
@@ -25,6 +25,7 @@
                     <div class="content" ng-bind="infoList.article.contentText">
                        
                     </div>
+                    <i class="article-readCount" ng-bind="infoList.article.readCount"></i>
                     <i ng-bind="infoList.infoCategory.name"></i>
                     <time ng-bind="infoList.article.publishTimeStr"></time>
                 </div>
@@ -33,4 +34,5 @@
     </div>
     <pagination></pagination>
     <side-tool></side-tool>
-</div>
+    <code-dialog></code-dialog>
+</div> 

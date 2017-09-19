@@ -1,0 +1,80 @@
+<div class="meeting-seting-dyn">
+    <!-- 列表end -->
+    <div class="content-zanorpl ccic_hy">
+        <li class="item" ng-class="{'active':menuStatus === 'sign'}" data-flag="hy-basc" ng-click="menuClick('sign')">签到用户列表</li>
+        <li class="item" ng-class="{'active':menuStatus === 'wall'}" data-flag="hy-basc" ng-click="menuClick('wall')">上墙信息列表</li>
+        <li class="item" ng-class="{'active':menuStatus === 'prize'}" data-flag="hy-basc" ng-click="menuClick('prize')">抽奖列表</li>
+        <li class="item" ng-class="{'active':menuStatus === 'question'}" data-flag="hy-basc" ng-click="menuClick('question')">问题列表</li>
+    </div>
+    <!-- 签到用户列表 start -->
+    <div id="hy-qdyh" class="hy-list-content" ng-show="menuStatus === 'sign'">
+        <ul class="sign-ul">
+            <li class="hy-yh-list" ng-repeat="sGuest in dataHySignIn">
+                <div class="yh-new-dyn">
+                    <img ng-src="{{sGuest.userInfo.portrait}}"> <span class="hy-yh-name">{{sGuest.userInfo.realName}}</span>
+                </div>
+            </li>
+        </ul>
+        <div class="more" ng-if="sGzxscrollFlag">
+            <button class="btn_more" ng-click="addMoreSignGuest()" >加载更多</button>
+        </div>
+    </div>
+    <!-- 签到用户列表 end -->
+    <!-- 上墙信息列表 start -->
+    <div id="hy-sqxx" class="hy-list-content" ng-show="menuStatus === 'wall'">
+        <div class="on-hy-list" ng-repeat="onWall in dataHyOnWall">
+            <div class="list-img-dyn">
+                <img ng-src="{{onWall.userInfo.portrait}}">
+            </div>
+            <div class="list-right">
+                <p class="name">{{onWall.userInfo.realName}}</p>
+                <time class="hy-question-time">{{onWall.time | date:'yyyy-mm-dd'}}</time>
+                <div class="info-content-hy">
+                    <strong>{{onWall.content}}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="more" ng-if="oWzxscrollFlag">
+            <button class="btn_more" ng-click="addMoreOnWall()" >加载更多</button>
+        </div>
+    </div>
+    <!-- 上墙信息列表 end -->
+    <!-- 抽奖列表 start -->
+    <div id="hy-cjlb" class="hy-list-content" ng-show="menuStatus === 'prize'">
+        <div class="hb-list-dyn" ng-repeat="awardDt in dataHyAWard">
+            <p>
+                <span class="hb-tit">{{awardDt.mmTestimonial.team}}</span><span class="hb-detail-money">(价值￥{{awardDt.mmTestimonial.prize}})</span>
+            </p>
+            <ul>
+                <li class="hy-yh-list">
+                    <div class="yh-new-dyn">
+                        <img ng-src="{{awardDt.userInfo.portrait}}"> <span class="hy-yh-name" title="{{awardDt.userInfo.realName}}">{{awardDt.userInfo.realName}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="more" ng-if="aWzxscrollFlag">
+            <button class="btn_more" ng-click="addMoreAward()" >加载更多</button>
+        </div>
+    </div>
+    <!-- 抽奖列表 end -->
+    <!-- 问题列表 start -->
+    <div id="hy-wtlb" class="hy-list-content" ng-show="menuStatus === 'question'">
+        <div class="on-hy-list" ng-repeat="question in dataHyQuestion">
+            <div class="list-img-dyn">
+                <img ng-src="{{question.userInfo.portrait}}">
+            </div>
+            <div class="list-right">
+                <p class="name">{{question.userInfo.realName}}</p>
+                <time class="hy-question-time">{{question.time | date:'yyyy-mm-dd'}}</time>
+                <div class="info-content-hy">
+                    <strong>{{question.content}}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="more" ng-if="oWzxscrollFlag">
+            <button class="btn_more" ng-click="addMoreOnWall()" >加载更多</button>
+        </div>
+    </div>
+    <!-- 问题列表 end -->
+</div>

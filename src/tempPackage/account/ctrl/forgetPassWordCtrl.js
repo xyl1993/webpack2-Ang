@@ -1,10 +1,17 @@
-export default ['$scope', '$state', '$http', 'APPBASE', '$compile', 'accountServ','$interval',
-    function ($scope, $state, $http, APPBASE, $compile, accountServ,$interval) {
+export default ['$scope', '$state', '$http', 'APPBASE', '$compile', 'accountServ','$interval','$stateParams',
+    function ($scope, $state, $http, APPBASE, $compile, accountServ,$interval , $stateParams) {
 
-    $scope.text="获取验证码";    
+    $scope.telephone = $stateParams.telephone;
+
+    $scope.validcodeTiShi = '';
+
+    $scope.text="获取验证码";  
+
     let validStatus = true;   //可以发送验证码
+
     let f_time = function(){
         let time = 60;
+        $scope.validcodeTiShi = '';
         let stop = $interval(
             function(){
                 if(time>0){
@@ -13,39 +20,65 @@ export default ['$scope', '$state', '$http', 'APPBASE', '$compile', 'accountServ
                     $("#btn-send").addClass("getting");
                     validStatus = false;
                     //发送验证码的时间内手机号码不允许修改
-                    $("input[name='telphone']").attr("disabled",true);
                 }else{
                     $interval.cancel(stop);
                     $scope.text="重新发送";
                     $("#btn-send").removeClass("getting");
                     validStatus = true;
-                    $("input[name='telphone']").attr("disabled",false);
                 }
             }
             ,1000);
     };
     $scope.setValid = function(){
-
-        if(validStatus && $scope.regForm.tel.$valid){
-            accountServ.sendValidCodeRegist($http,APPBASE).then(function(res){
+        let data = {'telphone':$scope.telephone};
+        if(validStatus){
+            accountServ.sendValidCode($http,APPBASE,data).then(function(res){
                 if(res.data.code === 0){
                     f_time();
+                } else {
+                    $scope.validcodeTiShi = res.data.errorMessage;
                 }
             })
         }
-        
     }
 
-    $scope.confirm = function(){
-        let password = md5.createHash($scope.password.toLowerCase()).substring(0,15)
+    $scope.next = function(){
+        var myreg = /^[0-9]{4}$/;
+
+        if(!$scope.validCode){
+            $scope.validcodeTiShi = '验证码为空！';
+            return false;
+        }
+
+        if(!myreg.test($scope.validCode)){
+            $scope.validcodeTiShi = '验证码不合法！' ;
+            return false; 
+        }
+        
         let data = {
-            'telphone':$scope.telphone,
+            'telphone':$scope.telephone,
             'validCode':$scope.validCode
         }
-        accountServ.userWebRegistResource($http,APPBASE,data).then(function(res){
+        accountServ.userLoginResource($http,APPBASE,data).then(function(res){
             if(res.data.code === 0){
-                $state.go('account.login');
+                var token = res.data.data.account.token;
+                 var name = res.data.data.account.loginId;
+				sessionStorage.removeItem("token");
+                sessionStorage.setItem("token" , token);
+                sessionStorage.removeItem("name");
+                sessionStorage.setItem("name" , name);
+                $state.go('password.xgmm');
+            } else {
+                $scope.validcodeTiShi = res.data.errorMessage;
             }
         })
     };
+    // 回车键设置
+    $scope.nextStep = function(e){
+        //IE 编码包含在window.event.keyCode中，Firefox或Safari 包含在event.which中
+        var keycode = window.event?e.keyCode:e.which; 
+        if(keycode==13){
+            $scope.next();
+        }
+    }
 }]

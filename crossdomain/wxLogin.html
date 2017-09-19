@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+ 
+</head>
+<body>
+<p>
+    正在登录...
+</p>
+
+<script type="text/javascript" src="../bower_components/jquery/jquery.min.js"></script>
+<script>
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+    var code = GetQueryString("code");
+    var url=window.location.href;
+    var roowNum;
+    if(/roowNum/.test(url)){
+        roowNum = GetQueryString("roowNum");
+    }
+    if(code !=null && code.toString().length>1){
+        $.ajax({
+            method : 'post',
+            async : false,
+            url : '../login/wxLogin?code=' + code
+        }).done(function(resp) {
+            if(resp.code===0){
+                var token = resp.data.token;
+                var access_token = resp.data.access_token;
+                var isFirstLogin = resp.data.isFirstLogin;
+                sessionStorage.removeItem("token");
+                sessionStorage.setItem("token", token);
+                if(roowNum){
+                    window.location.href = "http://www.yunzhujia.cn/game/index.html#/joinGame/"+roowNum;
+                }else{
+                    if(isFirstLogin==='0'){
+                        //0是第一次登陆，需要完善资料
+                        window.location.href = "http://www.yunzhujia.cn/#!/grzl";
+                    }else if(isFirstLogin==='1'){
+                        window.location.href =  "http://www.yunzhujia.cn/#!/main/index";
+                    }
+                }
+            }
+        });
+    }
+
+</script>
+</body>
+
+</html>

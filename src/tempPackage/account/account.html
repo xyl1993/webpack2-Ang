@@ -1,37 +1,24 @@
-<div class="newdyn-box-main">
-    <div class="in-main-newdyn">
-        <div class="newdyn-box-top new-login pointer">
-            <a id="logo" href="../zx/zx.html#/zxqd/0/"><span class="st">云筑加</span></a>
-            <a id="logo2" href="../zx/zx.html#/zxqd/0/"></a>
-        </div>
-        <div class="clear"></div>
-        <div class="new-login-page">
-            <div class="new-login2-page" id="new-login2-page">
-                <div class="log-page">
-                    <div class="new-login-left">
-                        <img src="./img/login-bg.png">
-                    </div>
-                    <div class="new-login-right">
-                        <div class="dw">
-                            <table width="100%" cellspacing="0" cellpadding="0">
-                                <tbody>
-                                    <tr>
-                                        <td width="67" rowspan="2"><img src="./img/logo2.png" alt="" width="50"></td>
-                                        <td height="25"><strong style="font-size: 14px;">云筑加</strong></td>
-                                        <td rowspan="2" align="right"><a class="dw-btn btn" onclick="window.open('http://a.app.qq.com/o/simple.jsp?pkgname=com.jsruyun.yunzhujia')">立即下载</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>建筑生态优质人脉圈</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div ui-view>
-                            
-                        </div>
-                    </div>
+<div class="bg_box_main">
+    <div class="bg_main_div">
+        <div class="bg_header_div">
+            <div class="bg_header">
+                <!-- /<div id="lg_logo"></div> -->
+                <div class="bg_logo">
+                    <img src="img/logo.png" />
+                </div>
+
+                <div class="header_menu row" ng-repeat="list in menuData" ng-class="{'active':list.active}" ng-click="updataMenu(list.id)" >
+                    <div>{{list.name}}</div>
                 </div>
             </div>
         </div>
+        <div class="bg_main">
+            <div class="bac_login_main">
+                <div ui-view ></div>
+            </div>
+        </div>
+          <div class="bg_foot">Copyright © 2014-2016 YUNZHUJIA.CN .All Rights Reserved.苏ICP备13020149号</div>
     </div>
+    
+  
 </div>

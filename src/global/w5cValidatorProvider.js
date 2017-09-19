@@ -27,10 +27,31 @@ export default ['w5cValidatorProvider',function( w5cValidatorProvider){
             pattern:"手机号码格式不正确"
         },
         password : {
-            required:"密码不能为空"
+            required:"密码不能为空",
+            pattern:"请输入6~16位英文或数字，不区分大小写"
+        },
+        newpassword : {
+            required:"新密码不能为空",
+            pattern:"请输入6~16位英文或数字，不区分大小写"
+        },
+        curpassword : {
+            required:"请确认密码",
+            repeat:"密码输入不一致"
         },
         validCode : {
             required:"验证码不能为空"
+        },
+        title : {
+            required:"标题不能为空"
+        },
+        signPrompt : {
+            required:"签到提示语不能为空"
+        },
+        onwallPrompt : {
+            required : "上墙提示语不能为空"
+        },
+        openText : {
+            required : "开幕词不能为空"
         }
 
     });

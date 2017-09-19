@@ -58,7 +58,7 @@
                     <ul>
                         <li ng-repeat="list in fileObj.fileList">
                             <div class="file-list-dyn">
-                                <label for="" class="text-overflow file-list" ng-bind="list"></label>
+                                <label for="" class="text-overflow file-list" ng-bind="list.name"></label>
                                 <i class="iconfont icon-guanbi" ng-click="removeFile($index)"></i>
                             </div>
                         </li>
@@ -98,4 +98,5 @@
     </div>
     <cc-directive cc-data="ccData" cc-sure-click="ccSureClick()"></cc-directive>
     <success-dialog info-text="successDialog.infoText" btn-text="successDialog.btnText" ng-show="successDialog.status" dialog-sure-click="dialogSureClick()"></success-dialog>
+    <error-dialog err-info-data="errorDialog"></error-dialog>
 </div>

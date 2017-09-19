@@ -10,7 +10,7 @@ export default [function(){
         replace: true,
         template: template,
         scope:{  
-            typeList:'=',  //请假类型集合  
+            typeList:'=',  //类型集合  
             selName:'=',   //选中的类型的值
             emptyObj:'=',  //默认的空对象
             typeSureClick: "&"    //列表选择事件

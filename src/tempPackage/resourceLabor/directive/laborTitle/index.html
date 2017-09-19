@@ -1,0 +1,8 @@
+<div class="title_div title_font_size">
+    <span class="labor-title-text" ui-sref="main.resources">资&nbsp;&nbsp;源</span>
+    <span class="title_font_color2 iconfont icon-jiantou"></span>
+    <span ng-class="{true: 'labor-title-text', false: 'labor-title-text active'}[navText!=false]"
+        ng-click="toDefault()">劳务供需</span>
+    <span class="title_font_color2 iconfont icon-jiantou" ng-if="navText"></span>
+    <span class="title_font_color3" ng-bind="navText" ng-if="navText"></span>
+</div>
